@@ -40,6 +40,8 @@ h1,h2{
   letter-spacing:1px;
 }
 
+/* HERO */
+
 .hero{
   height:100vh;
   background:url('img/hero.jpg') center/cover no-repeat;
@@ -61,11 +63,30 @@ h1,h2{
 .hero-content{
   position:relative;
   z-index:2;
+  animation:fadeUp 1.5s ease forwards;
 }
 
 .monograma{
   width:120px;
   margin-bottom:20px;
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{ transform:translateY(0px); }
+  50%{ transform:translateY(-10px); }
+  100%{ transform:translateY(0px); }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .hero h1{
@@ -87,12 +108,16 @@ h1,h2{
   color:var(--dark-olive);
 }
 
+/* TITLES */
+
 .section-title{
   text-align:center;
   margin-bottom:50px;
   font-size:2.2rem;
   color:var(--dark-olive);
 }
+
+/* CARDS */
 
 .cards{
   display:grid;
@@ -108,6 +133,29 @@ h1,h2{
   box-shadow:0 15px 30px rgba(0,0,0,0.05);
 }
 
+/* COUNTDOWN */
+
+.countdown{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  font-size:1.2rem;
+}
+
+.time-box{
+  text-align:center;
+}
+
+.time-box span{
+  display:block;
+  font-size:2rem;
+  font-weight:600;
+  color:var(--olive);
+}
+
+/* GALLERY */
+
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -117,25 +165,14 @@ h1,h2{
 .gallery img{
   width:100%;
   border-radius:8px;
+  transition:transform .4s ease;
 }
 
-.flower-bg{
-  background:url('img/fondo-floral.png') no-repeat center top;
-  background-size:cover;
+.gallery img:hover{
+  transform:scale(1.05);
 }
 
-.color-palette{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:20px;
-}
-
-.color-box{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-}
+/* SCROLL ANIMATION */
 
 .fade{
   opacity:0;
@@ -169,55 +206,25 @@ footer{
   </div>
 </section>
 
-<section class="fade flower-bg">
-  <h2 class="section-title">Nuestra Historia</h2>
-  <p style="text-align:center; max-width:700px; margin:auto;">
-    Nuestro amor floreció como la naturaleza en primavera.
-    Hoy celebramos el comienzo de una vida juntos.
-  </p>
-</section>
-
 <section id="detalles" class="fade">
-  <h2 class="section-title">Detalles del Evento</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Fecha</h3>
-      <p>11 de Julio 2026</p>
+  <h2 class="section-title">Cuenta Regresiva</h2>
+  <div class="countdown">
+    <div class="time-box">
+      <span id="days">0</span>
+      Días
     </div>
-    <div class="card">
-      <h3>Lugar</h3>
-      <p>Hacienda Elegancia</p>
+    <div class="time-box">
+      <span id="hours">0</span>
+      Horas
     </div>
-    <div class="card">
-      <h3>Código de Vestimenta</h3>
-      <p>Formal Elegante</p>
-      <div class="color-palette">
-        <div class="color-box" style="background:#6B705C"></div>
-        <div class="color-box" style="background:#A5A58D"></div>
-        <div class="color-box" style="background:#B7B7A4"></div>
-        <div class="color-box" style="background:#CB997E"></div>
-      </div>
+    <div class="time-box">
+      <span id="minutes">0</span>
+      Minutos
     </div>
-  </div>
-</section>
-
-<section class="fade">
-  <h2 class="section-title">Galería</h2>
-  <div class="gallery">
-    <img src="img/galeria1.jpg">
-    <img src="img/galeria2.jpg">
-    <img src="img/galeria3.jpg">
-  </div>
-</section>
-
-<section class="fade">
-  <h2 class="section-title">Mesa de Regalos</h2>
-  <div class="card" style="max-width:500px;margin:auto;">
-    <p>Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, puedes hacerlo aquí:</p>
-    <br>
-    <a href="#" class="btn" style="color:var(--dark-olive); border:1px solid var(--dark-olive);">
-      Ver opciones
-    </a>
+    <div class="time-box">
+      <span id="seconds">0</span>
+      Segundos
+    </div>
   </div>
 </section>
 
@@ -226,6 +233,8 @@ footer{
 </footer>
 
 <script>
+
+/* SCROLL ANIMATION */
 const faders = document.querySelectorAll('.fade');
 const appearOnScroll = new IntersectionObserver(function(entries){
   entries.forEach(entry=>{
@@ -236,6 +245,27 @@ const appearOnScroll = new IntersectionObserver(function(entries){
 faders.forEach(fader=>{
   appearOnScroll.observe(fader);
 });
+
+/* COUNTDOWN */
+const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
+
+setInterval(function(){
+
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+
+}, 1000);
+
 </script>
 
 </body>
