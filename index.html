@@ -63,29 +63,49 @@ body::before{
   justify-content:center;
   align-items:center;
   text-align:center;
-  color:white;
   position:relative;
+  color:white;
 }
 
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.3);
+  background:rgba(0,0,0,0.35);
 }
 
 .hero-content{
   position:relative;
   z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:25px; /* separación elegante */
 }
 
 .hero h1{
   font-family:'Playfair Display', serif;
-  font-size:48px;
-  letter-spacing:2px;
+  font-size:52px;
+  letter-spacing:3px;
+  color:#e3ead8; /* tono marfil elegante */
 }
 
-/* Parallax iPhone Fix */
+.hero .date{
+  font-size:18px;
+  letter-spacing:2px;
+  color:#d6cfc4;
+}
+
+.countdown{
+  font-size:20px;
+  letter-spacing:2px;
+  margin-top:10px;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,0.4);
+  width:200px;
+}
+
+/* Parallax fix móvil */
 @media (max-width:768px){
   .hero{
     background-attachment:scroll;
@@ -198,7 +218,7 @@ h2{
 <section class="hero">
   <div class="hero-content">
     <h1>María & Luis</h1>
-    <p>18 de Octubre 2026</p>
+    <p class="date">18 de Octubre 2026</p>
     <div class="countdown" id="countdown"></div>
   </div>
 </section>
@@ -285,3 +305,4 @@ const x = setInterval(function(){
 
 </body>
 </html>
+
