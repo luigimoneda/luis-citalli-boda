@@ -38,7 +38,10 @@ section{
 
 .hero{
   height:100vh;
-  background:url('img/hero.jpg') center/cover no-repeat fixed;
+  background-image:url('img/hero.jpg');
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -77,9 +80,12 @@ section{
   to{opacity:1; transform:translateY(0);}
 }
 
-.hero h1{
-  font-size:3.5rem;
-  font-family:'Cormorant Garamond', serif;
+.hero::after{
+  background:linear-gradient(
+    rgba(58,90,64,0.75),
+    rgba(58,90,64,0.55)
+  );
+}
 }
 
 .btn{
@@ -98,7 +104,30 @@ section{
   color:var(--dark-olive);
   transform:translateY(-3px);
 }
+@media (max-width:768px){
 
+  section{
+    padding:80px 20px;
+  }
+
+  .hero{
+    background-position:center top;
+    height:100vh;
+  }
+
+  .hero h1{
+    font-size:2.4rem;
+  }
+
+  .section-title{
+    font-size:1.9rem;
+  }
+
+  .countdown{
+    gap:15px;
+  }
+
+}
 /* TITLES */
 
 .section-title{
@@ -182,14 +211,18 @@ section{
 
 .fade{
   opacity:0;
-  transform:translateY(60px);
-  filter:blur(8px);
-  transition:all 1.6s cubic-bezier(.16,1,.3,1);
+  transform:translateY(80px) scale(.98);
+  filter:blur(10px);
+  transition:
+    opacity 1.8s cubic-bezier(.16,1,.3,1),
+    transform 1.8s cubic-bezier(.16,1,.3,1),
+    filter 1.8s cubic-bezier(.16,1,.3,1);
+  will-change:transform, opacity;
 }
 
 .fade.visible{
   opacity:1;
-  transform:translateY(0);
+  transform:translateY(0) scale(1);
   filter:blur(0);
 }
 
@@ -319,3 +352,4 @@ setInterval(()=>{
 
 </body>
 </html>
+
