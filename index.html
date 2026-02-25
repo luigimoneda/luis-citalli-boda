@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Boda</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --olive:#6B705C;
+  --dark-olive:#3A5A40;
+  --cream:#F4F1EA;
+  --text:#444;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Montserrat', sans-serif;
+  background: var(--cream) url('floral.png') repeat;
+  background-size: 400px;
+  color:var(--text);
+  scroll-behavior:smooth;
+}
+
+section{
+  padding:90px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h1,h2{
+  font-family:'Cormorant Garamond', serif;
+  letter-spacing:1px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+  font-size:2.4rem;
+  color:var(--dark-olive);
+  position:relative;
+}
+
+.section-title::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:2px;
+  background:var(--olive);
+  margin:15px auto 0;
+}
+
+.hero{
+  height:100vh;
+  background:url('hero.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  color:white;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(58,90,64,0.6);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.monogram{
+  width:150px;
+  margin-bottom:25px;
+  opacity:0;
+  animation: fadeMonogram 2s ease forwards;
+}
+
+@keyframes fadeMonogram{
+  from{opacity:0; transform:scale(0.8);}
+  to{opacity:1; transform:scale(1);}
+}
+
+.hero h1{
+  font-size:3.8rem;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:1.3rem;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:12px 35px;
+  border:1px solid white;
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:white;
+  color:var(--dark-olive);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:white;
+  padding:35px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,0.05);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.countdown{
+  text-align:center;
+  font-size:1.5rem;
+  margin-top:30px;
+  color:var(--olive);
+}
+
+/* Dress Code */
+
+.dresscode{
+  background:white;
+  border-radius:15px;
+  padding:70px 30px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.05);
+}
+
+.color-palette{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:35px;
+  margin-top:30px;
+}
+
+.color-item{
+  text-align:center;
+}
+
+.color-circle{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  margin-bottom:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Gallery */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.gallery img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+}
+
+/* Form */
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:400px;
+  margin:auto;
+}
+
+input, select, textarea{
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:4px;
+}
+
+button{
+  padding:12px;
+  background:var(--olive);
+  color:white;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:var(--dark-olive);
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  background:var(--dark-olive);
+  color:white;
+  margin-top:60px;
+}
+
+/* Fade animation */
+
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:all 1s ease;
+}
+
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <img src="monograma.png" alt="Monograma" class="monogram">
+    <h1>Luis & Citlalli</h1>
+    <p>11 de Julio 2026</p>
+    <a href="#detalles" class="btn">Ver detalles</a>
+  </div>
+</section>
+
+<section class="fade">
+  <h2 class="section-title">Nuestra Historia</h2>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    Nuestro amor floreció como la naturaleza en primavera.
+    Hoy celebramos el comienzo de una vida juntos.
+  </p>
+</section>
+
+<section class="fade">
+  <h2 class="section-title">Galería</h2>
+  <div class="gallery">
+    <img src="foto1.jpg" onclick="openLightbox(this)">
+    <img src="foto2.jpg" onclick="openLightbox(this)">
+    <img src="foto3.jpg" onclick="openLightbox(this)">
+    <img src="foto4.jpg" onclick="openLightbox(this)">
+  </div>
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
+<section id="detalles" class="fade">
+  <h2 class="section-title">Detalles del Evento</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Fecha</h3>
+      <p>11 de Julio 2026</p>
+    </div>
+    <div class="card">
+      <h3>Lugar</h3>
+      <p>Hacienda Elegancia</p>
+    </div>
+    <div class="card">
+      <h3>Vestimenta</h3>
+      <p>Formal Elegante</p>
+    </div>
+  </div>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<section class="fade dresscode">
+  <h2 class="section-title">Código de Vestimenta</h2>
+  <p style="text-align:center; max-width:600px; margin:0 auto 40px;">
+    Formal Elegante. Agradecemos evitar el color blanco.
+  </p>
+
+  <h3 style="text-align:center; font-family:'Cormorant Garamond', serif;">
+    Colores Sugeridos
+  </h3>
+
+  <div class="color-palette">
+    <div class="color-item">
+      <div class="color-circle" style="background:#6B705C;"></div>
+      <span>Verde Olivo</span>
+    </div>
+    <div class="color-item">
+      <div class="color-circle" style="background:#A3B18A;"></div>
+      <span>Salvia</span>
+    </div>
+    <div class="color-item">
+      <div class="color-circle" style="background:#DDBEA9;"></div>
+      <span>Beige</span>
+    </div>
+    <div class="color-item">
+      <div class="color-circle" style="background:#344E41;"></div>
+      <span>Verde Oscuro</span>
+    </div>
+  </div>
+</section>
+
+<section class="fade">
+  <h2 class="section-title">Mesa de Regalos</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Liverpool</h3>
+      <p>Número de evento: 12345678</p>
+    </div>
+    <div class="card">
+      <h3>Transferencia</h3>
+      <p>CLABE: 012345678901234567</p>
+    </div>
+  </div>
+</section>
+
+<section class="fade">
+  <h2 class="section-title">Confirmar Asistencia</h2>
+  <form>
+    <input type="text" placeholder="Nombre completo" required>
+    <select required>
+      <option value="">¿Asistirás?</option>
+      <option>Sí, asistiré</option>
+      <option>No podré asistir</option>
+    </select>
+    <textarea placeholder="Mensaje (opcional)"></textarea>
+    <button type="submit">Confirmar</button>
+  </form>
+</section>
+
+<footer>
+  Con amor, Luigi & Citlalli
+</footer>
+
+<script>
+
+const faders = document.querySelectorAll('.fade');
+const appearOnScroll = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{ threshold:0.2 });
+
+faders.forEach(fader=>appearOnScroll.observe(fader));
+
+const weddingDate = new Date("Jul 11, 2026 17:00:00").getTime();
+const countdown = document.getElementById("countdown");
+
+setInterval(()=>{
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+  const days = Math.floor(distance / (1000*60*60*24));
+  countdown.innerHTML = "Faltan " + days + " días para el gran día";
+},1000);
+
+function openLightbox(img){
+  document.getElementById("lightbox").style.display="flex";
+  document.getElementById("lightbox-img").src = img.src;
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
