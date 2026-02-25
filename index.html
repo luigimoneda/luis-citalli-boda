@@ -50,6 +50,7 @@ section{
 
 .hero{
   height:100vh;
+  min-height:100svh; /* mejora móviles modernos */
   position:relative;
   overflow:hidden;
   display:flex;
@@ -57,6 +58,7 @@ section{
   justify-content:center;
   text-align:center;
   color:white;
+  max-width:100%;
 }
 
 .hero-bg{
@@ -163,6 +165,44 @@ section{
   color:var(--olive);
 }
 
+/* TARJETAS EVENTO */
+
+.event-card{
+  background:white;
+  padding:45px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,0.08);
+  max-width:600px;
+  margin:auto;
+  transition:.4s ease;
+}
+
+.event-card:hover{
+  transform:translateY(-6px);
+}
+
+.event-time{
+  font-weight:600;
+  margin:10px 0;
+  color:var(--olive);
+}
+
+.event-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  border:1px solid var(--dark-olive);
+  color:var(--dark-olive);
+  text-decoration:none;
+  transition:.3s ease;
+}
+
+.event-btn:hover{
+  background:var(--dark-olive);
+  color:white;
+}
+
 /* HISTORIA */
 
 .flower-bg{
@@ -262,6 +302,32 @@ footer{
   </div>
 </section>
 
+<!-- CEREMONIA -->
+<section class="fade">
+  <h2 class="section-title">Ceremonia Religiosa</h2>
+  <div class="event-card">
+    <h3>Parroquia San José</h3>
+    <p class="event-time">5:00 PM</p>
+    <p>Los Nogales, México</p>
+    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-btn">
+      Ver Ubicación
+    </a>
+  </div>
+</section>
+
+<!-- RECEPCIÓN -->
+<section class="fade">
+  <h2 class="section-title">Recepción & Fiesta</h2>
+  <div class="event-card">
+    <h3>Jardín Los Olivos</h3>
+    <p class="event-time">7:30 PM</p>
+    <p>Los Nogales, México</p>
+    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-btn">
+      Ver Ubicación
+    </a>
+  </div>
+</section>
+
 <!-- HISTORIA -->
 <section class="fade flower-bg">
   <h2 class="section-title">Nuestra Historia</h2>
@@ -301,19 +367,14 @@ footer{
 
 <script>
 
-/* PARALLAX SUAVE UNIVERSAL (iPhone incluido) */
-
+/* PARALLAX */
 const heroBg = document.querySelector(".hero-bg");
-
 window.addEventListener("scroll", () => {
-  const scrollPosition = window.pageYOffset;
-  heroBg.style.transform = "translateY(" + scrollPosition * 0.35 + "px)";
+  heroBg.style.transform = "translateY(" + window.pageYOffset * 0.35 + "px)";
 });
 
 /* SCROLL FADE */
-
 const faders = document.querySelectorAll('.fade');
-
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -325,7 +386,6 @@ const observer = new IntersectionObserver(entries=>{
 faders.forEach(el=>observer.observe(el));
 
 /* COUNTDOWN */
-
 const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
 
 setInterval(()=>{
