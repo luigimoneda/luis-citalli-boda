@@ -5,260 +5,289 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Boda</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== RESET ===== */
-*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --olive:#6B705C;
+  --dark-olive:#3A5A40;
+  --cream:#F4F1EA;
+  --text:#444;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
   font-family:'Montserrat', sans-serif;
-  background:#f8f7f3;
-  color:#2f3b24;
-  overflow-x:hidden;
+  background:var(--cream);
+  color:var(--text);
+  position:relative;
 }
 
-/* ===== TEXTURA PAPEL ===== */
+/* TEXTURA PAPEL */
+
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:url('img/paper-texture.jpg') center/800px repeat;
+  background:url('img/paper-texture.jpg') center/cover no-repeat;
   opacity:0.05;
   pointer-events:none;
   z-index:-1;
 }
 
-/* ===== INTRO MONOGRAMA ===== */
-#intro{
-  position:fixed;
-  inset:0;
-  background:#f8f7f3;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  animation:fadeOut 2s ease 3s forwards;
+/* SECCIONES */
+
+section{
+  padding:110px 20px;
+  max-width:1100px;
+  margin:auto;
 }
 
-#intro img{
-  width:130px;
-  opacity:0;
-  animation:fadeIn 2s ease forwards;
-}
+/* HERO PREMIUM PARALLAX */
 
-@keyframes fadeIn{to{opacity:1}}
-@keyframes fadeOut{to{opacity:0;visibility:hidden}}
-
-/* ===== HERO ===== */
 .hero{
   height:100vh;
-  background:url('img/hero.jpg') center center / cover no-repeat fixed;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
   position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:url('img/hero.jpg') center/cover no-repeat;
+  transform:translateY(0);
+  will-change:transform;
 }
 
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.35);
+  background:rgba(58,90,64,0.65);
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+}
+
+/* ANIMACIÓN CINEMATOGRÁFICA */
+
+.monograma{
+  width:120px;
+  margin-bottom:20px;
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
 }
 
 .hero h1{
-  font-family:'Playfair Display', serif;
-  font-size:52px;
-  letter-spacing:3px;
-  color:#f1f5ec; /* verde muy claro elegante */
-  margin-bottom:20px;
+  font-size:3.5rem;
+  font-family:'Cormorant Garamond', serif;
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
+  animation-delay:.8s;
 }
 
-.hero .date{
-  font-size:18px;
-  letter-spacing:2px;
-  color:#d6cfc4;
-  margin-bottom:40px;
+.hero p{
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
+  animation-delay:1.4s;
 }
 
-.countdown{
-  font-size:22px;
-  font-weight:300;
-  letter-spacing:2px;
-  padding-top:20px;
-  border-top:1px solid rgba(255,255,255,0.4);
-  width:260px;
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 40px;
+  border:1px solid white;
   color:white;
+  text-decoration:none;
+  letter-spacing:1px;
+  transition:.4s ease;
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
+  animation-delay:2s;
 }
 
-/* Parallax móvil optimizado */
-@media (max-width:768px){
-  .hero{
-    background-attachment:scroll;
+.btn:hover{
+  background:white;
+  color:var(--dark-olive);
+  transform:translateY(-3px);
+}
+
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
-/* ===== SECCIONES GENERALES ===== */
-section{
-  padding:100px 20px;
+/* TITLES */
+
+.section-title{
   text-align:center;
+  margin-bottom:60px;
+  font-size:2.3rem;
+  font-family:'Cormorant Garamond', serif;
+  color:var(--dark-olive);
 }
 
-h2{
-  font-family:'Playfair Display', serif;
-  font-size:32px;
-  margin-bottom:40px;
-  color:#4b5d3a;
-}
+/* COUNTDOWN */
 
-/* ===== DRESS CODE ===== */
-.color-palette{
+.countdown{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:30px;
   flex-wrap:wrap;
 }
 
-.color{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  border:1px solid #ccc;
+.time-box{
+  text-align:center;
 }
 
-/* ===== EVENTOS ===== */
-.event-card{
-  max-width:500px;
-  margin:0 auto;
+.time-box span{
+  display:block;
+  font-size:2.2rem;
+  font-weight:600;
+  color:var(--olive);
+}
+
+/* HISTORIA */
+
+.flower-bg{
+  background:url('img/fondo-floral.png') no-repeat center top;
+  background-size:cover;
+  border-radius:20px;
+}
+
+/* VESTIMENTA */
+
+.card{
+  background:white;
   padding:40px;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(6px);
-  border-radius:12px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.08);
-  transition:0.4s;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.06);
 }
 
-.event-card:hover{
-  transform:translateY(-5px);
-}
-
-.event-button{
-  display:inline-block;
+.color-palette{
+  display:flex;
+  justify-content:center;
+  gap:15px;
   margin-top:20px;
-  padding:12px 28px;
-  border:1px solid #4b5d3a;
-  color:#4b5d3a;
-  text-decoration:none;
-  transition:0.3s;
 }
 
-.event-button:hover{
-  background:#4b5d3a;
-  color:white;
+.color-box{
+  width:45px;
+  height:45px;
+  border-radius:50%;
 }
 
-/* ===== GALERÍA ===== */
+/* GALERÍA */
+
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
+  gap:25px;
 }
 
 .gallery img{
   width:100%;
-  border-radius:10px;
-  transition:0.4s;
+  border-radius:15px;
+  transition:.6s ease;
 }
 
 .gallery img:hover{
-  transform:scale(1.05);
+  transform:scale(1.07);
 }
 
-/* ===== AMAZON ===== */
-.amazon-btn{
-  display:inline-block;
-  padding:14px 30px;
-  background:#4b5d3a;
+/* ANIMACIÓN SCROLL */
+
+.fade{
+  opacity:0;
+  transform:translateY(60px);
+  filter:blur(8px);
+  transition:all 1.6s cubic-bezier(.16,1,.3,1);
+}
+
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
+
+footer{
+  text-align:center;
+  padding:50px;
+  background:var(--dark-olive);
   color:white;
-  text-decoration:none;
-  margin-top:20px;
-  transition:0.3s;
-}
-
-.amazon-btn:hover{
-  background:#2f3b24;
+  margin-top:80px;
 }
 
 </style>
 </head>
-
 <body>
-
-<!-- INTRO -->
-<div id="intro">
-  <img src="img/monograma.png" alt="Monograma">
-</div>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
+
   <div class="hero-content">
-    <h1>María & Luis</h1>
-    <p class="date">18 de Octubre 2026</p>
-    <div class="countdown" id="countdown"></div>
+    <img src="img/monograma.png" class="monograma">
+    <h1>Luis & Citlalli</h1>
+    <p>11 de Julio 2026</p>
+    <a href="#contador" class="btn">Ver detalles</a>
   </div>
 </section>
 
-<!-- DRESS CODE -->
-<section>
-  <h2>Código de Vestimenta</h2>
-  <p>Formal elegante</p>
-  <div class="color-palette">
-    <div class="color" style="background:#4b5d3a"></div>
-    <div class="color" style="background:#d6cfc4"></div>
-    <div class="color" style="background:#a3b18a"></div>
+<!-- CONTADOR -->
+<section id="contador" class="fade">
+  <h2 class="section-title">Cuenta Regresiva</h2>
+  <div class="countdown">
+    <div class="time-box"><span id="days"></span>Días</div>
+    <div class="time-box"><span id="hours"></span>Horas</div>
+    <div class="time-box"><span id="minutes"></span>Minutos</div>
+    <div class="time-box"><span id="seconds"></span>Segundos</div>
   </div>
 </section>
 
-<!-- CEREMONIA -->
-<section>
-  <h2>Ceremonia Religiosa</h2>
-  <div class="event-card">
-    <h3>Parroquia San José</h3>
-    <p>5:00 PM</p>
-    <p>Los Nogales, México</p>
-    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-button">
-      Ver Ubicación
-    </a>
-  </div>
+<!-- HISTORIA -->
+<section class="fade flower-bg">
+  <h2 class="section-title">Nuestra Historia</h2>
+  <p style="text-align:center;max-width:700px;margin:auto;">
+    Nuestro amor floreció como la naturaleza en primavera.
+    Hoy celebramos el comienzo de una vida juntos.
+  </p>
 </section>
 
-<!-- FIESTA -->
-<section style="background:rgba(75,93,58,0.05);">
-  <h2>Recepción & Fiesta</h2>
-  <div class="event-card">
-    <h3>Jardín Los Olivos</h3>
-    <p>7:30 PM</p>
-    <p>Los Nogales, México</p>
-    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-button">
-      Ver Ubicación
-    </a>
+<!-- VESTIMENTA -->
+<section class="fade">
+  <h2 class="section-title">Código de Vestimenta</h2>
+  <div class="card" style="max-width:600px;margin:auto;">
+    Formal Elegante
+    <div class="color-palette">
+      <div class="color-box" style="background:#6B705C"></div>
+      <div class="color-box" style="background:#A5A58D"></div>
+      <div class="color-box" style="background:#B7B7A4"></div>
+      <div class="color-box" style="background:#CB997E"></div>
+    </div>
   </div>
 </section>
 
 <!-- GALERÍA -->
-<section>
-  <h2>Galería</h2>
+<section class="fade">
+  <h2 class="section-title">Galería</h2>
   <div class="gallery">
     <img src="img/galeria1.jpg">
     <img src="img/galeria2.jpg">
@@ -266,38 +295,55 @@ h2{
   </div>
 </section>
 
-<!-- MESA DE REGALOS -->
-<section>
-  <h2>Mesa de Regalos</h2>
-  <p>Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo:</p>
-  <a href="https://www.amazon.com.mx/wedding/registry" target="_blank" class="amazon-btn">
-    Ver Mesa en Amazon
-  </a>
-</section>
+<footer>
+  Con amor, Luigi & Citlalli
+</footer>
 
 <script>
-const weddingDate = new Date("Oct 18, 2026 17:00:00").getTime();
 
-const x = setInterval(function(){
+/* PARALLAX SUAVE UNIVERSAL (iPhone incluido) */
+
+const heroBg = document.querySelector(".hero-bg");
+
+window.addEventListener("scroll", () => {
+  const scrollPosition = window.pageYOffset;
+  heroBg.style.transform = "translateY(" + scrollPosition * 0.35 + "px)";
+});
+
+/* SCROLL FADE */
+
+const faders = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{ threshold:0.2 });
+
+faders.forEach(el=>observer.observe(el));
+
+/* COUNTDOWN */
+
+const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
+
+setInterval(()=>{
   const now = new Date().getTime();
   const distance = weddingDate - now;
 
   const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-  const seconds = Math.floor((distance % (1000*60))/1000);
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance%(1000*60))/1000);
 
-  document.getElementById("countdown").innerHTML =
-    days + " días · " +
-    hours + "h · " +
-    minutes + "m · " +
-    seconds + "s";
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
 
-  if(distance < 0){
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "¡Hoy es el gran día!";
-  }
 },1000);
+
 </script>
 
 </body>
