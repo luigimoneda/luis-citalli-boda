@@ -11,10 +11,11 @@
 
 /* ===== RESET ===== */
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'Montserrat', sans-serif;
-  color:#2f3b24;
   background:#f8f7f3;
+  color:#2f3b24;
   overflow-x:hidden;
 }
 
@@ -37,25 +38,20 @@ body::before{
   display:flex;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
   z-index:9999;
   animation:fadeOut 2s ease 3s forwards;
 }
 
 #intro img{
-  width:120px;
+  width:130px;
   opacity:0;
   animation:fadeIn 2s ease forwards;
 }
 
-@keyframes fadeIn{
-  to{opacity:1}
-}
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden}
-}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
 
-/* ===== HERO PARALLAX ===== */
+/* ===== HERO ===== */
 .hero{
   height:100vh;
   background:url('img/hero.jpg') center center / cover no-repeat fixed;
@@ -64,7 +60,6 @@ body::before{
   align-items:center;
   text-align:center;
   position:relative;
-  color:white;
 }
 
 .hero::after{
@@ -80,39 +75,41 @@ body::before{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:25px; /* separación elegante */
 }
 
 .hero h1{
   font-family:'Playfair Display', serif;
   font-size:52px;
   letter-spacing:3px;
-  color:#e3ead8; /* tono marfil elegante */
+  color:#f1f5ec; /* verde muy claro elegante */
+  margin-bottom:20px;
 }
 
 .hero .date{
   font-size:18px;
   letter-spacing:2px;
   color:#d6cfc4;
+  margin-bottom:40px;
 }
 
 .countdown{
-  font-size:20px;
+  font-size:22px;
+  font-weight:300;
   letter-spacing:2px;
-  margin-top:10px;
-  padding-top:15px;
+  padding-top:20px;
   border-top:1px solid rgba(255,255,255,0.4);
-  width:200px;
+  width:260px;
+  color:white;
 }
 
-/* Parallax fix móvil */
+/* Parallax móvil optimizado */
 @media (max-width:768px){
   .hero{
     background-attachment:scroll;
   }
 }
 
-/* ===== SECCIONES ===== */
+/* ===== SECCIONES GENERALES ===== */
 section{
   padding:100px 20px;
   text-align:center;
@@ -188,7 +185,7 @@ h2{
   transform:scale(1.05);
 }
 
-/* ===== BOTÓN AMAZON ===== */
+/* ===== AMAZON ===== */
 .amazon-btn{
   display:inline-block;
   padding:14px 30px;
@@ -196,12 +193,11 @@ h2{
   color:white;
   text-decoration:none;
   margin-top:20px;
+  transition:0.3s;
 }
 
-/* ===== CONTADOR ===== */
-.countdown{
-  font-size:28px;
-  margin-top:20px;
+.amazon-btn:hover{
+  background:#2f3b24;
 }
 
 </style>
@@ -280,8 +276,6 @@ h2{
 </section>
 
 <script>
-
-/* ===== CONTADOR ===== */
 const weddingDate = new Date("Oct 18, 2026 17:00:00").getTime();
 
 const x = setInterval(function(){
@@ -291,18 +285,20 @@ const x = setInterval(function(){
   const days = Math.floor(distance / (1000*60*60*24));
   const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
   const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance % (1000*60))/1000);
 
   document.getElementById("countdown").innerHTML =
-  days + " días " + hours + "h " + minutes + "m ";
+    days + " días · " +
+    hours + "h · " +
+    minutes + "m · " +
+    seconds + "s";
 
   if(distance < 0){
     clearInterval(x);
     document.getElementById("countdown").innerHTML = "¡Hoy es el gran día!";
   }
 },1000);
-
 </script>
 
 </body>
 </html>
-
