@@ -17,7 +17,6 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
 
 body{
@@ -34,15 +33,11 @@ section{
   margin:auto;
 }
 
-/* HERO */
+/* HERO CON PARALLAX EN TODOS LOS DISPOSITIVOS */
 
 .hero{
   height:100vh;
-  background-image:url('img/hero.jpg');
-  background-position:center center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+  background:url('img/hero.jpg') center/cover no-repeat fixed;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -51,13 +46,11 @@ section{
   color:white;
 }
 
-/* En móvil desactivamos fixed */
-@media (max-width:768px){
-  .hero{
-    background-attachment:scroll;
-    background-position:center top;
-  }
-  
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(58,90,64,0.65);
 }
 
 .hero-content{
@@ -83,12 +76,9 @@ section{
   to{opacity:1; transform:translateY(0);}
 }
 
-.hero::after{
-  background:linear-gradient(
-    rgba(58,90,64,0.75),
-    rgba(58,90,64,0.55)
-  );
-}
+.hero h1{
+  font-size:3.5rem;
+  font-family:'Cormorant Garamond', serif;
 }
 
 .btn{
@@ -107,30 +97,7 @@ section{
   color:var(--dark-olive);
   transform:translateY(-3px);
 }
-@media (max-width:768px){
 
-  section{
-    padding:80px 20px;
-  }
-
-  .hero{
-    background-position:center top;
-    height:100vh;
-  }
-
-  .hero h1{
-    font-size:2.4rem;
-  }
-
-  .section-title{
-    font-size:1.9rem;
-  }
-
-  .countdown{
-    gap:15px;
-  }
-
-}
 /* TITLES */
 
 .section-title{
@@ -161,10 +128,10 @@ section{
   color:var(--olive);
 }
 
-/* HISTORIA */
+/* HISTORIA CON PARALLAX */
 
 .flower-bg{
-  background:url('img/fondo-floral.png') no-repeat center top;
+  background:url('img/fondo-floral.png') no-repeat center top fixed;
   background-size:cover;
   border-radius:20px;
 }
@@ -214,48 +181,17 @@ section{
 
 .fade{
   opacity:0;
-  transform:translateY(80px) scale(.98);
-  filter:blur(10px);
-  transition:
-    opacity 1.8s cubic-bezier(.16,1,.3,1),
-    transform 1.8s cubic-bezier(.16,1,.3,1),
-    filter 1.8s cubic-bezier(.16,1,.3,1);
-  will-change:transform, opacity;
+  transform:translateY(60px);
+  filter:blur(8px);
+  transition:all 1.6s cubic-bezier(.16,1,.3,1);
 }
 
 .fade.visible{
   opacity:1;
-  transform:translateY(0) scale(1);
+  transform:translateY(0);
   filter:blur(0);
 }
-<!-- UBICACIÓN -->
-<section class="fade">
-  <h2 class="section-title">Ubicación</h2>
 
-  <div class="card" style="max-width:800px;margin:auto;">
-    Hacienda San Pedro  
-    <br><br>
-
-    <iframe
-      src="https://www.google.com/maps?q=Hacienda+San+Pedro&output=embed"
-      width="100%"
-      height="350"
-      style="border:0;border-radius:15px;"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-
-    <br><br>
-
-    <a href="https://www.google.com/maps/search/?api=1&query=Hacienda+San+Pedro"
-       target="_blank"
-       class="btn"
-       style="color:var(--dark-olive);border:1px solid var(--dark-olive);">
-       Abrir en Google Maps
-    </a>
-
-  </div>
-</section>
 footer{
   text-align:center;
   padding:50px;
@@ -338,6 +274,29 @@ footer{
   </div>
 </section>
 
+<!-- UBICACIÓN -->
+<section class="fade">
+  <h2 class="section-title">Ubicación</h2>
+  <div class="card" style="max-width:800px;margin:auto;">
+    Hacienda San Pedro
+    <br><br>
+    <iframe
+      src="https://www.google.com/maps?q=Hacienda+San+Pedro&output=embed"
+      width="100%"
+      height="350"
+      style="border:0;border-radius:15px;"
+      loading="lazy">
+    </iframe>
+    <br><br>
+    <a href="https://www.google.com/maps/search/?api=1&query=Hacienda+San+Pedro"
+       target="_blank"
+       class="btn"
+       style="color:var(--dark-olive);border:1px solid var(--dark-olive);">
+       Abrir en Google Maps
+    </a>
+  </div>
+</section>
+
 <footer>
   Con amor, Luigi & Citlalli
 </footer>
@@ -382,5 +341,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
-
