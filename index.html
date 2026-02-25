@@ -137,6 +137,10 @@ section{
   color:var(--dark-olive);
 }
 
+.section-title.light{
+  color:white;
+}
+
 /* COUNTDOWN */
 
 .countdown{
@@ -191,38 +195,108 @@ section{
   color:white;
 }
 
-/* HISTORIA */
+/* ===== TIMELINE RECEPCIÓN ===== */
 
-.flower-bg{
-  background:url('img/fondo-floral.png') no-repeat center top;
-  background-size:cover;
-  border-radius:20px;
+.timeline-section{
+  background:var(--dark-olive);
+  color:white;
+  padding:140px 20px;
+  max-width:100%;
 }
 
-/* VESTIMENTA */
+.timeline{
+  position:relative;
+  max-width:800px;
+  margin:80px auto 0 auto;
+}
 
-.card{
-  background:white;
-  padding:40px;
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  width:2px;
+  height:100%;
+  background:rgba(244,241,234,0.5);
+  transform:translateX(-50%);
+}
+
+.timeline-item{
+  position:relative;
+  width:50%;
+  padding:40px 60px;
+}
+
+.timeline-item:nth-child(odd){
+  left:0;
+  text-align:right;
+}
+
+.timeline-item:nth-child(even){
+  left:50%;
+}
+
+.timeline-content{
+  background:rgba(255,255,255,0.08);
+  padding:25px 30px;
   border-radius:15px;
-  text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.06);
+  backdrop-filter:blur(6px);
+  transition:.4s ease;
 }
 
-.color-palette{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:20px;
+.timeline-content:hover{
+  background:rgba(255,255,255,0.15);
+  transform:translateY(-5px);
 }
 
-.color-box{
-  width:45px;
-  height:45px;
+.timeline-content h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.8rem;
+  margin-bottom:10px;
+  color:var(--cream);
+}
+
+.timeline-item::after{
+  content:"";
+  position:absolute;
+  top:55px;
+  width:14px;
+  height:14px;
+  background:var(--cream);
   border-radius:50%;
+  right:-7px;
 }
 
-/* ===== GALERÍA PREMIUM FULLSCREEN ===== */
+.timeline-item:nth-child(even)::after{
+  left:-7px;
+}
+
+@media(max-width:768px){
+
+  .timeline::before{
+    left:20px;
+  }
+
+  .timeline-item{
+    width:100%;
+    padding-left:60px;
+    padding-right:20px;
+    margin-bottom:40px;
+  }
+
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even){
+    left:0;
+    text-align:left;
+  }
+
+  .timeline-item::after{
+    left:13px;
+    right:auto;
+  }
+}
+
+/* GALERÍA PREMIUM */
 
 .photo-section{
   position:relative;
@@ -243,8 +317,6 @@ section{
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  transform:translateY(0);
-  will-change:transform;
 }
 
 .photo-section::after{
@@ -340,6 +412,49 @@ footer{
   </div>
 </section>
 
+<!-- TIMELINE RECEPCIÓN -->
+<section class="timeline-section fade">
+  <h2 class="section-title light">Itinerario de la Recepción</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>7:30 PM</h3>
+        <p>Recepción de invitados</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>8:00 PM</h3>
+        <p>Entrada de los novios</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>9:00 PM</h3>
+        <p>Cena</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>10:30 PM</h3>
+        <p>Vals & Brindis</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>11:00 PM</h3>
+        <p>Fiesta</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- HISTORIA -->
 <section class="fade flower-bg">
   <h2 class="section-title">Nuestra Historia</h2>
@@ -363,51 +478,14 @@ footer{
   </div>
 </section>
 
-<!-- GALERÍA PREMIUM -->
-
-<section class="photo-section">
-  <div class="photo-bg" style="background-image:url('img/galeria1.jpg')"></div>
-  <div class="photo-content">Cada historia comienza con una mirada</div>
-</section>
-
-<section class="photo-section">
-  <div class="photo-bg" style="background-image:url('img/galeria2.jpg')"></div>
-  <div class="photo-content">Y florece con cada instante compartido</div>
-</section>
-
-<section class="photo-section">
-  <div class="photo-bg" style="background-image:url('img/galeria3.jpg')"></div>
-  <div class="photo-content">Hoy celebramos nuestro para siempre</div>
-</section>
-
 <footer>
   Con amor, Luigi & Citlalli
 </footer>
 
 <script>
 
-/* PARALLAX HERO */
-const heroBg = document.querySelector(".hero-bg");
-
-window.addEventListener("scroll", () => {
-  heroBg.style.transform = "translateY(" + window.pageYOffset * 0.35 + "px)";
-});
-
-/* PARALLAX FOTOS */
-const photoSections = document.querySelectorAll(".photo-section");
-
-window.addEventListener("scroll", () => {
-  photoSections.forEach(section=>{
-    const bg = section.querySelector(".photo-bg");
-    const rect = section.getBoundingClientRect();
-    const offset = rect.top * 0.25;
-    bg.style.transform = "translateY(" + offset + "px)";
-  });
-});
-
 /* SCROLL FADE */
-const allFade = document.querySelectorAll('.fade, .photo-section');
-
+const faders = document.querySelectorAll('.fade');
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -416,7 +494,7 @@ const observer = new IntersectionObserver(entries=>{
   });
 },{ threshold:0.2 });
 
-allFade.forEach(el=>observer.observe(el));
+faders.forEach(el=>observer.observe(el));
 
 /* COUNTDOWN */
 const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
@@ -425,15 +503,14 @@ setInterval(()=>{
   const now = new Date().getTime();
   const distance = weddingDate - now;
 
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-  const seconds = Math.floor((distance%(1000*60))/1000);
-
-  document.getElementById("days").innerHTML = days;
-  document.getElementById("hours").innerHTML = hours;
-  document.getElementById("minutes").innerHTML = minutes;
-  document.getElementById("seconds").innerHTML = seconds;
+  document.getElementById("days").innerHTML =
+    Math.floor(distance / (1000*60*60*24));
+  document.getElementById("hours").innerHTML =
+    Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutes").innerHTML =
+    Math.floor((distance%(1000*60*60))/(1000*60));
+  document.getElementById("seconds").innerHTML =
+    Math.floor((distance%(1000*60))/1000);
 
 },1000);
 
