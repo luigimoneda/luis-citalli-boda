@@ -23,6 +23,19 @@ body{
   font-family:'Montserrat', sans-serif;
   background:var(--cream);
   color:var(--text);
+  position:relative;
+}
+
+/* TEXTURA PAPEL */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('img/paper-texture.jpg') center/cover no-repeat;
+  opacity:0.04;
+  pointer-events:none;
+  z-index:-1;
 }
 
 /* SECCIONES */
@@ -33,17 +46,25 @@ section{
   margin:auto;
 }
 
-/* HERO CON PARALLAX EN TODOS LOS DISPOSITIVOS */
+/* HERO PREMIUM PARALLAX */
 
 .hero{
   height:100vh;
-  background:url('img/hero.jpg') center/cover no-repeat fixed;
+  position:relative;
+  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  position:relative;
   color:white;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:url('img/hero.jpg') center/cover no-repeat;
+  transform:translateY(0);
+  will-change:transform;
 }
 
 .hero::after{
@@ -56,29 +77,29 @@ section{
 .hero-content{
   position:relative;
   z-index:2;
-  animation:fadeUp 1.8s ease forwards;
 }
+
+/* ANIMACIÓN CINEMATOGRÁFICA */
 
 .monograma{
   width:120px;
   margin-bottom:20px;
-  animation:float 5s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
-  100%{transform:translateY(0);}
-}
-
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(50px);}
-  to{opacity:1; transform:translateY(0);}
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
 }
 
 .hero h1{
   font-size:3.5rem;
   font-family:'Cormorant Garamond', serif;
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
+  animation-delay:.8s;
+}
+
+.hero p{
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
+  animation-delay:1.4s;
 }
 
 .btn{
@@ -90,12 +111,26 @@ section{
   text-decoration:none;
   letter-spacing:1px;
   transition:.4s ease;
+  opacity:0;
+  animation:fadeInUp 1.6s ease forwards;
+  animation-delay:2s;
 }
 
 .btn:hover{
   background:white;
   color:var(--dark-olive);
   transform:translateY(-3px);
+}
+
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* TITLES */
@@ -128,10 +163,10 @@ section{
   color:var(--olive);
 }
 
-/* HISTORIA CON PARALLAX */
+/* HISTORIA */
 
 .flower-bg{
-  background:url('img/fondo-floral.png') no-repeat center top fixed;
+  background:url('img/fondo-floral.png') no-repeat center top;
   background-size:cover;
   border-radius:20px;
 }
@@ -177,7 +212,7 @@ section{
   transform:scale(1.07);
 }
 
-/* ANIMACIÓN ULTRA SUAVE */
+/* ANIMACIÓN SCROLL */
 
 .fade{
   opacity:0;
@@ -206,6 +241,8 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
+
   <div class="hero-content">
     <img src="img/monograma.png" class="monograma">
     <h1>Luis & Citlalli</h1>
@@ -258,52 +295,22 @@ footer{
   </div>
 </section>
 
-<!-- MESA AMAZON -->
-<section class="fade">
-  <h2 class="section-title">Mesa de Regalos</h2>
-  <div class="card" style="max-width:600px;margin:auto;">
-    Tu presencia es nuestro mejor regalo,  
-    pero si deseas tener un detalle con nosotros:
-    <br><br>
-    <a href="https://www.amazon.com.mx/wedding/guest-view/2OF7A82W8I0AJ"
-       target="_blank"
-       class="btn"
-       style="color:var(--dark-olive);border:1px solid var(--dark-olive);">
-       Ver Mesa en Amazon
-    </a>
-  </div>
-</section>
-
-<!-- UBICACIÓN -->
-<section class="fade">
-  <h2 class="section-title">Ubicación</h2>
-  <div class="card" style="max-width:800px;margin:auto;">
-    Hacienda San Pedro
-    <br><br>
-    <iframe
-      src="https://www.google.com/maps?q=Hacienda+San+Pedro&output=embed"
-      width="100%"
-      height="350"
-      style="border:0;border-radius:15px;"
-      loading="lazy">
-    </iframe>
-    <br><br>
-    <a href="https://www.google.com/maps/search/?api=1&query=Hacienda+San+Pedro"
-       target="_blank"
-       class="btn"
-       style="color:var(--dark-olive);border:1px solid var(--dark-olive);">
-       Abrir en Google Maps
-    </a>
-  </div>
-</section>
-
 <footer>
   Con amor, Luigi & Citlalli
 </footer>
 
 <script>
 
-/* ANIMACIÓN SCROLL */
+/* PARALLAX SUAVE UNIVERSAL (iPhone incluido) */
+
+const heroBg = document.querySelector(".hero-bg");
+
+window.addEventListener("scroll", () => {
+  const scrollPosition = window.pageYOffset;
+  heroBg.style.transform = "translateY(" + scrollPosition * 0.35 + "px)";
+});
+
+/* SCROLL FADE */
 
 const faders = document.querySelectorAll('.fade');
 
