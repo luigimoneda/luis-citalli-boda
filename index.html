@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta property="og:title" content="Invitación: Boda de Luis & Citlalli">
+<meta property="og:description" content="Acompáñanos a celebrar nuestro gran día el 11 de julio de 2026.">
+<meta property="og:image" content="https://tuweb.com/img/hero.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis & Citlalli | Nuestra Boda</title>
@@ -28,15 +31,15 @@
         }
 
         /* TEXTURA PAPEL SUTIL */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Textura genérica ligera */
-            opacity: 0.1;
-            pointer-events: none;
-            z-index: 10;
-        }
+       body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1; /* Cambiado a -1 para evitar problemas de clic */
+}
 
         section {
             padding: 80px 20px;
@@ -137,23 +140,31 @@
 
         .event-btn:hover { background: var(--dark-olive); color: white; }
 
-        /* COUNTDOWN */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
+       // CONTADOR CON MENSAJE FINAL
+const updateTimer = () => {
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
 
-        .time-box { text-align: center; min-width: 70px; }
+    if (diff <= 0) {
+        document.querySelector(".countdown").innerHTML = "<h3 style='color:var(--dark-olive)'>¡Hoy es el gran día!</h3>";
+        return;
+    }
 
-        .time-box span {
-            display: block;
-            font-size: 2.5rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--dark-olive);
-            line-height: 1;
-        }
+    document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+};
+
+// PARALLAX MÁS FLUIDO
+let scrollPos = 0;
+window.addEventListener('scroll', () => {
+    scrollPos = window.pageYOffset;
+    requestAnimationFrame(() => {
+        const heroBg = document.getElementById('heroBg');
+        heroBg.style.transform = `translate3d(0, ${scrollPos * 0.4}px, 0)`; // Usa translate3d para aceleración por hardware
+    });
+});
 
         /* EVENT CARDS */
         .event-card {
@@ -351,5 +362,6 @@
     </script>
 </body>
 </html>
+
 
 
