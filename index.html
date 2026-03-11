@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis & Citlalli | Nuestra Boda</title>
 
+    <link rel="icon" type="image/png" href="img/monograma.png">
+
     <meta property="og:title" content="Invitación: Boda de Luis & Citlalli">
     <meta property="og:description" content="Acompáñanos a celebrar nuestro gran día el 11 de julio de 2026.">
-    <meta property="og:image" content="https://tuweb.com/img/hero.jpg">
+    <meta property="og:image" content="img/hero.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Definimos los colores del estilo de referencia */
-            --olive-bg: #4a5c4d; /* Fondo oscuro principal */
-            --cream-bg: #f9f8f4; /* Fondo claro para tarjetas */
-            --dark-olive: #3A5A40; /* Verde oscuro para textos y bordes */
-            --text-on-dark: #f9f8f4; /* Texto claro sobre fondo oscuro */
-            --text-on-light: #2c3e2f; /* Texto oscuro sobre fondo claro */
+            --olive-bg: #4a5c4d; 
+            --cream-bg: #f9f8f4; 
+            --dark-olive: #3A5A40; 
+            --text-on-dark: #f9f8f4; 
+            --text-on-light: #2c3e2f; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,13 +27,10 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* --- CAMBIO: FONDO OSCURO EN TODO EL BODY ---*/
             background-color: var(--olive-bg);
-            /* --- CAMBIO: TEXTO CLARO POR DEFECTO ---*/
             color: var(--text-on-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
         /* TEXTURA PAPEL SUTIL */
@@ -46,257 +44,126 @@
             z-index: -1; 
         }
 
-        section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: auto;
-            position: relative;
-            z-index: 20; 
-        }
-
-        /* --- HERO: Mantenemos el efecto de fusión sutil ---*/
+        /* --- HERO: FULL WIDTH & FULL HEIGHT (CORRECCIÓN PC) --- */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white; 
             position: relative;
             overflow: hidden;
-            padding: 0; 
         }
 
         .hero-bg {
             position: absolute;
-            inset: -50px 0; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: url('img/hero.jpg') center/cover no-repeat;
             z-index: -1;
-            will-change: transform;
         }
 
+        /* Degradado de fusión con el fondo olivo */
         .hero::after {
             content: "";
             position: absolute;
             inset: 0;
-            /* Degradado de fusión */
             background: linear-gradient(to bottom, rgba(74, 92, 77, 0) 60%, rgba(74, 92, 77, 1) 100%);
             z-index: 0;
         }
 
         .hero-content { position: relative; z-index: 2; padding: 20px; }
+        .monograma { width: 100px; margin-bottom: 15px; animation: fadeInUp 1.2s ease; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-family: 'Cormorant Garamond', serif; margin-bottom: 10px; }
 
-        .monograma { width: 100px; margin-bottom: 20px; animation: fadeInUp 1.2s ease; }
+        /* SECCIONES */
+        section { padding: 80px 20px; max-width: 1100px; margin: auto; }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-family: 'Cormorant Garamond', serif;
-            margin-bottom: 10px;
-            animation: fadeInUp 1.4s ease;
-        }
-
-        /* ANIMACIONES DE ENTRADA */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .fade.visible { opacity: 1; transform: translateY(0); }
-
-        /* --- TÍTULOS: Ahora en CREMA ---*/
         .section-title { 
             text-align: center; 
             font-family: 'Cormorant Garamond', serif; 
-            font-size: clamp(2.2rem, 5vw, 2.8rem);
+            font-size: 2.5rem;
             margin-bottom: 40px;
-            color: var(--cream-bg); /* Título claro sobre fondo oscuro */
+            color: var(--cream-bg);
             text-transform: uppercase;
             letter-spacing: 3px;
         }
 
-        /* --- BOTONES OUTLINE: Claros para el Hero ---*/
-        .btn-outline {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 35px;
-            border: 1px solid var(--white);
-            color: var(--white);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            transition: 0.3s;
+        /* TARJETAS BLANCAS (Estilo referencia) */
+        .event-card, .gift-card-single {
+            background: var(--cream-bg);
+            padding: 60px 40px;
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-width: 600px;
+            margin: 0 auto 50px auto; 
+            border-radius: 4px;
+            color: var(--text-on-light);
         }
 
-        .btn-outline:hover { background: var(--white); color: var(--dark-olive); }
+        .event-card h2 { color: var(--dark-olive); font-style: italic; margin-bottom: 15px; text-transform: none; }
 
-        /* --- BOTONES DE EVENTO/MESA: Oscuros para tarjetas ---*/
+        /* DIVISORES PNG */
+        .divider-png {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            margin: 40px auto;
+        }
+        .divider-png img { width: 100%; height: auto; display: block; }
+
+        /* ITINERARIO */
+        .timeline { display: flex; flex-direction: column; align-items: center; gap: 50px; }
+        .timeline-item { text-align: center; }
+        .timeline-icon { width: 55px; margin-bottom: 15px; }
+        .timeline-time { font-size: 1.1rem; letter-spacing: 1px; }
+        .timeline-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; }
+
+        /* COUNTDOWN */
+        .countdown { display: flex; justify-content: center; gap: 20px; text-align: center; margin-bottom: 40px; }
+        .time-box span { display: block; font-size: 3rem; font-family: 'Cormorant Garamond', serif; color: var(--cream-bg); line-height: 1; }
+
+        /* BOTONES */
         .event-btn {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 12px 30px;
-            background: transparent;
             border: 1px solid var(--dark-olive);
             color: var(--dark-olive);
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: 0.3s;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             text-transform: uppercase;
+            transition: 0.3s;
         }
-
         .event-btn:hover { background: var(--dark-olive); color: white; }
 
-        /* --- COUNTDOWN: Con números claros ---*/
-        .countdown {
-            display: flex;
-            justify-content: center; 
-            gap: clamp(10px, 4vw, 25px);
-            margin: 30px auto;
-            text-align: center;
-        }
+        /* ANIMACIONES */
+        .fade { opacity: 0; transform: translateY(30px); transition: 1.2s; }
+        .fade.visible { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .time-box { text-align: center; min-width: clamp(60px, 15vw, 80px); }
-
-        .time-box span {
-            display: block;
-            font-size: clamp(2.5rem, 8vw, 3.5rem); 
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--cream-bg); /* Números claros */
-            line-height: 1;
-            font-weight: 600;
-        }
-
-        /* --- EVENT CARDS: Ahora son tarjetas BLANCAS integradas ---*/
-        .event-card {
-            background: var(--cream-bg); /* Tarjeta con fondo claro */
-            padding: 60px 40px; /* Padding generoso */
-            text-align: center; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra suave */
-            max-width: 600px;
-            margin: 0 auto 50px auto; 
-            border-radius: 4px; /* Bordes ligeramente suavizados */
-            color: var(--text-on-light); /* Texto oscuro dentro */
-        }
-        
-        .event-card .section-title {
-            color: var(--dark-olive); /* Título oscuro dentro */
-            text-transform: none;
-            font-style: italic;
-            letter-spacing: 1px;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        /* VESTIMENTA */
-        .color-palette {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .color-box {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--white); 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* --- MESA DE REGALOS: Tarjeta BLANCA ---*/
-        .gift-card-single {
-            background: var(--cream-bg); /* Fondo claro */
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra suave */
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text-on-light); /* Texto oscuro */
-            border-radius: 4px; /* Bordes suaves */
-        }
-
-        /* FOTOS PARALLAX */
-        .photo-section {
-            height: 70vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-        .photo-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            transform: scale(1.1);
-        }
-        .photo-content { 
-            z-index: 1; 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            padding: 20px;
-            max-width: 900px;
-            font-style: italic;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 80px 20px;
-            background: rgba(0,0,0,0.1); 
-            color: var(--cream-bg);
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            position: relative;
-            z-index: 20;
-        }
-
-        /* --- DIVISOR ILUSTRADO BOTÁNICO --- */
-        .divider {
-            display: block;
-            width: 150px; 
-            height: 50px;
-            margin: 60px auto; 
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="%23f9f8f4"><path d="M50 2.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 1c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm24 10.1c1.1-.3 2.1-.7 3.1-1.2.9-.5 1.7-1.1 2.3-1.8.6-.7 1-1.5 1.2-2.3.2-.8.1-1.6-.1-2.4-.3-1.1-1-2-1.9-2.5-.9-.5-1.9-.7-2.9-.7-1.1 0-2.1.2-3.1.6-1 .4-1.9.9-2.7 1.6l-.7.7c-2 2-3.8 4.2-5.4 6.6-1.6 2.4-3.1 4.9-4.3 7.5-.3.6-.6 1.2-.8 1.9 1.4-.4 2.8-.7 4.2-.9.5-.1 1-.1 1.5-.1h1.5zm-.5-8.3c.7 0 1.4.1 2 .4s1.2.6 1.6 1.1c.4.5.7 1 .8 1.6.2.6.2 1.2 0 1.8-.1.6-.4 1.1-.8 1.6-.4.5-1 .8-1.6 1.1-.7.3-1.4.4-2.1.4-.7 0-1.4-.1-2-.4s-1.2-.6-1.6-1.1c-.4-.5-.7-1-.8-1.6-.2-.6-.2-1.2 0-1.8.1-.6.4-1.1.8-1.6.4-.5 1-.8 1.6-1.1.7-.3 1.4-.4 2.1-.4zm-47.1 8.3c1.4.2 2.8.5 4.2.9-.3-.6-.5-1.3-.8-1.9-1.2-2.6-2.7-5.1-4.3-7.5-1.6-2.4-3.4-4.6-5.4-6.6l-.7.7c-.8-.7-1.7-1.2-2.7-1.6-1-.4-2-.6-3.1-.6-1 0-2 .2-2.9.7-.9.5-1.6 1.4-1.9 2.5-.2.8-.3 1.6-.1 2.4.2.8.6 1.6 1.2 2.3.6.7 1.4 1.3 2.3 1.8 1 .5 2 .9 3.1 1.2.5 0 1 .1 1.5.1h1.5c1.1 0 2 .1 2.6.1zm.5-8.3c.7 0 1.4.1 2.1.4.6.3 1.2.6 1.6 1.1.4.5.7 1 .8 1.6.2.6.2 1.2 0 1.8-.1.6-.4 1.1-.8 1.6-.4.5-1 .8-1.6 1.1-.7.3-1.4.4-2.1.4-.7 0-1.4-.1-2-.4s-1.2-.6-1.6-1.1c-.4-.5-.7-1-.8-1.6-.2-.6-.2-1.2 0-1.8.1-.6.4-1.1.8-1.6.4-.5 1-.8 1.6-1.1.7-.3 1.4-.4 2.1-.4zm37.2.7s-.1.1-.1.2c.1-.1.1-.2 0-.2zm-12.2.2s.1-.1.1-.2c-.1.1-.1.2 0 .2z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.7; 
-        }
-
-        /* MEDIA QUERIES */
         @media (max-width: 600px) {
-            section { padding: 60px 15px; }
-            .time-box span { font-size: 2.5rem; }
-            .color-box { width: 30px; height: 30px; }
-            .event-card, .gift-card-single { padding: 40px 20px; }
-            .divider { margin: 40px auto; width: 120px;}
+            .event-card { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <img src="img/monograma.png" alt="Iniciales Luis y Citlalli" class="monograma">
+            <img src="img/monograma.png" alt="Monograma" class="monograma">
             <h1>Luis & Citlalli</h1>
-            <p style="letter-spacing: 3px; font-weight: 300;">11 DE JULIO DE 2026</p>
-            <a href="#detalles" class="btn-outline">Ver Invitación</a>
+            <p style="letter-spacing: 4px;">11 DE JULIO DE 2026</p>
         </div>
     </section>
 
     <section id="detalles" class="fade">
-        <h2 class="section-title">Cuenta Regresiva</h2>
+        <h2 class="section-title">Faltan tan solo...</h2>
         <div class="countdown">
             <div class="time-box"><span id="days">0</span>Días</div>
             <div class="time-box"><span id="hours">0</span>Hr</div>
@@ -305,118 +172,77 @@
         </div>
     </section>
 
-    <div class="divider"></div>
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="decoración"></div>
+
+    <section class="fade">
+        <h2 class="section-title">Itinerario</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <img src="img/icono-lugar.png" class="timeline-icon">
+                <div class="timeline-time">20:00 Hs</div>
+                <div class="timeline-desc">Toma tu lugar</div>
+            </div>
+            <div class="timeline-item">
+                <img src="img/icono-anillos.png" class="timeline-icon">
+                <div class="timeline-time">20:30 Hs</div>
+                <div class="timeline-desc">Ceremonia</div>
+            </div>
+            <div class="timeline-item">
+                <img src="img/icono-brindis.png" class="timeline-icon">
+                <div class="timeline-time">21:30 Hs</div>
+                <div class="timeline-desc">Brindis</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider-png fade"><img src="img/divisor-2.png" alt="decoración"></div>
 
     <section class="fade">
         <div class="event-card">
-            <h2 class="section-title">Ceremonia</h2>
+            <h2>Ceremonia</h2>
             <p>5:00 PM</p>
-            <p><strong>Parroquia Sagrado Corazón de Jesús</strong></p>
-            <p>Artes Gráficas 1375 Ote, Primero de Cobián Centro, Torreón, Coah</p>
-            <a href="https://maps.app.goo.gl/TU_LINK_REAL" target="_blank" class="event-btn">VER UBICACIÓN</a>
+            <p><strong>Parroquia Sagrado Corazón</strong></p>
+            <a href="#" class="event-btn">VER UBICACIÓN</a>
         </div>
-        
         <div class="event-card">
-            <h2 class="section-title">Recepción</h2>
+            <h2>Recepción</h2>
             <p>9:00 PM</p>
             <p><strong>Hacienda Elegancia</strong></p>
-            <p>Sierra Madre Occidental 1011, M. Mercado de López Sánchez, Torreón, Coah.</p>
-            <a href="https://maps.app.goo.gl/TU_LINK_REAL" target="_blank" class="event-btn">VER UBICACIÓN</a>
+            <a href="#" class="event-btn">VER UBICACIÓN</a>
         </div>
     </section>
 
-    <section class="photo-section">
-        <div class="photo-bg" style="background-image:url('img/galeria1.jpg')"></div>
-        <div class="photo-content">"Cada historia de amor es hermosa, pero la nuestra es mi favorita."</div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section class="fade" style="text-align: center;">
-        <h2 class="section-title">Código de Vestimenta</h2>
-        <p style="letter-spacing: 3px; font-weight: 400; color: var(--cream-bg);">FORMAL ELEGANTE</p>
-        <div class="color-palette">
-            <div class="color-box" style="background:#6B705C"></div>
-            <div class="color-box" style="background:#A5A58D"></div>
-            <div class="color-box" style="background:#B7B7A4"></div>
-            <div class="color-box" style="background:#CB997E"></div>
-        </div>
-        <p style="margin-top: 20px; color: rgba(244, 241, 234, 0.7);"><small>Agradecemos evitar el color blanco.</small></p>
-    </section>
-
-    <div class="divider"></div>
+    <div class="divider-png fade"><img src="img/divisor-3.png" alt="decoración"></div>
 
     <section class="fade">
         <h2 class="section-title">Mesa de Regalos</h2>
         <div class="gift-card-single">
-            <div style="font-size: 3rem; margin-bottom: 20px; color: var(--dark-olive);">🎁</div>
-            <p style="max-width: 500px; margin: 0 auto 25px auto;">Tu presencia es nuestro mayor regalo, pero si deseas tener un detalle con nosotros, puedes encontrar nuestra mesa en Amazon:</p>
-            <a href="https://www.amazon.com.mx/wedding/guest-view/2OF7A82W8I0AJ" target="_blank" class="event-btn">
-                VER MESA EN AMAZON
-            </a>
+            <p>Tu presencia es nuestro mayor regalo, pero si deseas tener un detalle:</p>
+            <a href="#" class="event-btn">VER MESA EN AMAZON</a>
         </div>
     </section>
 
-    <div class="divider"></div>
-
-    <section class="fade" style="text-align: center; padding-bottom: 140px;">
-        <h2 class="section-title">Confirmación</h2>
-        <p>Agradecemos confirmar tu asistencia antes del 11 de Junio de 2026.</p>
-        <a href="https://wa.me/521871XXXXXXX?text=¡Hola! Confirmo mi asistencia para la boda de Luis y Citlalli" target="_blank" class="event-btn" style="border-color: var(--cream-bg); color: var(--cream-bg);">
-            CONFIRMAR POR WHATSAPP
-        </a>
-    </section>
-
-    <footer>
+    <footer style="text-align: center; padding: 60px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">
         ♡ Luis & Citlalli — 11.07.2026 ♡
     </footer>
 
     <script>
-        // REVELAR ELEMENTOS AL HACER SCROLL (Optimizado con unobserve)
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); 
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-
-        // CONTADOR CON MENSAJE FINAL
+        // Contador
         const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
-        
-        const updateTimer = () => {
+        setInterval(() => {
             const now = new Date().getTime();
             const diff = weddingDate - now;
-
-            if (diff <= 0) {
-                document.getElementById("detalles").innerHTML = "<h2 class='section-title'>¡Llegó el gran día!</h2>";
-                clearInterval(timerInterval);
-                return;
-            }
-
             document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
-        };
+        }, 1000);
 
-        const timerInterval = setInterval(updateTimer, 1000);
-        updateTimer(); 
-
-        // PARALLAX HERO OPTIMIZADO
-        let scrollPos = 0;
-        const heroBg = document.getElementById('heroBg');
-        
-        window.addEventListener('scroll', () => {
-            scrollPos = window.pageYOffset;
-            requestAnimationFrame(() => {
-                // Usamos translate3d para mejor rendimiento en móviles
-                heroBg.style.transform = `translate3d(0, ${scrollPos * 0.3}px, 0)`;
-            });
-        });
+        // Observer para efectos fade
+        const obs = new IntersectionObserver(ents => {
+            ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
