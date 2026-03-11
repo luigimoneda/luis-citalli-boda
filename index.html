@@ -73,12 +73,14 @@
             will-change: transform;
         }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.4); 
-            z-index: 0;
+        /* --- HERO OVERLAY CON DEGRADADO (Opción 2) --- */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Degradado lineal de transparente arriba, al color olivo oscuro abajo */
+    background: linear-gradient(to bottom, rgba(58, 90, 64, 0) 0%, rgba(58, 90, 64, 1) 100%);
+    z-index: 1; /* Sobre la imagen, bajo el texto */
         }
 
         .hero-content { 
@@ -398,3 +400,4 @@
     </script>
 </body>
 </html>
+
