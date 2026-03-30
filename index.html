@@ -138,25 +138,71 @@ section{
 
 /* EVENT CARDS GLASS */
 .event-card{
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
   color:var(--text-dark);
-  padding:50px;
-  margin:30px auto;
+  padding:55px 40px;
+  margin:40px auto;
   text-align:center;
   max-width:600px;
-  border-radius:10px;
+  border-radius:16px;
+
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  transition:all .4s cubic-bezier(.16,1,.3,1);
 }
 
+/* EFECTO FLOTANTE */
+.event-card:hover{
+  transform:translateY(-12px) scale(1.01);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+
+/* TITULO */
+.event-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem;
+  margin-bottom:25px;
+  color:var(--dark-olive);
+  letter-spacing:2px;
+}
+
+/* BLOQUE PRINCIPAL */
+.event-main{
+  margin-bottom:15px;
+}
+
+/* HORA (PROTAGONISTA) */
+.event-hour{
+  font-size:2.8rem;
+  font-family:'Cormorant Garamond', serif;
+  color:var(--dark-olive);
+  margin-bottom:5px;
+}
+
+/* LUGAR */
+.event-place{
+  font-size:1.1rem;
+  letter-spacing:1px;
+}
+
+/* DIRECCIÓN */
+.event-address{
+  font-size:.9rem;
+  margin-top:10px;
+  opacity:.7;
+}
+
+/* BOTÓN MEJORADO */
 .event-btn{
-  margin-top:15px;
+  margin-top:25px;
   display:inline-block;
-  padding:10px 25px;
+  padding:12px 28px;
   border:1px solid var(--dark-olive);
   color:var(--dark-olive);
   text-decoration:none;
   position:relative;
   overflow:hidden;
+  transition:.3s;
 }
 
 .event-btn::after{
@@ -169,8 +215,13 @@ section{
   z-index:-1;
 }
 
-.event-btn:hover::after{transform:translateX(0);}
-.event-btn:hover{color:white;}
+.event-btn:hover::after{
+  transform:translateX(0);
+}
+
+.event-btn:hover{
+  color:white;
+}
 
 /* PHOTO SECTIONS APPLE STYLE */
 .photo-section{
@@ -272,33 +323,43 @@ footer{
 
 <!-- EVENTOS -->
 <section class="fade">
+
+  <!-- CEREMONIA -->
   <div class="event-card">
-    <h2>Ceremonia</h2>
-    <p>5:00 PM</p>
-    <a href="#" class="event-btn">Ver ubicación</a>
+    <h2 class="event-title">Ceremonia</h2>
+
+    <div class="event-main">
+      <p class="event-hour">5:00 PM</p>
+      <p class="event-place">Parroquia Sagrado Corazón de Jesús</p>
+    </div>
+
+    <p class="event-address">
+      Artes Gráficas 1375 Ote, Torreón, Coahuila
+    </p>
+
+    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-btn">
+      Ver ubicación
+    </a>
   </div>
 
+  <!-- RECEPCIÓN -->
   <div class="event-card">
-    <h2>Recepción</h2>
-    <p>9:00 PM</p>
-    <a href="#" class="event-btn">Ver ubicación</a>
+    <h2 class="event-title">Recepción</h2>
+
+    <div class="event-main">
+      <p class="event-hour">9:00 PM</p>
+      <p class="event-place">Hacienda Elegancia</p>
+    </div>
+
+    <p class="event-address">
+      Sierra Madre Occidental 1011, Torreón, Coahuila
+    </p>
+
+    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-btn">
+      Ver ubicación
+    </a>
   </div>
-</section>
 
-<!-- STORY PHOTOS -->
-<section class="photo-section">
-  <div class="photo-bg" style="background-image:url('img/galeria1.jpg')"></div>
-  <div class="photo-content">Cada historia comienza con una mirada</div>
-</section>
-
-<section class="photo-section">
-  <div class="photo-bg" style="background-image:url('img/galeria2.jpg')"></div>
-  <div class="photo-content">Y crece con cada momento</div>
-</section>
-
-<section class="photo-section">
-  <div class="photo-bg" style="background-image:url('img/galeria3.jpg')"></div>
-  <div class="photo-content">Hoy comienza nuestro para siempre</div>
 </section>
 
 <footer>
