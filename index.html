@@ -8,120 +8,81 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-  --olive-bg:#4a5c4d;
-  --cream:#f9f8f4;
-  --dark-olive:#3A5A40;
-  --text-dark:#2c3e2f;
-  --white:#ffffff;
+  --bg:#ffffff;
+  --green:#3A5A40;
+  --gold:#c6a96b;
+  --text:#2c3e2f;
 }
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 body{
   font-family:'Montserrat', sans-serif;
-  background:var(--olive-bg);
-  color:var(--cream);
+  background:var(--bg);
+  color:var(--text);
   overflow-x:hidden;
 }
 
-/* TEXTURA */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-  opacity:.15;
-  z-index:-1;
+section{
+  padding:120px 20px;
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
 }
 
-/* HERO APPLE STYLE */
+/* HERO PRO */
 .hero{
   height:100vh;
-  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  flex-direction:column;
   position:relative;
+  color:white;
   overflow:hidden;
-  padding:0;
 }
 
 .hero-bg{
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:110%; /* 👈 importante */
-  
-  background:url('img/hero.jpg') center center / cover no-repeat;
-
-  transform:translate3d(0,0,0);
-  will-change:transform;
-  z-index:0;
+  inset:0;
+  background:url('img/hero.jpg') center/cover;
+  transform:scale(1.1);
 }
 
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0) 50%, var(--olive-bg) 100%);
+  background:linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6));
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-}
-  
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2) 0%,
-    rgba(0,0,0,0.1) 40%,
-    rgba(0,0,0,0.6) 100%
-  );
-  z-index:1;
-}
-.monograma{
-  width:90px;
-  margin-bottom:20px;
   opacity:0;
-  animation:fadeUp 1s ease forwards;
+  transform:translateY(40px);
+  animation:fadeUp 1.5s ease forwards;
 }
 
 .hero h1{
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(2.5rem,8vw,4.5rem);
-  opacity:0;
-  animation:fadeUp 1.2s ease forwards;
-  animation-delay:.5s;
+  font-size:clamp(3rem,8vw,5rem);
 }
 
 .hero p{
   letter-spacing:3px;
-  opacity:0;
-  animation:fadeUp 1.2s ease forwards;
-  animation-delay:1s;
+  margin-top:10px;
 }
 
 .btn{
-  display:inline-block;
-  margin-top:25px;
-  padding:12px 35px;
-  border:1px solid var(--white);
-  color:var(--white);
+  margin-top:30px;
+  padding:12px 30px;
+  border:1px solid white;
+  color:white;
   text-decoration:none;
-  letter-spacing:2px;
+  border-radius:30px;
   position:relative;
   overflow:hidden;
-  opacity:0;
-  animation:fadeUp 1.2s ease forwards;
-  animation-delay:1.5s;
 }
 
 .btn::after{
@@ -135,131 +96,31 @@ body::before{
 }
 
 .btn:hover::after{transform:translateX(0);}
-.btn:hover{color:var(--dark-olive);}
+.btn:hover{color:var(--green);}
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
+.section-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.5rem;
+  color:var(--green);
+  margin-bottom:30px;
 }
 
-/* SECCIONES */
-section{
-  padding:100px 20px;
-  max-width:1100px;
+.story{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.5rem;
+  line-height:1.8;
+  max-width:700px;
   margin:auto;
 }
 
-.section-title{
-  text-align:center;
-  font-family:'Cormorant Garamond', serif;
-  font-size:2.5rem;
-  margin-bottom:50px;
-}
-
-/* EVENT CARDS GLASS */
-.event-card{
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(12px);
-  color:var(--text-dark);
-  padding:55px 40px;
-  margin:40px auto;
-  text-align:center;
-  max-width:600px;
-  border-radius:16px;
-
-  box-shadow:0 20px 40px rgba(0,0,0,0.15);
-  transition:all .4s cubic-bezier(.16,1,.3,1);
-}
-
-/* EFECTO FLOTANTE */
-.event-card:hover{
-  transform:translateY(-12px) scale(1.01);
-  box-shadow:0 30px 60px rgba(0,0,0,0.2);
-}
-
-/* TITULO */
-.event-title{
-  font-family:'Cormorant Garamond', serif;
-  font-size:2rem;
-  margin-bottom:25px;
-  color:var(--dark-olive);
-  letter-spacing:2px;
-}
-
-/* BLOQUE PRINCIPAL */
-.event-main{
-  margin-bottom:15px;
-}
-
-/* HORA (PROTAGONISTA) */
-.event-hour{
-  font-size:2.8rem;
-  font-family:'Cormorant Garamond', serif;
-  color:var(--dark-olive);
-  margin-bottom:5px;
-}
-
-/* LUGAR */
-.event-place{
-  font-size:1.1rem;
-  letter-spacing:1px;
-}
-
-/* DIRECCIÓN */
-.event-address{
-  font-size:.9rem;
-  margin-top:10px;
-  opacity:.7;
-}
-
-/* BOTÓN MEJORADO */
-.event-btn{
-  margin-top:25px;
-  display:inline-block;
-  padding:12px 28px;
-  border:1px solid var(--dark-olive);
-  color:var(--dark-olive);
-  text-decoration:none;
-  position:relative;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.event-btn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:var(--dark-olive);
-  transform:translateX(-100%);
-  transition:.3s;
-  z-index:-1;
-}
-
-.event-btn:hover::after{
-  transform:translateX(0);
-}
-
-.event-btn:hover{
-  color:white;
-}
-
-/* PHOTO SECTIONS APPLE STYLE */
+/* PARALLAX SECTIONS */
 .photo-section{
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   position:relative;
   overflow:hidden;
-  opacity:0;
-  transform:translateY(60px);
-  transition:1.2s;
-}
-
-.photo-section.visible{
-  opacity:1;
-  transform:translateY(0);
 }
 
 .photo-bg{
@@ -267,19 +128,20 @@ section{
   inset:0;
   background-size:cover;
   background-position:center;
-  transform:scale(1.1);
+  transform:scale(1.2);
 }
 
 .photo-section::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.35);
+  background:rgba(0,0,0,0.4);
 }
 
 .photo-content{
   position:relative;
   z-index:2;
+  color:white;
   font-family:'Cormorant Garamond', serif;
   font-size:2.2rem;
 }
@@ -292,19 +154,47 @@ section{
 }
 
 .time-box span{
-  display:block;
+  font-size:3.5rem;
+  color:var(--green);
   font-family:'Playfair Display', serif;
-  font-size:clamp(3rem, 8vw, 4.5rem);
-  font-weight:600;
-  color:var(--cream);
-
-  letter-spacing:1px;
-  line-height:1;
-
-  text-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* FADE */
+/* CARDS */
+.event-card{
+  border:1px solid rgba(0,0,0,0.1);
+  padding:45px;
+  margin:25px auto;
+  border-radius:16px;
+  transition:.4s;
+}
+
+.event-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+.event-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem;
+  color:var(--green);
+}
+
+.event-hour{
+  font-size:2.2rem;
+  margin:10px 0;
+}
+
+.event-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 25px;
+  border:1px solid var(--green);
+  color:var(--green);
+  text-decoration:none;
+  border-radius:25px;
+}
+
+/* FADE IN */
 .fade{
   opacity:0;
   transform:translateY(40px);
@@ -316,11 +206,14 @@ section{
   transform:translateY(0);
 }
 
-/* FOOTER */
 footer{
-  text-align:center;
   padding:60px;
   font-family:'Cormorant Garamond', serif;
+  color:var(--green);
+}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0);}
 }
 
 </style>
@@ -331,16 +224,33 @@ footer{
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-content">
-    <img src="img/monograma.png" class="monograma">
     <h1>Luis & Citlalli</h1>
     <p>11 DE JULIO 2026</p>
-    <a href="#detalles" class="btn">VER INVITACIÓN</a>
+    <a href="#historia" class="btn">Descubrir</a>
   </div>
 </section>
 
+<!-- HISTORIA -->
+<section id="historia" class="fade">
+  <h2 class="section-title">Nuestra historia</h2>
+  <p class="story">
+    Entre miles de caminos, nuestras vidas se encontraron.
+    
+    Sin buscarlo, nos elegimos.
+    
+    Y hoy, decidimos caminar juntos para siempre.
+  </p>
+</section>
+
+<!-- FOTO PARALLAX -->
+<section class="photo-section">
+  <div class="photo-bg" style="background-image:url('img/photo1.jpg')"></div>
+  <div class="photo-content">El comienzo de nuestro para siempre</div>
+</section>
+
 <!-- COUNTDOWN -->
-<section id="detalles" class="fade">
-  <h2 class="section-title">Cuenta Regresiva</h2>
+<section class="fade">
+  <h2 class="section-title">Cuenta regresiva</h2>
   <div class="countdown">
     <div class="time-box"><span id="days"></span>Días</div>
     <div class="time-box"><span id="hours"></span>Hr</div>
@@ -351,43 +261,27 @@ footer{
 
 <!-- EVENTOS -->
 <section class="fade">
+  <h2 class="section-title">Detalles</h2>
 
-  <!-- CEREMONIA -->
   <div class="event-card">
-    <h2 class="event-title">Ceremonia</h2>
-
-    <div class="event-main">
-      <p class="event-hour">5:00 PM</p>
-      <p class="event-place">Parroquia Sagrado Corazón de Jesús</p>
-    </div>
-
-    <p class="event-address">
-      Artes Gráficas 1375 Ote, Torreón, Coahuila
-    </p>
-
-    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-btn">
-      Ver ubicación
-    </a>
+    <h3 class="event-title">Ceremonia</h3>
+    <p class="event-hour">5:00 PM</p>
+    <p>Parroquia Sagrado Corazón de Jesús</p>
+    <a href="#" class="event-btn">Ver ubicación</a>
   </div>
 
-  <!-- RECEPCIÓN -->
   <div class="event-card">
-    <h2 class="event-title">Recepción</h2>
-
-    <div class="event-main">
-      <p class="event-hour">9:00 PM</p>
-      <p class="event-place">Hacienda Elegancia</p>
-    </div>
-
-    <p class="event-address">
-      Sierra Madre Occidental 1011, Torreón, Coahuila
-    </p>
-
-    <a href="https://maps.app.goo.gl/786wnpNBbeF3TPpy8" target="_blank" class="event-btn">
-      Ver ubicación
-    </a>
+    <h3 class="event-title">Recepción</h3>
+    <p class="event-hour">9:00 PM</p>
+    <p>Hacienda Elegancia</p>
+    <a href="#" class="event-btn">Ver ubicación</a>
   </div>
+</section>
 
+<!-- RSVP -->
+<section class="fade">
+  <h2 class="section-title">Confirma tu asistencia</h2>
+  <a href="https://wa.me/521XXXXXXXXXX" class="event-btn">Confirmar por WhatsApp</a>
 </section>
 
 <footer>
@@ -396,23 +290,12 @@ footer{
 
 <script>
 
-/* PARALLAX HERO */
+/* HERO PARALLAX */
 const heroBg = document.getElementById('heroBg');
 
 window.addEventListener('scroll', () => {
   const y = window.pageYOffset;
-  requestAnimationFrame(()=>{
-    heroBg.style.transform = `translate3d(0, ${y*0.3}px, 0)`;
-  });
-});
-
-/* PARALLAX FOTOS */
-document.querySelectorAll('.photo-section').forEach(section=>{
-  window.addEventListener('scroll', ()=>{
-    const bg = section.querySelector('.photo-bg');
-    const rect = section.getBoundingClientRect();
-    bg.style.transform = `translate3d(0, ${rect.top*0.2}px, 0) scale(1.1)`;
-  });
+  heroBg.style.transform = `translateY(${y * 0.3}px) scale(1.1)`;
 });
 
 /* FADE */
@@ -424,7 +307,7 @@ const observer = new IntersectionObserver(entries=>{
   });
 },{threshold:0.2});
 
-document.querySelectorAll('.fade, .photo-section').forEach(el=>observer.observe(el));
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
 /* COUNTDOWN */
 const date = new Date("July 11, 2026 17:00:00").getTime();
@@ -432,6 +315,8 @@ const date = new Date("July 11, 2026 17:00:00").getTime();
 setInterval(()=>{
   const now = new Date().getTime();
   const d = date - now;
+
+  if(d <= 0) return;
 
   document.getElementById("days").innerHTML=Math.floor(d/(1000*60*60*24));
   document.getElementById("hours").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
