@@ -35,16 +35,20 @@ body::before{
 }
 
 section{
-  padding:120px 20px;
+  padding:80px 20px; /* menos espacio */
   text-align:center;
 }
 
-/* MONOGRAMA INTRO */
-.intro{
-  height:100vh;
+/* MONOGRAMA OVERLAY */
+.intro-overlay{
+  position:fixed;
+  inset:0;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:var(--cream);
+  z-index:9999;
+  animation:fadeOut 1.2s ease 1.5s forwards;
 }
 
 .monograma{
@@ -67,12 +71,18 @@ section{
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(3rem,8vw,5rem);
   color:var(--green);
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1.5s ease 1.5s forwards; /* entra después del monograma */
 }
 
 .hero p{
   margin-top:15px;
   letter-spacing:3px;
   color:var(--gold);
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1.5s ease 1.8s forwards;
 }
 
 /* FOTO FULL */
@@ -92,16 +102,16 @@ section{
 
 .title{
   font-family:'Cormorant Garamond', serif;
-  font-size:2.5rem;
+  font-size:2.3rem;
   color:var(--green);
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
-/* ANIMACIONES */
+/* ANIMACIONES SCROLL */
 .fade{
   opacity:0;
   transform:translateY(40px);
-  transition:1s;
+  transition:1s ease;
 }
 
 .fade.visible{
@@ -113,23 +123,31 @@ section{
   to{opacity:1;transform:scale(1);}
 }
 
+@keyframes fadeOut{
+  to{opacity:0;visibility:hidden;}
+}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0);}
+}
+
 </style>
 </head>
 <body>
 
-<!-- INTRO MONOGRAMA -->
-<section class="intro">
+<!-- MONOGRAMA OVERLAY -->
+<div class="intro-overlay">
   <img src="img/monograma.png" class="monograma">
-</section>
+</div>
 
 <!-- HERO NOMBRES -->
-<section class="hero fade">
+<section class="hero">
   <h1>Citlalli & Luis</h1>
   <p>11 DE JULIO 2026</p>
 </section>
 
 <!-- FOTO -->
-<section class="photo"></section>
+<section class="photo fade"></section>
 
 <!-- HISTORIA -->
 <section class="fade">
@@ -145,7 +163,7 @@ section{
 
 <script>
 
-/* FADE IN */
+/* FADE SCROLL */
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
