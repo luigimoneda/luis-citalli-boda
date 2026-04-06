@@ -68,7 +68,7 @@ section{
 .photo-bg{
   position:absolute;
   inset:0;
-  background:url('img/hero.jpg') center/cover no-repeat;
+  background:url('img/foto-nosotros.jpg') center/cover no-repeat;
   transform:scale(1.1);
 }
 
@@ -95,6 +95,27 @@ section{
   font-size:1.5rem;
   line-height:1.9;
   white-space:pre-line;
+}
+
+/* GALERIA */
+.gallery{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+}
+
+.gallery-img{
+  flex:1;
+  height:200px;
+  background-size:cover;
+  background-position:center;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:.4s;
+}
+
+.gallery-img:hover{
+  transform:scale(1.05);
 }
 
 .card{
@@ -178,6 +199,16 @@ Hoy, elegimos caminar juntos para siempre.</p>
 Gracias por guiarnos hasta este momento.</p>
 </section>
 
+<!-- GALERIA -->
+<section class="fade">
+  <h2 class="title">Momentos ✨</h2>
+  <div class="gallery">
+    <div class="gallery-img" style="background-image:url('img/foto1.jpg')"></div>
+    <div class="gallery-img" style="background-image:url('img/foto2.jpg')"></div>
+    <div class="gallery-img" style="background-image:url('img/foto3.jpg')"></div>
+  </div>
+</section>
+
 <section class="fade">
   <h2 class="title">Aprecio 🙌</h2>
   <p class="story">Tu presencia es el mejor regalo.
@@ -224,8 +255,8 @@ Evento exclusivo para adultos</p>
 
 <footer class="footer">
   <p>♡ Citlalli & Luis ♡</p>
-  <span>11-07-2026</span>
-</footer>
+  <span>11-07-2026-</span>
+</footer>3
 
 <script>
 const observer = new IntersectionObserver(entries=>{
