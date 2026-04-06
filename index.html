@@ -23,7 +23,6 @@ body{
   color:var(--text);
 }
 
-/* TEXTURA PAPEL */
 body::before{
   content:"";
   position:fixed;
@@ -38,6 +37,18 @@ section{
   text-align:center;
   max-width:900px;
   margin:auto;
+  position:relative;
+}
+
+/* SEPARADOR */
+section::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:1px;
+  background:var(--gold);
+  margin:50px auto 0;
+  opacity:0.5;
 }
 
 /* INTRO */
@@ -84,9 +95,9 @@ section{
   animation:fadeUp 1.5s ease 1.8s forwards;
 }
 
-/* FOTO */
+/* FOTO ENTRE SECCIONES */
 .photo{
-  height:90vh;
+  height:60vh;
   background:
     linear-gradient(var(--cream), rgba(245,239,230,0.2), var(--cream)),
     url('img/hero.jpg') center/cover no-repeat;
@@ -98,7 +109,6 @@ section{
   font-size:2.2rem;
   color:var(--green);
   margin-bottom:20px;
-  position:relative;
 }
 
 .title::after{
@@ -120,21 +130,39 @@ section{
   white-space:pre-line;
 }
 
-/* BOTON */
-.gift-btn{
+/* BOTONES */
+.btn{
   display:inline-block;
   margin-top:20px;
-  padding:12px 30px;
-  border:1px solid var(--gold);
+  padding:12px 28px;
+  border:1px solid var(--green);
   color:var(--green);
   text-decoration:none;
   border-radius:30px;
   transition:.3s;
 }
 
+.btn:hover{
+  background:var(--green);
+  color:white;
+}
+
+.gift-btn{
+  border-color:var(--gold);
+  color:var(--green);
+}
+
 .gift-btn:hover{
   background:var(--gold);
-  color:white;
+}
+
+/* TARJETAS EVENTO */
+.card{
+  border:1px solid rgba(0,0,0,0.1);
+  padding:30px;
+  border-radius:12px;
+  margin-top:20px;
+  background:white;
 }
 
 /* FADE */
@@ -169,19 +197,9 @@ section{
   opacity:0.8;
 }
 
-/* ANIMACIONES */
-@keyframes fadeScale{
-  to{opacity:1;transform:scale(1);}
-}
-
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden;}
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px);} 
-  to{opacity:1;transform:translateY(0);} 
-}
+@keyframes fadeScale{to{opacity:1;transform:scale(1);}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);}}
 
 </style>
 </head>
@@ -196,41 +214,37 @@ section{
   <p>11 DE JULIO 2026</p>
 </section>
 
-<section class="photo fade"></section>
+<div class="photo"></div>
 
 <section class="fade">
   <h2 class="title">Nuestra historia</h2>
   <p class="story">Entre miles de caminos, nuestras vidas se encontraron.
+
 Y sin darnos cuenta, nos convertimos en el hogar del otro.
+
 Hoy, elegimos caminar juntos para siempre.</p>
 </section>
 
-<section class="fade">
-  <h2 class="title">Nuestros padres</h2>
-  <p class="story">Con amor y gratitud, honramos a quienes nos dieron la vida y nos guiaron hasta este momento.
-
-Gracias por su apoyo y amor incondicional.</p>
-</section>
-
-<section class="fade">
-  <h2 class="title">Apreciamos tu presencia</h2>
-  <p class="story">Más que un regalo, tu compañía es lo más valioso para nosotros.
-
-Gracias por acompañarnos.</p>
-</section>
+<div class="photo"></div>
 
 <section class="fade">
   <h2 class="title">Boda Religiosa</h2>
-  <p class="story">5:00 PM
+  <div class="card">
+    <p class="story">5:00 PM
 
 Parroquia Sagrado Corazón de Jesús</p>
+    <a href="https://maps.google.com" target="_blank" class="btn">Ver ubicación</a>
+  </div>
 </section>
 
 <section class="fade">
   <h2 class="title">Recepción & Boda Civil</h2>
-  <p class="story">9:00 PM
+  <div class="card">
+    <p class="story">9:00 PM
 
 Hacienda Elegancia</p>
+    <a href="https://maps.google.com" target="_blank" class="btn">Ver ubicación</a>
+  </div>
 </section>
 
 <section class="fade">
@@ -243,11 +257,7 @@ Evento exclusivo para adultos</p>
 <section class="fade">
   <h2 class="title">Mesa de regalos</h2>
   <p class="story">Si deseas hacernos un obsequio, hemos preparado una lista en Amazon.</p>
-  <a href="#" class="gift-btn">Ver lista</a>
-</section>
-
-<section class="fade">
-  <h2 class="title">Te esperamos</h2>
+  <a href="#" class="btn gift-btn">Ver lista</a>
 </section>
 
 <footer class="footer">
