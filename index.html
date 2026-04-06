@@ -45,6 +45,44 @@ section{
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  position:relative;
+  text-align:center;
+  color:white;
+  overflow:hidden;
+}
+
+/* IMAGEN HERO */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('img/hero.jpg') center/cover no-repeat;
+  z-index:0;
+}
+
+/* OVERLAY PARA CONTRASTE */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+}
+
+.hero h1{
+  position:relative;
+  z-index:2;
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(3rem,8vw,5rem);
+  color:white;
+}
+
+.hero p{
+  position:relative;
+  z-index:2;
+  margin-top:15px;
+  letter-spacing:3px;
+  color:var(--gold);
 }
 
 .hero h1{
@@ -254,9 +292,9 @@ Evento exclusivo para adultos</p>
 </section>
 
 <footer class="footer">
-  <p>♡ Citlalli & Luis ♡</p>
-  <span>11-07-2026-</span>
-</footer>3
+  <p>Citlalli & Luis</p>
+  <span>♡</span>
+</footer>
 
 <script>
 const observer = new IntersectionObserver(entries=>{
