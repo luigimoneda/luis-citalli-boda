@@ -1,318 +1,204 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luis & Citlalli | Nuestra Boda</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis & Citlalli - 11.07.26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --olivo: #556b2f;
+            --crema: #fffdfa;
+            --dorado: #b8860b;
+            --rojo: #8b0000;
+            --texto: #2f2f2f;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--crema);
+            color: var(--texto);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+        }
 
-<style>
-:root{
-  --cream:#f5efe6;
-  --green:#3A5A40;
-  --gold:#c6a96b;
-  --text:#2c3e2f;
-}
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 40px 20px;
+            border: 1px solid var(--olivo);
+            padding: 40px;
+            position: relative;
+            background-color: var(--crema);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+        header {
+            border-bottom: 1px solid var(--dorado);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
 
-body{
-  font-family:'Montserrat', sans-serif;
-  background:var(--cream);
-  color:var(--text);
-}
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            color: var(--olivo);
+            margin: 0;
+            font-weight: 300;
+        }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-  opacity:0.2;
-  z-index:-1;
-}
+        .ampersand {
+            color: var(--rojo);
+            font-style: italic;
+            display: block;
+            font-size: 2rem;
+            margin: -10px 0;
+        }
 
-section{
-  padding:70px 20px;
-  text-align:center;
-  max-width:900px;
-  margin:auto;
-}
+        /* Estilos del Contador */
+        .countdown-container {
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 1px double var(--dorado);
+            border-bottom: 1px double var(--dorado);
+        }
 
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  text-align:center;
-  color:white;
-  overflow:hidden;
-}
+        .countdown-title {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--olivo);
+        }
 
-/* IMAGEN HERO */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url('img/hero.jpg') center/cover no-repeat;
-  z-index:0;
-}
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            max-width: 400px;
+            margin: 0 auto;
+        }
 
-/* OVERLAY PARA CONTRASTE */
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.35);
-  z-index:1;
-}
+        .time-segment {
+            display: flex;
+            flex-direction: column;
+        }
 
-.hero h1{
-  position:relative;
-  z-index:2;
-  font-family:'Cormorant Garamond', serif;
-  font-size:clamp(3rem,8vw,5rem);
-  color:white;
-}
+        .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--rojo);
+            font-weight: 300;
+        }
 
-.hero p{
-  position:relative;
-  z-index:2;
-  margin-top:15px;
-  letter-spacing:3px;
-  color:var(--gold);
-}
+        .label {
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--olivo);
+        }
 
-.hero h1{
-  font-family:'Cormorant Garamond', serif;
-  font-size:clamp(3rem,8vw,5rem);
-  color:var(--green);
-}
+        .details {
+            line-height: 2;
+            font-weight: 200;
+            letter-spacing: 1px;
+            margin: 40px 0;
+        }
 
-.hero p{
-  margin-top:15px;
-  letter-spacing:3px;
-  color:var(--gold);
-}
+        .btn-rsvp {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--olivo);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            border: 1px solid var(--olivo);
+        }
 
-.photo{
-  position:relative;
-  height:60vh;
-  overflow:hidden;
-}
+        .btn-rsvp:hover {
+            background-color: transparent;
+            color: var(--olivo);
+        }
 
-.photo-bg{
-  position:absolute;
-  inset:0;
-  background:url('img/foto-nosotros.jpg') center/cover no-repeat;
-  transform:scale(1.1);
-}
-
-.title{
-  font-family:'Cormorant Garamond', serif;
-  font-size:2.2rem;
-  color:var(--green);
-  margin-bottom:20px;
-}
-
-.title::after{
-  content:"";
-  display:block;
-  width:40px;
-  height:1px;
-  background:var(--gold);
-  margin:12px auto 0;
-}
-
-.story{
-  max-width:650px;
-  margin:auto;
-  font-family:'Cormorant Garamond', serif;
-  font-size:1.5rem;
-  line-height:1.9;
-  white-space:pre-line;
-}
-
-/* GALERIA */
-.gallery{
-  display:flex;
-  gap:15px;
-  margin-top:20px;
-}
-
-.gallery-img{
-  flex:1;
-  height:200px;
-  background-size:cover;
-  background-position:center;
-  border-radius:10px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  transition:.4s;
-}
-
-.gallery-img:hover{
-  transform:scale(1.05);
-}
-
-.card{
-  border:1px solid rgba(0,0,0,0.1);
-  padding:30px;
-  border-radius:12px;
-  margin-top:20px;
-  background:white;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 28px;
-  border:1px solid var(--green);
-  color:var(--green);
-  text-decoration:none;
-  border-radius:30px;
-  transition:.3s;
-}
-
-.btn:hover{
-  background:var(--green);
-  color:white;
-}
-
-.gift-btn{
-  border-color:var(--gold);
-}
-
-.gift-btn:hover{
-  background:var(--gold);
-}
-
-.footer{
-  background:var(--green);
-  color:white;
-  text-align:center;
-  padding:50px 20px;
-}
-
-.footer p{
-  font-family:'Cormorant Garamond', serif;
-  font-size:1.8rem;
-}
-
-.footer span{
-  display:block;
-  margin-top:10px;
-  font-size:1.2rem;
-  opacity:0.8;
-}
-
-.fade{opacity:0;transform:translateY(40px);transition:1s ease;}
-.fade.visible{opacity:1;transform:translateY(0);} 
-
-</style>
+        footer {
+            margin-top: 40px;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            letter-spacing: 3px;
+        }
+    </style>
 </head>
 <body>
 
-<section class="hero">
-  <h1>Citlalli & Luis</h1>
-  <p>11 DE JULIO 2026</p>
-</section>
+    <div class="container">
+        <header>
+            <p style="letter-spacing: 5px; font-size: 0.6rem; text-transform: uppercase;">Estás invitado a la boda de</p>
+            <h1 class="names">Luis <span class="ampersand">&</span> Citlalli</h1>
+        </header>
 
-<div class="photo"><div class="photo-bg" id="photoBg"></div></div>
+        <section class="details">
+            <p style="color: var(--dorado); font-weight: 400;">SÁBADO</p>
+            <h2 style="font-family: 'Cormorant Garamond'; font-size: 2rem; margin: 10px 0;">11 de Julio de 2026</h2>
+            <p>18:00 HRS. <br> Hacienda Los Olivos</p>
+        </section>
 
-<section class="fade">
-  <h2 class="title">Nuestra historia</h2>
-  <p class="story">Entre miles de caminos, nuestras vidas se encontraron.
+        <div class="countdown-container">
+            <div class="countdown-title">Faltan solo</div>
+            <div class="timer">
+                <div class="time-segment">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="time-segment">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Horas</span>
+                </div>
+                <div class="time-segment">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Min.</span>
+                </div>
+                <div class="time-segment">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Seg.</span>
+                </div>
+            </div>
+        </div>
 
-Y sin darnos cuenta, nos convertimos en el hogar del otro.
+        <div style="margin-top: 30px;">
+            <a href="https://wa.me/TUNUMERO" class="btn-rsvp">Confirmar Asistencia</a>
+        </div>
 
-Hoy, elegimos caminar juntos para siempre.</p>
-</section>
+        <footer>L & C — 2026</footer>
+    </div>
 
-<section class="fade">
-  <h2 class="title">Padres ❤️</h2>
-  <p class="story">Con amor y gratitud, honramos a quienes nos dieron la vida.
+    <script>
+        // Configura la fecha aquí (Mes es 0-11, Julio es 6)
+        const weddingDate = new Date(2026, 6, 11, 18, 0, 0).getTime();
 
-Gracias por guiarnos hasta este momento.</p>
-</section>
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
 
-<!-- GALERIA -->
-<section class="fade">
-  <h2 class="title">Momentos ✨</h2>
-  <div class="gallery">
-    <div class="gallery-img" style="background-image:url('img/foto1.jpg')"></div>
-    <div class="gallery-img" style="background-image:url('img/foto2.jpg')"></div>
-    <div class="gallery-img" style="background-image:url('img/foto3.jpg')"></div>
-  </div>
-</section>
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-<section class="fade">
-  <h2 class="title">Aprecio 🙌</h2>
-  <p class="story">Tu presencia es el mejor regalo.
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
-Gracias por acompañarnos en este día tan especial.</p>
-</section>
-
-<section class="fade">
-  <h2 class="title">Boda religiosa ⛪</h2>
-  <div class="card">
-    <p class="story">5:00 PM
-
-Parroquia Sagrado Corazón de Jesús</p>
-    <a href="#" class="btn">Ver ubicación</a>
-  </div>
-</section>
-
-<section class="fade">
-  <h2 class="title">Recepción 💃</h2>
-  <div class="card">
-    <p class="story">9:00 PM
-
-Hacienda Elegancia</p>
-    <a href="#" class="btn">Ver ubicación</a>
-  </div>
-</section>
-
-<section class="fade">
-  <h2 class="title">Dress code 👔</h2>
-  <p class="story">Formal elegante
-
-Evento exclusivo para adultos</p>
-</section>
-
-<section class="fade">
-  <h2 class="title">Mesa de regalos 🎁</h2>
-  <p class="story">Hemos preparado una lista especial para ustedes.</p>
-  <a href="#" class="btn gift-btn">Ver lista</a>
-</section>
-
-<section class="fade">
-  <h2 class="title">Te esperamos 💌</h2>
-</section>
-
-<footer class="footer">
-  <p>Citlalli & Luis</p>
-  <span>♡</span>
-</footer>
-
-<script>
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('visible');
-    }
-  });
-},{threshold:0.2});
-
-document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
-
-const photoBg = document.getElementById('photoBg');
-window.addEventListener('scroll',()=>{
-  const rect = photoBg.parentElement.getBoundingClientRect();
-  photoBg.style.transform = `translateY(${rect.top * 0.2}px) scale(1.1)`;
-});
-</script>
-
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown-container").innerHTML = "<div class='countdown-title'>¡Hoy es el gran día!</div>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
