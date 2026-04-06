@@ -87,8 +87,53 @@ section{
 
 /* FOTO FULL */
 .photo{
+  position:relative;
   height:100vh;
-  background:url('img/hero.jpg') center/cover no-repeat;
+  overflow:hidden;
+}
+
+/* IMAGEN CON PARALLAX */
+.photo-bg{
+  position:absolute;
+  inset:0;
+  background:url('img/foto-nosotros.jpg') center/cover no-repeat;
+  transform:scale(1.1);
+  will-change:transform;
+  z-index:0;
+}
+
+/* OVERLAY SUAVE (para integrar mejor) */
+.photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.15);
+  z-index:1;
+}
+
+  /* BORDE SUPERIOR */
+.photo::before{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:0;
+  width:100%;
+  height:120px;
+  background:url('img/torn-top.png') repeat-x;
+  background-size:cover;
+  z-index:2;
+}
+
+/* BORDE INFERIOR */
+.photo-edge-bottom{
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:120px;
+  background:url('img/torn-bottom.png') repeat-x;
+  background-size:cover;
+  z-index:2;
 }
 
 /* HISTORIA */
@@ -147,7 +192,10 @@ section{
 </section>
 
 <!-- FOTO -->
-<section class="photo fade"></section>
+<section class="photo">
+  <div class="photo-bg" id="photoBg"></div>
+  <div class="photo-edge-bottom"></div>
+</section>
 
 <!-- HISTORIA -->
 <section class="fade">
@@ -174,6 +222,13 @@ const observer = new IntersectionObserver(entries=>{
 
 document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
+  const photoBg = document.getElementById('photoBg');
+
+window.addEventListener('scroll', () => {
+  const rect = photoBg.parentElement.getBoundingClientRect();
+  photoBg.style.transform = `translateY(${rect.top * 0.2}px) scale(1.1)`;
+});
+  
 </script>
 
 </body>
