@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luis & Citlalli | Nuestra Boda</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#ffffff;
+  --cream:#f5efe6;
   --green:#3A5A40;
   --gold:#c6a96b;
   --text:#2c3e2f;
@@ -19,152 +19,121 @@
 
 body{
   font-family:'Montserrat', sans-serif;
-  background:var(--bg);
+  background:var(--cream);
   color:var(--text);
+  overflow-x:hidden;
+}
+
+/* TEXTURA PAPEL */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  opacity:0.25;
+  z-index:-1;
 }
 
 section{
   padding:120px 20px;
-  max-width:1000px;
-  margin:auto;
   text-align:center;
 }
 
-/* HERO */
-.hero{
+/* MONOGRAMA INTRO */
+.intro{
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+.monograma{
+  width:120px;
+  opacity:0;
+  transform:scale(0.8);
+  animation:fadeScale 1.5s ease forwards;
+}
+
+/* HERO NOMBRES */
+.hero{
+  height:100vh;
+  display:flex;
   flex-direction:column;
-  position:relative;
-  color:white;
-  overflow:hidden;
-}
-
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:url('img/hero.jpg') center/cover;
-  transform:scale(1.1);
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  animation:fadeUp 1.5s ease forwards;
+  align-items:center;
+  justify-content:center;
 }
 
 .hero h1{
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(3rem,8vw,5rem);
+  color:var(--green);
 }
 
 .hero p{
+  margin-top:15px;
   letter-spacing:3px;
+  color:var(--gold);
 }
 
-.btn{
-  margin-top:30px;
-  padding:12px 30px;
-  border:1px solid white;
-  color:white;
-  text-decoration:none;
-  border-radius:30px;
+/* FOTO FULL */
+.photo{
+  height:100vh;
+  background:url('img/photo1.jpg') center/cover no-repeat;
 }
 
-/* STORY */
+/* HISTORIA */
 .story{
+  max-width:700px;
+  margin:auto;
   font-family:'Cormorant Garamond', serif;
   font-size:1.6rem;
   line-height:1.8;
-  max-width:700px;
-  margin:auto;
 }
 
-.section-title{
+.title{
   font-family:'Cormorant Garamond', serif;
   font-size:2.5rem;
   color:var(--green);
   margin-bottom:30px;
 }
 
-/* PARALLAX IMAGE */
-.photo{
-  height:80vh;
-  background:url('img/photo1.jpg') center/cover fixed;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-family:'Cormorant Garamond', serif;
-  font-size:2rem;
+/* ANIMACIONES */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
 
-/* COUNTDOWN */
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:20px;
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
-.time-box span{
-  font-size:3rem;
-  color:var(--green);
-}
-
-/* EVENTS */
-.card{
-  border:1px solid rgba(0,0,0,0.1);
-  padding:40px;
-  margin:20px auto;
-  border-radius:12px;
-}
-
-/* RSVP */
-.rsvp a{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 30px;
-  border:1px solid var(--green);
-  color:var(--green);
-  text-decoration:none;
-  border-radius:25px;
-}
-
-footer{
-  padding:60px;
-  font-family:'Cormorant Garamond', serif;
-  color:var(--green);
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
+@keyframes fadeScale{
+  to{opacity:1;transform:scale(1);}
 }
 
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-content">
-    <h1>Luis & Citlalli</h1>
-    <p>11 DE JULIO 2026</p>
-    <a href="#historia" class="btn">Descubrir</a>
-  </div>
+<!-- INTRO MONOGRAMA -->
+<section class="intro">
+  <img src="img/monograma.png" class="monograma">
 </section>
 
-<section id="historia">
-  <h2 class="section-title">Nuestra historia</h2>
+<!-- HERO NOMBRES -->
+<section class="hero fade">
+  <h1>Citlalli & Luis</h1>
+  <p>11 DE JULIO 2026</p>
+</section>
+
+<!-- FOTO -->
+<section class="photo"></section>
+
+<!-- HISTORIA -->
+<section class="fade">
+  <h2 class="title">Nuestra historia</h2>
   <p class="story">
     Entre miles de caminos, nuestras vidas se encontraron.
     
@@ -174,65 +143,18 @@ footer{
   </p>
 </section>
 
-<div class="photo">
-  Nuestro para siempre comienza aquí
-</div>
-
-<section>
-  <h2 class="section-title">Cuenta regresiva</h2>
-  <div class="countdown">
-    <div class="time-box"><span id="days"></span>Días</div>
-    <div class="time-box"><span id="hours"></span>Hr</div>
-    <div class="time-box"><span id="minutes"></span>Min</div>
-    <div class="time-box"><span id="seconds"></span>Seg</div>
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Detalles</h2>
-
-  <div class="card">
-    <h3>Ceremonia</h3>
-    <p>5:00 PM</p>
-    <p>Parroquia Sagrado Corazón</p>
-  </div>
-
-  <div class="card">
-    <h3>Recepción</h3>
-    <p>9:00 PM</p>
-    <p>Hacienda Elegancia</p>
-  </div>
-
-</section>
-
-<section class="rsvp">
-  <h2 class="section-title">Confirma tu asistencia</h2>
-  <a href="https://wa.me/521XXXXXXXXXX">Confirmar por WhatsApp</a>
-</section>
-
-<footer>
-  ♡ Luis & Citlalli ♡
-</footer>
-
 <script>
 
-const heroBg = document.getElementById('heroBg');
-window.addEventListener('scroll', ()=>{
-  heroBg.style.transform = `translateY(${window.scrollY * 0.3}px) scale(1.1)`;
-});
+/* FADE IN */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.2});
 
-const date = new Date("July 11, 2026 17:00:00").getTime();
-setInterval(()=>{
-  const now = new Date().getTime();
-  const d = date - now;
-
-  if(d <= 0) return;
-
-  document.getElementById("days").innerHTML=Math.floor(d/(1000*60*60*24));
-  document.getElementById("hours").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("minutes").innerHTML=Math.floor((d%(1000*60*60))/(1000*60));
-  document.getElementById("seconds").innerHTML=Math.floor((d%(1000*60))/1000);
-},1000);
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
 </script>
 
