@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luis & Citlalli | Nuestra Boda</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -37,40 +37,8 @@ section{
   text-align:center;
   max-width:900px;
   margin:auto;
-  position:relative;
 }
 
-/* SEPARADOR */
-section::after{
-  content:"";
-  display:block;
-  width:60px;
-  height:1px;
-  background:var(--gold);
-  margin:50px auto 0;
-  opacity:0.5;
-}
-
-/* INTRO */
-.intro-overlay{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--cream);
-  z-index:9999;
-  animation:fadeOut 1.2s ease 1.5s forwards;
-}
-
-.monograma{
-  width:110px;
-  opacity:0;
-  transform:scale(0.85);
-  animation:fadeScale 1.4s ease forwards;
-}
-
-/* HERO */
 .hero{
   height:100vh;
   display:flex;
@@ -83,27 +51,27 @@ section::after{
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(3rem,8vw,5rem);
   color:var(--green);
-  opacity:0;
-  animation:fadeUp 1.5s ease 1.5s forwards;
 }
 
 .hero p{
   margin-top:15px;
   letter-spacing:3px;
   color:var(--gold);
-  opacity:0;
-  animation:fadeUp 1.5s ease 1.8s forwards;
 }
 
-/* FOTO ENTRE SECCIONES */
 .photo{
+  position:relative;
   height:60vh;
-  background:
-    linear-gradient(var(--cream), rgba(245,239,230,0.2), var(--cream)),
-    url('img/hero.jpg') center/cover no-repeat;
+  overflow:hidden;
 }
 
-/* TITULOS */
+.photo-bg{
+  position:absolute;
+  inset:0;
+  background:url('img/hero.jpg') center/cover no-repeat;
+  transform:scale(1.1);
+}
+
 .title{
   font-family:'Cormorant Garamond', serif;
   font-size:2.2rem;
@@ -120,7 +88,6 @@ section::after{
   margin:12px auto 0;
 }
 
-/* TEXTO */
 .story{
   max-width:650px;
   margin:auto;
@@ -130,7 +97,14 @@ section::after{
   white-space:pre-line;
 }
 
-/* BOTONES */
+.card{
+  border:1px solid rgba(0,0,0,0.1);
+  padding:30px;
+  border-radius:12px;
+  margin-top:20px;
+  background:white;
+}
+
 .btn{
   display:inline-block;
   margin-top:20px;
@@ -149,35 +123,12 @@ section::after{
 
 .gift-btn{
   border-color:var(--gold);
-  color:var(--green);
 }
 
 .gift-btn:hover{
   background:var(--gold);
 }
 
-/* TARJETAS EVENTO */
-.card{
-  border:1px solid rgba(0,0,0,0.1);
-  padding:30px;
-  border-radius:12px;
-  margin-top:20px;
-  background:white;
-}
-
-/* FADE */
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-
-.fade.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* FOOTER */
 .footer{
   background:var(--green);
   color:white;
@@ -197,24 +148,19 @@ section::after{
   opacity:0.8;
 }
 
-@keyframes fadeScale{to{opacity:1;transform:scale(1);}}
-@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);}}
+.fade{opacity:0;transform:translateY(40px);transition:1s ease;}
+.fade.visible{opacity:1;transform:translateY(0);} 
 
 </style>
 </head>
 <body>
-
-<div class="intro-overlay">
-  <img src="img/monograma.png" class="monograma">
-</div>
 
 <section class="hero">
   <h1>Citlalli & Luis</h1>
   <p>11 DE JULIO 2026</p>
 </section>
 
-<div class="photo"></div>
+<div class="photo"><div class="photo-bg" id="photoBg"></div></div>
 
 <section class="fade">
   <h2 class="title">Nuestra historia</h2>
@@ -225,39 +171,55 @@ Y sin darnos cuenta, nos convertimos en el hogar del otro.
 Hoy, elegimos caminar juntos para siempre.</p>
 </section>
 
-<div class="photo"></div>
+<section class="fade">
+  <h2 class="title">Padres ❤️</h2>
+  <p class="story">Con amor y gratitud, honramos a quienes nos dieron la vida.
+
+Gracias por guiarnos hasta este momento.</p>
+</section>
 
 <section class="fade">
-  <h2 class="title">Boda Religiosa</h2>
+  <h2 class="title">Aprecio 🙌</h2>
+  <p class="story">Tu presencia es el mejor regalo.
+
+Gracias por acompañarnos en este día tan especial.</p>
+</section>
+
+<section class="fade">
+  <h2 class="title">Boda religiosa ⛪</h2>
   <div class="card">
     <p class="story">5:00 PM
 
 Parroquia Sagrado Corazón de Jesús</p>
-    <a href="https://maps.google.com" target="_blank" class="btn">Ver ubicación</a>
+    <a href="#" class="btn">Ver ubicación</a>
   </div>
 </section>
 
 <section class="fade">
-  <h2 class="title">Recepción & Boda Civil</h2>
+  <h2 class="title">Recepción 💃</h2>
   <div class="card">
     <p class="story">9:00 PM
 
 Hacienda Elegancia</p>
-    <a href="https://maps.google.com" target="_blank" class="btn">Ver ubicación</a>
+    <a href="#" class="btn">Ver ubicación</a>
   </div>
 </section>
 
 <section class="fade">
-  <h2 class="title">Código de vestimenta</h2>
+  <h2 class="title">Dress code 👔</h2>
   <p class="story">Formal elegante
 
 Evento exclusivo para adultos</p>
 </section>
 
 <section class="fade">
-  <h2 class="title">Mesa de regalos</h2>
-  <p class="story">Si deseas hacernos un obsequio, hemos preparado una lista en Amazon.</p>
+  <h2 class="title">Mesa de regalos 🎁</h2>
+  <p class="story">Hemos preparado una lista especial para ustedes.</p>
   <a href="#" class="btn gift-btn">Ver lista</a>
+</section>
+
+<section class="fade">
+  <h2 class="title">Te esperamos 💌</h2>
 </section>
 
 <footer class="footer">
@@ -275,6 +237,12 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.2});
 
 document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
+const photoBg = document.getElementById('photoBg');
+window.addEventListener('scroll',()=>{
+  const rect = photoBg.parentElement.getBoundingClientRect();
+  photoBg.style.transform = `translateY(${rect.top * 0.2}px) scale(1.1)`;
+});
 </script>
 
 </body>
