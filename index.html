@@ -1,204 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis & Citlalli - 11.07.26</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --olivo: #556b2f;
-            --crema: #fffdfa;
-            --dorado: #b8860b;
-            --rojo: #8b0000;
-            --texto: #2f2f2f;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luis & Citlalli | Invitación</title>
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--crema);
-            color: var(--texto);
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            justify-content: center;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 600px;
-            width: 90%;
-            margin: 40px 20px;
-            border: 1px solid var(--olivo);
-            padding: 40px;
-            position: relative;
-            background-color: var(--crema);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            text-align: center;
-        }
+<style>
+:root{
+  --cream:#f5efe6;
+  --blue:#5c7fa3;
+  --text:#2c3e2f;
+}
 
-        header {
-            border-bottom: 1px solid var(--dorado);
-            padding-bottom: 30px;
-            margin-bottom: 40px;
-        }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        .names {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
-            color: var(--olivo);
-            margin: 0;
-            font-weight: 300;
-        }
+body{
+  font-family:'Montserrat', sans-serif;
+  background:var(--cream);
+  color:var(--text);
+}
 
-        .ampersand {
-            color: var(--rojo);
-            font-style: italic;
-            display: block;
-            font-size: 2rem;
-            margin: -10px 0;
-        }
+.container{
+  max-width:420px;
+  margin:auto;
+}
 
-        /* Estilos del Contador */
-        .countdown-container {
-            margin: 40px 0;
-            padding: 20px 0;
-            border-top: 1px double var(--dorado);
-            border-bottom: 1px double var(--dorado);
-        }
+.block{
+  background:white;
+  margin:20px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
 
-        .countdown-title {
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--olivo);
-        }
+.hero{
+  position:relative;
+  height:500px;
+  background:url('img/hero.jpg') center/cover no-repeat;
+}
 
-        .timer {
-            display: flex;
-            justify-content: space-around;
-            max-width: 400px;
-            margin: 0 auto;
-        }
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.2);
+}
 
-        .time-segment {
-            display: flex;
-            flex-direction: column;
-        }
+.hero-text{
+  position:absolute;
+  bottom:30px;
+  left:20px;
+  right:20px;
+  color:white;
+}
 
-        .number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--rojo);
-            font-weight: 300;
-        }
+.hero-text h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.5rem;
+}
 
-        .label {
-            font-size: 0.6rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--olivo);
-        }
+.hero-text p{
+  margin-top:5px;
+  letter-spacing:2px;
+}
 
-        .details {
-            line-height: 2;
-            font-weight: 200;
-            letter-spacing: 1px;
-            margin: 40px 0;
-        }
+.section{
+  padding:30px 25px;
+  text-align:center;
+}
 
-        .btn-rsvp {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: var(--olivo);
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            transition: 0.4s;
-            border: 1px solid var(--olivo);
-        }
+.title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.8rem;
+  margin-bottom:15px;
+  color:var(--blue);
+}
 
-        .btn-rsvp:hover {
-            background-color: transparent;
-            color: var(--olivo);
-        }
+.story{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.3rem;
+  line-height:1.8;
+  white-space:pre-line;
+}
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.7rem;
-            opacity: 0.5;
-            letter-spacing: 3px;
-        }
-    </style>
+.photo{
+  height:250px;
+  background-size:cover;
+  background-position:center;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 25px;
+  border:1px solid var(--blue);
+  color:var(--blue);
+  text-decoration:none;
+  border-radius:20px;
+}
+
+.footer{
+  text-align:center;
+  padding:30px;
+  color:white;
+  background:var(--blue);
+  border-radius:20px;
+  margin:20px;
+}
+
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <p style="letter-spacing: 5px; font-size: 0.6rem; text-transform: uppercase;">Estás invitado a la boda de</p>
-            <h1 class="names">Luis <span class="ampersand">&</span> Citlalli</h1>
-        </header>
+<div class="container">
 
-        <section class="details">
-            <p style="color: var(--dorado); font-weight: 400;">SÁBADO</p>
-            <h2 style="font-family: 'Cormorant Garamond'; font-size: 2rem; margin: 10px 0;">11 de Julio de 2026</h2>
-            <p>18:00 HRS. <br> Hacienda Los Olivos</p>
-        </section>
-
-        <div class="countdown-container">
-            <div class="countdown-title">Faltan solo</div>
-            <div class="timer">
-                <div class="time-segment">
-                    <span class="number" id="days">00</span>
-                    <span class="label">Días</span>
-                </div>
-                <div class="time-segment">
-                    <span class="number" id="hours">00</span>
-                    <span class="label">Horas</span>
-                </div>
-                <div class="time-segment">
-                    <span class="number" id="minutes">00</span>
-                    <span class="label">Min.</span>
-                </div>
-                <div class="time-segment">
-                    <span class="number" id="seconds">00</span>
-                    <span class="label">Seg.</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-top: 30px;">
-            <a href="https://wa.me/TUNUMERO" class="btn-rsvp">Confirmar Asistencia</a>
-        </div>
-
-        <footer>L & C — 2026</footer>
+<!-- HERO -->
+<div class="block">
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>Citlalli & Luis</h1>
+      <p>11 DE JULIO 2026</p>
     </div>
+  </div>
+</div>
 
-    <script>
-        // Configura la fecha aquí (Mes es 0-11, Julio es 6)
-        const weddingDate = new Date(2026, 6, 11, 18, 0, 0).getTime();
+<!-- HISTORIA -->
+<div class="block section">
+  <h2 class="title">Nuestra historia</h2>
+  <p class="story">Entre miles de caminos, nuestras vidas se encontraron.
 
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+Y sin darnos cuenta, nos convertimos en el hogar del otro.
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+Hoy, elegimos caminar juntos para siempre.</p>
+</div>
 
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
+<!-- FOTO -->
+<div class="block">
+  <div class="photo" style="background-image:url('img/foto1.jpg')"></div>
+</div>
 
-            if (distance < 0) {
-                clearInterval(timer);
-                document.querySelector(".countdown-container").innerHTML = "<div class='countdown-title'>¡Hoy es el gran día!</div>";
-            }
-        }, 1000);
-    </script>
+<!-- PADRES -->
+<div class="block section">
+  <h2 class="title">Padres</h2>
+  <p class="story">Con amor y gratitud, honramos a quienes nos dieron la vida.</p>
+</div>
+
+<!-- EVENTO -->
+<div class="block section">
+  <h2 class="title">Ceremonia</h2>
+  <p class="story">5:00 PM
+Parroquia Sagrado Corazón</p>
+  <a href="#" class="btn">Ubicación</a>
+</div>
+
+<!-- RECEPCION -->
+<div class="block section">
+  <h2 class="title">Recepción</h2>
+  <p class="story">9:00 PM
+Hacienda Elegancia</p>
+  <a href="#" class="btn">Ubicación</a>
+</div>
+
+<!-- GALERIA -->
+<div class="block section">
+  <h2 class="title">Momentos</h2>
+  <div class="photo" style="background-image:url('img/foto2.jpg')"></div>
+  <div class="photo" style="background-image:url('img/foto3.jpg');margin-top:10px"></div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Citlalli & Luis ♡
+</div>
+
+</div>
+
 </body>
 </html>
