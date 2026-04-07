@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- HERO: NOMBRES COMO ELEMENTO CENTRAL --- */
+        /* --- HERO: NOMBRES --- */
         .hero {
             height: 100vh;
             width: 100%;
@@ -57,9 +57,9 @@
             animation: fadeIn 2s ease;
         }
 
-        /* --- SECCIÓN DEL MONOGRAMA (ESPACIO APARTE) --- */
+        /* --- SECCIÓN DEL MONOGRAMA (ESPACIO AJUSTADO) --- */
         .monograma-divider {
-            padding: 80px 0;
+            padding: 120px 0; /* Aumentamos el espacio arriba y abajo */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -67,32 +67,32 @@
         }
 
         .monograma-img {
-            width: 150px; /* Tamaño elegante y definido */
+            width: 150px;
             height: auto;
-            opacity: 1; /* Sin opacidad */
+            opacity: 1;
         }
 
-        /* --- CONTENEDOR DE FOTO: ADAPTABLE --- */
+        /* --- CONTENEDOR DE FOTO: CON MÁS MARGEN --- */
         .photo-section {
             width: 100%;
-            height: 70vh; /* Altura fija para impacto visual */
-            margin-bottom: 80px;
+            height: 75vh; 
+            margin-top: 40px;    /* Espacio antes de la foto */
+            margin-bottom: 120px; /* Mucho más espacio después de la foto */
             overflow: hidden;
         }
 
         .main-photo {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Esto hace que la imagen rellene el contenedor */
-            object-position: center; /* Centra la imagen */
+            object-fit: cover;
+            object-position: center;
             box-shadow: 0 15px 35px rgba(58, 90, 64, 0.1);
         }
 
-        /* Ajuste para móvil: Rellenar pantalla horizontalmente */
         @media (max-width: 768px) {
             .photo-section {
-                height: 50vh; /* Ajuste de altura en móvil */
-                padding: 0; /* Sin márgenes laterales para que "rellene" */
+                height: 60vh; 
+                margin-bottom: 80px;
             }
         }
 
@@ -105,6 +105,7 @@
             font-style: italic;
             color: var(--olive-medium);
             line-height: 1.4;
+            margin-bottom: 40px;
         }
 
         .section-title { 
@@ -115,34 +116,30 @@
             letter-spacing: 4px;
             text-transform: uppercase;
         }
-        
-/* --- AJUSTE DE DIVISORES BOTÁNICOS --- */
-.divider-png { 
-    display: block; 
-    width: 100%; 
-    /* Aumentamos de 200px a 450px para que luzcan más */
-    max-width: 450px; 
-    /* Aumentamos el margen (arriba/abajo) para que respiren */
-    margin: 80px auto; 
-    opacity: 0.9; 
-    /* Un ligero tono sepia para que combine con el fondo crema */
-    filter: sepia(0.2); 
-    text-align: center;
-}
 
-.divider-png img { 
-    width: 80%; /* Esto permite que en móviles no toquen las orillas */
-    height: auto; 
-}
+        /* --- DIVISORES BOTÁNICOS --- */
+        .divider-png { 
+            display: block; 
+            width: 100%; 
+            max-width: 450px; 
+            margin: 100px auto; /* Aumentamos margen para que respiren más */
+            opacity: 0.9; 
+            filter: sepia(0.2); 
+            text-align: center;
+        }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 600px) {
-    .divider-png {
-        max-width: 300px; /* Un poco más pequeño en móvil para no saturar */
-        margin: 60px auto;
-    }
-} 
-}
+        .divider-png img { 
+            width: 80%; 
+            height: auto; 
+        }
+
+        @media (max-width: 600px) {
+            .divider-png {
+                max-width: 300px; 
+                margin: 70px auto;
+            }
+        }
+
         .countdown { display: flex; justify-content: center; gap: 30px; }
         .time-box span { display: block; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--olive-dark); font-weight: 600; }
 
@@ -173,7 +170,7 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        footer { padding: 80px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olive-dark); }
+        footer { padding: 80px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olive-dark); text-align: center; }
     </style>
 </head>
 <body>
@@ -198,7 +195,9 @@
             <span style="font-size: 1.2rem; font-style: normal; display: block; margin-top: 20px; letter-spacing: 3px; color: var(--olive-dark);">COLOSENSES 3:14</span>
         </div>
     </section>
-<div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
+
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
+
     <section id="detalles" class="fade">
         <h2 class="section-title">Faltan</h2>
         <div class="countdown">
@@ -208,7 +207,9 @@
             <div class="time-box"><span id="seconds">0</span>Seg</div>
         </div>
     </section>
-<div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
+
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
+
     <section class="fade">
         <div class="event-card">
             <h2 class="section-title" style="font-size: 2rem; margin-bottom: 10px;">Ceremonia</h2>
