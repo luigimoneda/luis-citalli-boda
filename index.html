@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- HERO: NOMBRES CON MONOGRAMA DE FONDO --- */
+        /* --- HERO --- */
         .hero {
             height: 100vh;
             width: 100%;
@@ -56,10 +56,7 @@
             animation: fadeInScale 2.5s ease-out;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        .hero-content { position: relative; z-index: 2; }
 
         .hero h1 { 
             font-family: 'Cormorant Garamond', serif; 
@@ -82,10 +79,8 @@
         .photo-section {
             width: 100%;
             height: 75vh; 
-            margin-bottom: 120px;
+            margin-bottom: 80px;
             overflow: hidden;
-            position: relative;
-            z-index: 3;
         }
 
         .main-photo {
@@ -93,10 +88,9 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            box-shadow: 0 15px 35px rgba(58, 90, 64, 0.1);
         }
 
-        section { padding: 80px 20px; max-width: 900px; margin: auto; text-align: center; }
+        section { padding: 60px 20px; max-width: 900px; margin: auto; text-align: center; }
 
         .dedicatoria {
             font-family: 'Cormorant Garamond', serif;
@@ -104,7 +98,6 @@
             font-style: italic;
             color: var(--olive-medium);
             line-height: 1.4;
-            margin-bottom: 40px;
         }
 
         .section-title { 
@@ -117,267 +110,90 @@
         }
 
         .divider-png { 
-            display: block; 
-            width: 100%; 
-            max-width: 450px; 
-            margin: 100px auto;
-            opacity: 0.9; 
-            filter: sepia(0.2); 
+            width: 100%; max-width: 450px; 
+            margin: 60px auto;
             text-align: center;
         }
-
-        .divider-png img { width: 80%; height: auto; }
+        .divider-png img { width: 60%; height: auto; opacity: 0.7; }
 
         .countdown { display: flex; justify-content: center; gap: 30px; }
         .time-box span { display: block; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--olive-dark); font-weight: 600; }
 
-        /* --- ESTILO DE EVENTOS (TIPO IMAGEN) --- */
-        .event-card {
-            background: transparent;
-            padding: 40px 20px;
-            margin-bottom: 60px;
-            border: none;
-            text-align: center;
+        /* --- GALERÍA --- */
+        .photo-grid-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .grid-photo-item { width: 100%; height: 300px; overflow: hidden; border-radius: 4px; }
+        .grid-photo-item img { width: 100%; height: 100%; object-fit: cover; }
+        .horizontal { grid-column: span 2; height: 350px; }
+
+        @media (min-width: 768px) {
+            .photo-grid-container { grid-template-columns: repeat(3, 1fr); }
+            .grid-photo-item { height: 400px; }
+            .horizontal { grid-column: span 2; height: 450px; }
         }
 
-        .event-time {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            color: var(--olive-medium);
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            display: block;
-        }
+        /* --- EVENTOS & CARDS --- */
+        .event-card, .card-style { padding: 40px 20px; margin-bottom: 40px; text-align: center; }
+        .event-time { letter-spacing: 3px; color: var(--olive-medium); display: block; margin-bottom: 10px; }
+        .info-section-title, .event-type { font-weight: 600; letter-spacing: 4px; text-transform: uppercase; font-size: 1.6rem; }
+        .info-place, .event-place { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--olive-dark); margin-top: 5px; }
+        .info-text, .event-address { font-size: 0.95rem; color: var(--olive-medium); line-height: 1.6; margin: 20px auto; max-width: 500px; }
 
-        .event-type {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--text-main);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .event-place {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--olive-dark);
-            margin-bottom: 5px;
-        }
-
-        .event-address {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            color: var(--olive-medium);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .event-btn {
+        .action-btn, .event-btn {
             display: inline-block;
-            padding: 16px 60px;
+            padding: 16px 50px;
             background: var(--olive-dark);
             color: var(--white);
             text-decoration: none;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: 600;
-            font-size: 0.9rem;
             text-transform: uppercase;
             border-radius: 8px;
-            transition: 0.4s ease;
-            box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
+            transition: 0.3s;
+            font-size: 0.85rem;
+        }
+        .amazon-btn { background-color: #232f3e; }
+
+        /* --- CIERRE DEFINITIVO --- */
+        .final-photo-container {
+            width: 100%;
+            height: 500px; 
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+            background-color: var(--bg-cream);
+        }
+        .final-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+        .gradient-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 180px;
+            background: linear-gradient(to bottom, var(--bg-cream) 0%, transparent 100%);
+            z-index: 5;
         }
 
-       /* --- ESTILOS UNIFICADOS PARA NUEVAS SECCIONES --- */
-.card-style {
-    background: transparent;
-    padding: 60px 20px;
-    margin-bottom: 80px;
-    border: none;
-    box-shadow: none;
-    text-align: center;
-}
+        @media (max-width: 768px) {
+            .final-photo-container { height: 400px; margin-top: 40px; }
+        }
 
-/* Reutilizamos y ajustamos los estilos existentes para los textos */
-.info-section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--text-main);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
+        footer { padding: 60px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olive-dark); text-align: center; }
 
-.info-place {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: var(--olive-dark);
-    margin-bottom: 10px;
-}
-
-.info-text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    color: var(--olive-medium);
-    line-height: 1.6;
-    margin-bottom: 30px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Estilos para el botón reutilizable */
-.action-btn {
-    display: inline-block;
-    padding: 16px 60px;
-    background: var(--olive-dark);
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    border-radius: 8px;
-    transition: 0.4s ease;
-    box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
-}
-
-.action-btn:hover {
-    background: var(--olive-medium);
-    transform: translateY(-2px);
-}
-
-/* --- ESTILO PARA LA PALETA DE COLORES --- */
-.color-palette-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.color-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(58, 90, 64, 0.1);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-/* --- ESTILO PARA EL BOTÓN DE AMAZON (DIFERENTE) --- */
-.amazon-btn {
-    background-color: #232f3e; /* Color elegante de Amazon */
-}
-
-.amazon-btn:hover {
-    background-color: #37475a;
-}
         /* ANIMACIONES */
-        .fade { opacity: 0; transform: translateY(30px); transition: 1.5s ease-out; }
+        .fade { opacity: 0; transform: translateY(30px); transition: 1.2s ease-out; }
         .fade.visible { opacity: 1; transform: translateY(0); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInScale { 
-            from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } 
-            to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } 
-        }
-
-        footer { padding: 80px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olive-dark); text-align: center; }
-
-       /* --- AJUSTE PARA FOTOS DINÁMICAS --- */
-.photo-grid-container {
-    max-width: 1100px;
-    margin: 40px auto 100px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas base */
-    gap: 15px;
-}
-
-.grid-photo-item {
-    width: 100%;
-    height: 300px; /* Altura estándar */
-    overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 10px 25px rgba(58, 90, 64, 0.05);
-}
-
-.grid-photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* CLASE ESPECIAL: Para fotos horizontales */
-.horizontal {
-    grid-column: span 2; /* Ocupa las 2 columnas disponibles */
-    height: 400px; /* Un poco más de altura para que luzca el formato */
-}
-
-/* Ajustes para PC */
-@media (min-width: 768px) {
-    .photo-grid-container {
-        grid-template-columns: repeat(3, 1fr); /* En PC subimos a 3 columnas */
-        gap: 25px;
-    }
-    
-    .grid-photo-item {
-        height: 400px;
-    }
-
-    .horizontal {
-        grid-column: span 2; /* En PC ocupa 2 de las 3 columnas */
-        height: 450px;
-    }
-/* --- ESTILO PARA LA FOTO DE CIERRE DEFINITIVO --- */
-.final-photo-container {
-    width: 100%;
-    height: 60vh; /* Altura fija relativa a la pantalla */
-    position: relative;
-    overflow: hidden;
-    margin-top: 50px;
-    background-color: var(--bg-cream); /* Por si la imagen tarda en cargar */
-}
-
-.final-photo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Recorta la imagen para llenar el contenedor sin deformarla */
-    object-position: center 30%; /* Enfoca un poco más arriba del centro */
-    display: block;
-}
-
-/* DEGRADADO SUPERIOR */
-.final-photo-container::after {
-    content: '';
-    position: absolute;
-    top: -1px; /* Evita una línea delgada blanca */
-    left: 0;
-    width: 100%;
-    height: 40%; /* El degradado cubre el 40% superior */
-    background: linear-gradient(
-        to bottom,
-        var(--bg-cream) 0%,
-        rgba(249, 248, 244, 0.8) 20%, /* Fundido más natural */
-        transparent 100%
-    );
-    z-index: 2;
-}
-
-/* Ajustes específicos para móviles */
-@media (max-width: 768px) {
-    .final-photo-container {
-        height: 50vh; /* En móvil, la mitad de la pantalla es suficiente */
-        margin-top: 30px;
-    }
-    
-    .final-photo-container img {
-        /* Si la foto es muy horizontal, esto ayuda a centrar a la pareja */
-        object-position: center center; 
-    }
-}
+        @keyframes fadeInScale { from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } }
     </style>
 </head>
 <body>
@@ -402,7 +218,7 @@
         </div>
     </section>
 
-    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
 
     <section id="detalles" class="fade">
         <h2 class="section-title">Faltan</h2>
@@ -413,25 +229,16 @@
             <div class="time-box"><span id="seconds">0</span>Seg</div>
         </div>
     </section>
-<div class="photo-grid-container fade">
-    <div class="grid-photo-item horizontal">
-        <img src="img/galeria1.jpg" alt="Luis y Citlalli">
+
+    <div class="photo-grid-container fade">
+        <div class="grid-photo-item horizontal"><img src="img/galeria1.jpg" alt="Boda"></div>
+        <div class="grid-photo-item horizontal"><img src="img/galeria2.jpg" alt="Boda"></div>
+        <div class="grid-photo-item horizontal"><img src="img/galeria3.jpg" alt="Boda"></div>
+        <div class="grid-photo-item"><img src="img/galeria4.jpg" alt="Boda"></div>
+        <div class="grid-photo-item"><img src="img/galeria5.jpg" alt="Boda"></div>
     </div>
-    <div class="grid-photo-item horizontal">
-        <img src="img/galeria2.jpg" alt="Luis y Citlalli">
-    </div>
-    <div class="grid-photo-item horizontal">
-        <img src="img/galeria3.jpg" alt="Luis y Citlalli">
-    </div>
-    <div class="grid-photo-item">
-        <img src="img/galeria4.jpg" alt="Luis y Citlalli">
-    </div>
-    <div class="grid-photo-item">
-        <img src="img/galeria5.jpg" alt="Luis y Citlalli">
-    </div>
-</div>
-    
-    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
+
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
 
     <section class="fade">
         <div class="event-card">
@@ -442,56 +249,49 @@
             <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
 
-       <div class="event-card">
+        <div class="event-card">
             <span class="event-time">8:00 PM</span>
             <h2 class="event-type">Recepción Social</h2>
             <p class="event-place">Hacienda Elegancia</p>
             <p class="event-address">Calle Principal #123<br>Zona Norte</p>
             <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
-        
-   <section class="card-style fade">
-        <h2 class="info-section-title">Código de Vestimenta</h2>
-        <p class="info-place">FORMAL</p>
-        <p class="info-text">
-            Nuestra boda será una celebración formal. Queremos que luzcan increíbles y se sientan cómodos. Como sugerencia, hemos preparado una paleta de colores para nuestra celebración.
-        </p>
-        
-        <div class="color-palette-container">
-            <div class="color-circle" style="background-color: #f9f8f4;"></div> <div class="color-circle" style="background-color: #6B705C;"></div> <div class="color-circle" style="background-color: #A3B18A;"></div> <div class="color-circle" style="background-color: #e0d9b5;"></div> <div class="color-circle" style="background-color: #bfa36a;"></div> <div class="color-circle" style="background-color: #ffffff;"></div> </div>
-
-        <p class="info-text" style="font-size: 0.85rem; font-style: italic;">
-            *Sugerencia: Colores claros para el día, traje oscuro para la noche.
-        </p>
-        
-        <a href="LINK_A_TU_TABLERO_PINTEREST" target="_blank" class="action-btn">Ver Inspiración en Pinterest</a>
     </section>
 
-    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
+    <section class="card-style fade">
+        <h2 class="info-section-title">Código de Vestimenta</h2>
+        <p class="info-place">FORMAL</p>
+        <p class="info-text">Nuestra boda será una celebración formal. Como sugerencia, hemos preparado una paleta de colores para nuestra celebración.</p>
+        
+        <div class="color-palette-container">
+            <div class="color-circle" style="background-color: #f9f8f4;"></div>
+            <div class="color-circle" style="background-color: #6B705C;"></div>
+            <div class="color-circle" style="background-color: #A3B18A;"></div>
+            <div class="color-circle" style="background-color: #e0d9b5;"></div>
+            <div class="color-circle" style="background-color: #bfa36a;"></div>
+            <div class="color-circle" style="background-color: #ffffff;"></div>
+        </div>
+        <a href="LINK_PINTEREST" target="_blank" class="action-btn">Inspiración Pinterest</a>
+    </section>
 
     <section class="card-style fade">
         <h2 class="info-section-title">Confirmación</h2>
         <p class="info-place">Asistencia</p>
-        <p class="info-text">
-            Tu presencia es nuestro mejor regalo. Por favor, confirma tu asistencia antes del 15 de junio para ayudarnos en la organización.
-        </p>
+        <p class="info-text">Por favor, confirma tu asistencia antes del 15 de junio.</p>
         <a href="https://wa.me/TUNUMERO" target="_blank" class="action-btn">Confirmar por WhatsApp</a>
     </section>
 
-    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
-
     <section class="card-style fade">
         <h2 class="info-section-title">Mesa de Regalos</h2>
-        <p class="info-place">Amazon Wedding Registry</p>
-        <p class="info-text">
-            Si deseas tener un detalle con nosotros, hemos preparado una selección en Amazon para facilitar el proceso.
-        </p>
-        <a href="LINK_A_TU_LISTA_AMAZON" target="_blank" class="action-btn amazon-btn">Ver Mesa en Amazon</a>
+        <p class="info-place">Amazon Registry</p>
+        <p class="info-text">Hemos preparado una selección en Amazon para facilitar el proceso.</p>
+        <a href="LINK_AMAZON" target="_blank" class="action-btn amazon-btn">Ver Mesa en Amazon</a>
     </section>
 
-        <div class="final-photo-container fade">
-    <img src="img/foto-cierre.jpg" alt="Luis y Citlalli | El final">
-</div>
+    <div class="final-photo-container fade">
+        <div class="gradient-overlay"></div>
+        <img src="img/foto-cierre.jpg" alt="Luis y Citlalli">
+    </div>
 
     <footer>♡ L & C ♡</footer>
 
@@ -507,8 +307,7 @@
                 document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
             }
         };
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        setInterval(updateTimer, 1000); updateTimer();
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
