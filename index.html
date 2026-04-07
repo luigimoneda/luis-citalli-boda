@@ -6,16 +6,15 @@
     <title>Luis & Citlalli | Nuestra Boda</title>
     
     <link rel="icon" type="image/png" href="img/monograma.png">
-
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-cream: #f9f8f4;    /* Crema casi blanco */
+            --bg-cream: #f9f8f4;
             --white: #ffffff;
-            --olive-dark: #3A5A40;  /* Verde oscuro para títulos y botones */
-            --olive-medium: #6B705C; /* Verde medio para detalles */
-            --text-main: #2c3e2f;   /* Texto principal oscuro */
+            --olive-dark: #3A5A40;
+            --olive-medium: #6B705C;
+            --text-main: #2c3e2f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,193 +24,144 @@
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-cream);
             color: var(--text-main);
-            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* TEXTURA DE PAPEL (Enviada al fondo para no afectar colores) */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            opacity: 0.3; 
-            pointer-events: none;
-            z-index: -1; 
-        }
-
-        /* --- HERO MINIMALISTA --- */
+        /* --- HERO: TEXTO CENTRAL QUE LLENA LA PANTALLA --- */
         .hero {
-            height: 70vh; /* Altura ajustada para dar paso a la foto */
+            height: 100vh;
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero-content { position: relative; z-index: 2; }
-        
-        .monograma { 
-            width: clamp(100px, 15vw, 130px); 
-            margin-bottom: 20px; 
-            filter: none; /* Sin filtros para respetar color original */
+            padding: 20px;
         }
 
         .hero h1 { 
             font-family: 'Cormorant Garamond', serif; 
-            font-size: clamp(3rem, 10vw, 5.5rem); 
+            /* Tamaño gigante que se ajusta a la pantalla */
+            font-size: clamp(3.5rem, 15vw, 8rem); 
             color: var(--olive-dark);
-            margin-bottom: 10px;
+            line-height: 0.9;
             font-weight: 400;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.5s ease;
         }
 
         .hero-date {
-            letter-spacing: 5px;
+            letter-spacing: 8px;
             color: var(--olive-medium);
-            font-weight: 600;
+            font-size: clamp(0.7rem, 2vw, 1.2rem);
             text-transform: uppercase;
-            font-size: clamp(0.8rem, 2vw, 1.1rem);
+            animation: fadeIn 2s ease;
         }
 
-        /* --- SECCIÓN DE FOTO PRINCIPAL --- */
-        .main-photo-container {
+        /* --- CONTENEDOR DE FOTO CON MONOGRAMA DE FONDO --- */
+        .photo-wrap {
+            position: relative;
             width: 100%;
-            max-width: 900px;
-            margin: -40px auto 60px; /* Sube un poco para integrarse al hero */
+            max-width: 1000px;
+            margin: 0 auto 80px;
             padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .main-photo-container img {
+        /* El monograma gigante de fondo */
+        .monograma-bg {
+            position: absolute;
+            width: 90%; /* Rellena gran parte de la sección */
+            max-width: 800px;
+            opacity: 0.08; /* Muy sutil para no ensuciar la foto */
+            z-index: 1;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
+        .main-photo {
             width: 100%;
             height: auto;
+            position: relative;
+            z-index: 2; /* Por encima del monograma */
+            box-shadow: 0 20px 50px rgba(58, 90, 64, 0.15);
             border-radius: 2px;
-            box-shadow: 0 15px 40px rgba(58, 90, 64, 0.12);
-            display: block;
         }
 
-        /* SECCIONES COMUNES */
-        section { padding: 60px 20px; max-width: 900px; margin: auto; position: relative; }
+        /* SECCIONES POSTERIORES */
+        section { padding: 80px 20px; max-width: 900px; margin: auto; text-align: center; }
 
-        .section-title { 
-            text-align: center; 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: var(--olive-dark);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* SECCIÓN DEDICATORIA */
         .dedicatoria {
-            text-align: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.4rem, 4vw, 2.1rem);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-style: italic;
             color: var(--olive-medium);
-            max-width: 750px;
-            margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.3;
         }
 
-        /* TARJETAS DE EVENTO (ESTILO IMPRESO) */
+        .section-title { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--olive-dark);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .countdown { display: flex; justify-content: center; gap: 30px; }
+        .time-box span { display: block; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--olive-dark); font-weight: 600; }
+
         .event-card {
             background: var(--white);
-            padding: 50px 30px;
-            text-align: center; 
-            box-shadow: 0 10px 30px rgba(58, 90, 64, 0.05);
-            max-width: 550px;
-            margin: 0 auto 40px auto; 
-            border: 1px solid rgba(58, 90, 64, 0.08);
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(58, 90, 64, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
-        .event-card h2 { 
-            color: var(--olive-dark); 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 2.2rem; 
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        .event-card p { margin-bottom: 5px; color: var(--text-main); }
-
-        /* DIVISORES PNG */
-        .divider-png { display: block; width: 100%; max-width: 250px; margin: 30px auto; opacity: 0.9; }
-        .divider-png img { width: 100%; height: auto; }
-
-        /* COUNTDOWN */
-        .countdown { display: flex; justify-content: center; gap: clamp(15px, 5vw, 30px); text-align: center; }
-        .time-box span { 
-            display: block; 
-            font-size: clamp(2.5rem, 8vw, 4rem); 
-            font-family: 'Cormorant Garamond', serif; 
-            font-weight: 600; 
-            color: var(--olive-dark); 
-            line-height: 1; 
-        }
-        .time-box { color: var(--olive-medium); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* BOTONES */
         .event-btn {
             display: inline-block;
             margin-top: 25px;
-            padding: 12px 35px;
-            background-color: var(--olive-dark);
-            color: var(--white);
+            padding: 15px 40px;
+            background: var(--olive-dark);
+            color: white;
             text-decoration: none;
-            font-size: 0.8rem;
             letter-spacing: 2px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            transition: 0.3s ease;
-            border-radius: 2px;
+            transition: 0.3s;
         }
-        .event-btn:hover { background-color: var(--olive-medium); transform: translateY(-2px); }
 
         /* ANIMACIONES */
-        .fade { opacity: 0; transform: translateY(30px); transition: 1.2s ease-out; }
+        .fade { opacity: 0; transform: translateY(30px); transition: 1.5s ease-out; }
         .fade.visible { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        footer {
-            text-align: center; 
-            padding: 80px 20px; 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 1.6rem; 
-            color: var(--olive-dark);
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 600px) {
-            .hero { height: auto; padding: 80px 20px 40px; }
-            .main-photo-container { margin: 0 auto 40px; }
-        }
+        footer { padding: 100px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olive-dark); }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-content">
-            <img src="img/monograma.png" alt="Monograma L&C" class="monograma">
-            <h1>Luis & Citlalli</h1>
-            <p class="hero-date">11 . JULIO . 2026</p>
-        </div>
-    </section>
+    <div class="hero">
+        <h1>Luis &<br>Citlalli</h1>
+        <p class="hero-date">11 . JULIO . 2026</p>
+    </div>
 
-    <div class="main-photo-container fade">
-        <img src="img/hero.jpg" alt="Nuestra Foto">
+    <div class="photo-wrap fade">
+        <img src="img/monograma.png" class="monograma-bg" alt="">
+        <img src="img/hero.jpg" class="main-photo" alt="Luis y Citlalli">
     </div>
 
     <section class="fade">
         <div class="dedicatoria">
             "Por encima de todo, vístanse de amor, que es el vínculo perfecto."
             <br>
-            <span style="font-size: 1.1rem; font-style: normal; display: block; margin-top: 15px; letter-spacing: 2px; color: var(--olive-dark);">COLOSENSES 3:14</span>
+            <span style="font-size: 1.2rem; font-style: normal; display: block; margin-top: 20px; letter-spacing: 3px; color: var(--olive-dark);">COLOSENSES 3:14</span>
         </div>
     </section>
-
-    <div class="divider-png fade"><img src="img/divisor-1.png" alt="botánico"></div>
 
     <section id="detalles" class="fade">
         <h2 class="section-title">Faltan</h2>
@@ -223,32 +173,26 @@
         </div>
     </section>
 
-    <div class="divider-png fade"><img src="img/divisor-2.png" alt="botánico"></div>
-
     <section class="fade">
         <div class="event-card">
-            <h2>Ceremonia</h2>
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 10px;">Ceremonia</h2>
             <p><strong>5:00 PM</strong></p>
             <p>Parroquia Sagrado Corazón de Jesús</p>
-            <p style="font-size: 0.85rem; color: var(--olive-medium);">Torreón, Coahuila</p>
-            <a href="https://maps.google.com" target="_blank" class="event-btn">Ver Ubicación</a>
+            <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
 
         <div class="event-card">
-            <h2>Recepción</h2>
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 10px;">Recepción</h2>
             <p><strong>9:00 PM</strong></p>
             <p>Hacienda Elegancia</p>
-            <p style="font-size: 0.85rem; color: var(--olive-medium);">Torreón, Coahuila</p>
-            <a href="https://maps.google.com" target="_blank" class="event-btn">Ver Ubicación</a>
+            <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
     </section>
 
-    <footer>
-        ♡ L & C ♡
-    </footer>
+    <footer>♡ L & C ♡</footer>
 
     <script>
-        // Contador
+        // Lógica del contador
         const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
         const updateTimer = () => {
             const now = new Date().getTime();
@@ -263,7 +207,7 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // Animación Fade al Scroll
+        // Observer para efectos de aparición
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
