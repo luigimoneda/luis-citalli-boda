@@ -189,39 +189,90 @@
             box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
         }
 
-        /* --- ESTILOS PARA LAS NUEVAS SECCIONES --- */
-.info-section {
+       /* --- ESTILOS UNIFICADOS PARA NUEVAS SECCIONES --- */
+.card-style {
+    background: transparent;
     padding: 60px 20px;
-    border-bottom: 1px solid rgba(58, 90, 64, 0.05);
+    margin-bottom: 80px;
+    border: none;
+    box-shadow: none;
+    text-align: center;
 }
 
-.info-icon {
-    width: 40px;
-    height: auto;
-    margin-bottom: 20px;
-    opacity: 0.8;
+/* Reutilizamos y ajustamos los estilos existentes para los textos */
+.info-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.info-place {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--olive-dark);
+    margin-bottom: 10px;
 }
 
 .info-text {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--olive-medium);
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* Estilos para el botón reutilizable */
+.action-btn {
+    display: inline-block;
+    padding: 16px 60px;
+    background: var(--olive-dark);
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: 0.4s ease;
+    box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
+}
+
+.action-btn:hover {
+    background: var(--olive-medium);
+    transform: translateY(-2px);
+}
+
+/* --- ESTILO PARA LA PALETA DE COLORES --- */
+.color-palette-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.color-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(58, 90, 64, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* --- ESTILO PARA EL BOTÓN DE AMAZON (DIFERENTE) --- */
 .amazon-btn {
     background-color: #232f3e; /* Color elegante de Amazon */
-    border-radius: 8px;
 }
 
 .amazon-btn:hover {
     background-color: #37475a;
 }
-
         /* ANIMACIONES */
         .fade { opacity: 0; transform: translateY(30px); transition: 1.5s ease-out; }
         .fade.visible { opacity: 1; transform: translateY(0); }
@@ -288,37 +339,43 @@
             <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
         
-    </section>
-<section class="info-section fade">
-        <h2 class="section-title" style="font-size: 1.8rem;">Código de Vestimenta</h2>
+   <section class="card-style fade">
+        <h2 class="info-section-title">Código de Vestimenta</h2>
+        <p class="info-place">FORMAL</p>
         <p class="info-text">
-            Queremos que luzcan increíbles. El código de vestimenta para nuestra celebración es:
-            <br>
-            <strong>FORMAL</strong>
+            Nuestra boda será una celebración formal. Queremos que luzcan increíbles y se sientan cómodos. Como sugerencia, hemos preparado una paleta de colores para nuestra celebración.
         </p>
+        
+        <div class="color-palette-container">
+            <div class="color-circle" style="background-color: #f9f8f4;"></div> <div class="color-circle" style="background-color: #6B705C;"></div> <div class="color-circle" style="background-color: #A3B18A;"></div> <div class="color-circle" style="background-color: #e0d9b5;"></div> <div class="color-circle" style="background-color: #bfa36a;"></div> <div class="color-circle" style="background-color: #ffffff;"></div> </div>
+
         <p class="info-text" style="font-size: 0.85rem; font-style: italic;">
-            (Sugerencia: Colores claros para el día, traje oscuro para la noche)
+            *Sugerencia: Colores claros para el día, traje oscuro para la noche.
         </p>
+        
+        <a href="LINK_A_TU_TABLERO_PINTEREST" target="_blank" class="action-btn">Ver Inspiración en Pinterest</a>
     </section>
 
     <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
 
-    <section class="info-section fade">
-        <h2 class="section-title" style="font-size: 1.8rem;">Confirmación</h2>
+    <section class="card-style fade">
+        <h2 class="info-section-title">Confirmación</h2>
+        <p class="info-place">Asistencia</p>
         <p class="info-text">
-            Tu presencia es nuestro mejor regalo. Por favor, confirma tu asistencia antes del 15 de junio.
+            Tu presencia es nuestro mejor regalo. Por favor, confirma tu asistencia antes del 15 de junio para ayudarnos en la organización.
         </p>
-        <a href="https://wa.me/TUNUMERO" target="_blank" class="event-btn">Confirmar por WhatsApp</a>
+        <a href="https://wa.me/TUNUMERO" target="_blank" class="action-btn">Confirmar por WhatsApp</a>
     </section>
 
     <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
 
-    <section class="info-section fade">
-        <h2 class="section-title" style="font-size: 1.8rem;">Mesa de Regalos</h2>
+    <section class="card-style fade">
+        <h2 class="info-section-title">Mesa de Regalos</h2>
+        <p class="info-place">Amazon Wedding Registry</p>
         <p class="info-text">
             Si deseas tener un detalle con nosotros, hemos preparado una selección en Amazon para facilitar el proceso.
         </p>
-        <a href="LINK_A_TU_LISTA_AMAZON" target="_blank" class="event-btn amazon-btn">Ver Mesa en Amazon</a>
+        <a href="LINK_A_TU_LISTA_AMAZON" target="_blank" class="action-btn amazon-btn">Ver Mesa en Amazon</a>
     </section>
     
     <footer>♡ L & C ♡</footer>
