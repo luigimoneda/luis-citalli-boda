@@ -194,6 +194,71 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeInScale { from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } }
+
+        /* --- ESTILOS PARA ELEMENTOS FLORALES DE SECCIÓN --- */
+
+/* Clase base para secciones con fondo floral */
+.seccion-floral {
+    position: relative; /* Necesario para posicionar las flores absoluto */
+    overflow: hidden; /* Corta las flores que sobresalgan del contenedor */
+    padding: 100px 20px !important; /* Más aire para que luzcan las flores */
+    background-color: var(--white); /* Fondo blanco limpio para las tarjetas */
+    border-radius: 8px; /* Tarjeta redondeada */
+    box-shadow: 0 10px 30px rgba(58, 90, 64, 0.05); /* Sombra suave */
+    max-width: 800px; /* Límite de ancho para que no se pierdan en PC */
+    margin: 40px auto; /* Centrado con margen */
+}
+
+/* Pseudo-elementos para las flores de esquina */
+.seccion-floral::before,
+.seccion-floral::after {
+    content: '';
+    position: absolute;
+    width: 250px; /* Tamaño de las flores en PC */
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8; /* Ligeramente transparente para no saturar */
+    z-index: 1; /* Detrás del texto */
+    pointer-events: none; /* No interfiere con clics */
+}
+
+/* Flor Superior Izquierda (Estilo referenciado) */
+.floral-izq::before {
+    top: -20px;
+    left: -20px;
+    background-image: url('img/flores-esquina-izq.png');
+    transform: rotate(10deg); /* Un pequeño giro artístico */
+}
+
+/* Flor Inferior Derecha (Estilo referenciado) */
+.floral-der::after {
+    bottom: -20px;
+    right: -20px;
+    background-image: url('img/flores-esquina-der.png');
+    transform: rotate(-10deg);
+}
+
+/* Asegurar que el contenido de texto esté ARRIBA de las flores */
+.seccion-floral > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajustes para Móviles (Responsive) */
+@media (max-width: 768px) {
+    .seccion-floral {
+        padding: 80px 15px !important;
+        margin: 20px;
+    }
+    
+    .seccion-floral::before,
+    .seccion-floral::after {
+        width: 150px; /* Flores más pequeñas en móvil */
+        opacity: 0.6; /* Un poco más sutiles en pantalla pequeña */
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -240,23 +305,25 @@
 
     <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
 
-    <section class="fade">
-        <div class="event-card">
-            <span class="event-time">5:00 PM</span>
-            <h2 class="event-type">Ceremonia Religiosa</h2>
-            <p class="event-place">Parroquia San Mateo</p>
-            <p class="event-address">Av. Juan de la Rosa<br>Rurrenabaque</p>
-            <a href="#" class="event-btn">Ver Ubicación</a>
-        </div>
+  <section id="eventos" class="fade" style="padding: 0; max-width: 100%;">
+    
+    <div class="seccion-floral floral-izq event-card">
+        <span class="event-time">5:00 PM</span>
+        <h2 class="event-type">Ceremonia Religiosa</h2>
+        <p class="event-place">Parroquia San Mateo</p>
+        <p class="event-address">Av. Juan de la Rosa<br>Rurrenabaque</p>
+        <a href="#" class="event-btn">Ver Ubicación</a>
+    </div>
 
-        <div class="event-card">
-            <span class="event-time">8:00 PM</span>
-            <h2 class="event-type">Recepción Social</h2>
-            <p class="event-place">Hacienda Elegancia</p>
-            <p class="event-address">Calle Principal #123<br>Zona Norte</p>
-            <a href="#" class="event-btn">Ver Ubicación</a>
-        </div>
-    </section>
+    <div class="seccion-floral floral-der event-card">
+        <span class="event-time">8:00 PM</span>
+        <h2 class="event-type">Recepción Social</h2>
+        <p class="event-place">Hacienda Elegancia</p>
+        <p class="event-address">Calle Principal #123<br>Zona Norte</p>
+        <a href="#" class="event-btn">Ver Ubicación</a>
+    </div>
+
+</section>
 
     <section class="card-style fade">
         <h2 class="info-section-title">Código de Vestimenta</h2>
