@@ -189,6 +189,39 @@
             box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
         }
 
+        /* --- ESTILOS PARA LAS NUEVAS SECCIONES --- */
+.info-section {
+    padding: 60px 20px;
+    border-bottom: 1px solid rgba(58, 90, 64, 0.05);
+}
+
+.info-icon {
+    width: 40px;
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.info-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--olive-medium);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.amazon-btn {
+    background-color: #232f3e; /* Color elegante de Amazon */
+    border-radius: 8px;
+}
+
+.amazon-btn:hover {
+    background-color: #37475a;
+}
+
         /* ANIMACIONES */
         .fade { opacity: 0; transform: translateY(30px); transition: 1.5s ease-out; }
         .fade.visible { opacity: 1; transform: translateY(0); }
@@ -254,8 +287,40 @@
             <p class="event-address">Calle Principal #123<br>Zona Norte</p>
             <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
+        
+    </section>
+<section class="info-section fade">
+        <h2 class="section-title" style="font-size: 1.8rem;">Código de Vestimenta</h2>
+        <p class="info-text">
+            Queremos que luzcan increíbles. El código de vestimenta para nuestra celebración es:
+            <br>
+            <strong>FORMAL</strong>
+        </p>
+        <p class="info-text" style="font-size: 0.85rem; font-style: italic;">
+            (Sugerencia: Colores claros para el día, traje oscuro para la noche)
+        </p>
     </section>
 
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
+
+    <section class="info-section fade">
+        <h2 class="section-title" style="font-size: 1.8rem;">Confirmación</h2>
+        <p class="info-text">
+            Tu presencia es nuestro mejor regalo. Por favor, confirma tu asistencia antes del 15 de junio.
+        </p>
+        <a href="https://wa.me/TUNUMERO" target="_blank" class="event-btn">Confirmar por WhatsApp</a>
+    </section>
+
+    <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
+
+    <section class="info-section fade">
+        <h2 class="section-title" style="font-size: 1.8rem;">Mesa de Regalos</h2>
+        <p class="info-text">
+            Si deseas tener un detalle con nosotros, hemos preparado una selección en Amazon para facilitar el proceso.
+        </p>
+        <a href="LINK_A_TU_LISTA_AMAZON" target="_blank" class="event-btn amazon-btn">Ver Mesa en Amazon</a>
+    </section>
+    
     <footer>♡ L & C ♡</footer>
 
     <script>
