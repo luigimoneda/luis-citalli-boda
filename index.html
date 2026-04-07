@@ -37,32 +37,28 @@
             justify-content: center;
             text-align: center;
             padding: 20px;
-            position: relative; /* Necesario para posicionar el monograma absoluto */
-            overflow: hidden; /* Evita que el monograma gigante desborde */
+            position: relative;
+            overflow: hidden;
         }
 
-        /* El Monograma como Marca de Agua de Fondo */
         .hero-monograma-bg {
             position: absolute;
-            /* Lo centramos perfectamente */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            /* Lo hacemos enorme para que rellene */
-            width: 120vw; /* Más ancho que la pantalla */
-            max-width: 1200px; /* Pero con un límite en PC */
+            width: 120vw;
+            max-width: 1200px;
             height: auto;
-            /* LA CLAVE: Transparencia y filtros */
-            opacity: 0.06; /* Muy, muy sutil para no distraer */
-            filter: grayscale(1); /* Lo convertimos a gris para que no compita en color */
-            z-index: 1; /* Detrás del texto */
-            pointer-events: none; /* No interfiere con clics */
-            animation: fadeInScale 2.5s ease-out; /* Animación suave al cargar */
+            opacity: 0.06;
+            filter: grayscale(1);
+            z-index: 1;
+            pointer-events: none;
+            animation: fadeInScale 2.5s ease-out;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2; /* Por encima del monograma */
+            z-index: 2;
         }
 
         .hero h1 { 
@@ -83,15 +79,13 @@
             animation: fadeIn 2s ease;
         }
 
-        /* --- CONTENEDOR DE FOTO: ESPACIO AJUSTADO --- */
         .photo-section {
             width: 100%;
             height: 75vh; 
-            margin-top: 0; /* Eliminamos el margen superior para que empiece justo después del Hero */
-            margin-bottom: 120px; /* Espacio generoso después de la foto */
+            margin-bottom: 120px;
             overflow: hidden;
             position: relative;
-            z-index: 3; /* Asegura que la foto esté arriba en el scroll */
+            z-index: 3;
         }
 
         .main-photo {
@@ -102,14 +96,6 @@
             box-shadow: 0 15px 35px rgba(58, 90, 64, 0.1);
         }
 
-        @media (max-width: 768px) {
-            .photo-section {
-                height: 60vh; 
-                margin-bottom: 80px;
-            }
-        }
-
-        /* SECCIONES POSTERIORES */
         section { padding: 80px 20px; max-width: 900px; margin: auto; text-align: center; }
 
         .dedicatoria {
@@ -130,7 +116,6 @@
             text-transform: uppercase;
         }
 
-        /* --- DIVISORES BOTÁNICOS --- */
         .divider-png { 
             display: block; 
             width: 100%; 
@@ -141,93 +126,74 @@
             text-align: center;
         }
 
-        .divider-png img { 
-            width: 80%; 
-            height: auto; 
-        }
-
-        @media (max-width: 600px) {
-            .divider-png {
-                max-width: 300px; 
-                margin: 70px auto;
-            }
-        }
+        .divider-png img { width: 80%; height: auto; }
 
         .countdown { display: flex; justify-content: center; gap: 30px; }
         .time-box span { display: block; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--olive-dark); font-weight: 600; }
 
-        /* --- ACTUALIZACIÓN DE ESTILO PARA EVENTOS (TIPO IMAGEN) --- */
-    .event-card {
-        background: transparent; /* Quitamos el fondo blanco de la tarjeta para que sea minimalista */
-        padding: 40px 20px;
-        margin-bottom: 60px;
-        border: none; /* Quitamos bordes y sombras pesadas */
-        box-shadow: none;
-        text-align: center;
-    }
+        /* --- ESTILO DE EVENTOS (TIPO IMAGEN) --- */
+        .event-card {
+            background: transparent;
+            padding: 40px 20px;
+            margin-bottom: 60px;
+            border: none;
+            text-align: center;
+        }
 
-    .event-time {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.1rem;
-        color: var(--olive-medium);
-        letter-spacing: 3px;
-        margin-bottom: 10px;
-        display: block;
-    }
+        .event-time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--olive-medium);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: block;
+        }
 
-    .event-type {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: var(--text-main);
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-    }
+        .event-type {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
 
-    .event-place {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.8rem;
-        color: var(--olive-dark);
-        margin-bottom: 5px;
-    }
+        .event-place {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--olive-dark);
+            margin-bottom: 5px;
+        }
 
-    .event-address {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.95rem;
-        color: var(--olive-medium);
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
+        .event-address {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--olive-medium);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
-    .event-btn {
-        display: inline-block;
-        padding: 16px 60px; /* Botón más largo como el de la imagen */
-        background: var(--olive-dark);
-        color: var(--white);
-        text-decoration: none;
-        letter-spacing: 3px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        border-radius: 8px; /* Bordes suavemente redondeados */
-        transition: 0.4s ease;
-        box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
-    }
-
-    .event-btn:hover {
-        background: var(--olive-medium);
-        transform: translateY(-2px);
-    }
+        .event-btn {
+            display: inline-block;
+            padding: 16px 60px;
+            background: var(--olive-dark);
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: 0.4s ease;
+            box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
+        }
 
         /* ANIMACIONES */
         .fade { opacity: 0; transform: translateY(30px); transition: 1.5s ease-out; }
         .fade.visible { opacity: 1; transform: translateY(0); }
-        
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        /* Animación especial para el monograma de fondo */
         @keyframes fadeInScale { 
             from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } 
             to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } 
@@ -240,7 +206,6 @@
 
     <div class="hero">
         <img src="img/monograma.png" class="hero-monograma-bg" alt="">
-        
         <div class="hero-content">
             <h1>Luis &<br>Citlalli</h1>
             <p class="hero-date">11 . JULIO . 2026</p>
@@ -273,12 +238,27 @@
 
     <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno botánico"></div>
 
-   </section>
+    <section class="fade">
+        <div class="event-card">
+            <span class="event-time">5:00 PM</span>
+            <h2 class="event-type">Ceremonia Religiosa</h2>
+            <p class="event-place">Parroquia San Mateo</p>
+            <p class="event-address">Av. Juan de la Rosa<br>Rurrenabaque</p>
+            <a href="#" class="event-btn">Ver Ubicación</a>
+        </div>
+
+        <div class="event-card">
+            <span class="event-time">8:00 PM</span>
+            <h2 class="event-type">Recepción Social</h2>
+            <p class="event-place">Hacienda Elegancia</p>
+            <p class="event-address">Calle Principal #123<br>Zona Norte</p>
+            <a href="#" class="event-btn">Ver Ubicación</a>
+        </div>
+    </section>
 
     <footer>♡ L & C ♡</footer>
 
     <script>
-        // Lógica del contador
         const weddingDate = new Date("July 11, 2026 17:00:00").getTime();
         const updateTimer = () => {
             const now = new Date().getTime();
@@ -293,7 +273,6 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // Observer para efectos fade al hacer scroll
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
