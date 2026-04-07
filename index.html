@@ -331,47 +331,54 @@
         grid-column: span 2; /* En PC ocupa 2 de las 3 columnas */
         height: 450px;
     }
-        /* --- ESTILO PARA LA FOTO DE CIERRE CON FUNDIDO --- */
+        /* --- ESTILO PARA LA FOTO DE CIERRE CORREGIDO --- */
 .final-photo-container {
     width: 100%;
-    height: 80vh; /* Ocupa gran parte de la pantalla para impacto visual */
-    position: relative; /* Necesario para posicionar el degradado encima */
+    /* Eliminamos el height fijo para que respete la proporción de la foto */
+    height: auto; 
+    min-height: 400px; /* Evita que se vea muy pequeña */
+    position: relative;
     overflow: hidden;
-    margin-top: 100px; /* Espacio después de la última sección de info */
+    margin-top: 50px;
 }
 
 .final-photo-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajusta la foto sin deformarla */
-    object-position: center 20%; /* Centra la foto, ajustando un poco hacia arriba */
+    height: auto; /* La foto dicta su propia altura */
     display: block;
 }
 
-/* EL DEGRADADO DE FUNDIDO (Gradient Overaly) */
+/* EL DEGRADADO: Ajustado para fundirse desde arriba */
 .final-photo-container::after {
-    content: ''; /* Pseudo-elemento vacío */
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Cubre toda la foto */
-    /* Creamos el degradado: de crema sólido a transparente */
+    height: 100%; 
+    /* Degradado más suave para móviles */
     background: linear-gradient(
-        to bottom, /* Dirección: de arriba hacia abajo */
-        var(--bg-cream) 0%, /* Empieza 100% color crema del fondo */
-        var(--bg-cream) 15%, /* Se mantiene crema un poco */
-        transparent 50%, /* Se vuelve transparente a la mitad */
-        transparent 100% /* Termina transparente */
+        to bottom,
+        var(--bg-cream) 0%,
+        var(--bg-cream) 5%, 
+        transparent 40%
     );
-    z-index: 2; /* Se posiciona POR ENCIMA de la foto */
+    z-index: 2;
 }
 
-/* Ajuste para pantallas pequeñas (móvil) */
+/* Ajuste específico para móvil */
 @media (max-width: 768px) {
     .final-photo-container {
-        height: 60vh; /* Un poco más baja en móvil */
-        margin-top: 60px;
+        margin-top: 30px;
+        min-height: auto;
+    }
+    .final-photo-container::after {
+        /* En móvil, el degradado debe ser más corto para no tapar las caras */
+        background: linear-gradient(
+            to bottom,
+            var(--bg-cream) 0%,
+            transparent 30%
+        );
     }
 }
     
@@ -439,13 +446,16 @@
             <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
 
-        <div class="event-card">
+       <div class="event-card">
             <span class="event-time">8:00 PM</span>
             <h2 class="event-type">Recepción Social</h2>
             <p class="event-place">Hacienda Elegancia</p>
             <p class="event-address">Calle Principal #123<br>Zona Norte</p>
             <a href="#" class="event-btn">Ver Ubicación</a>
         </div>
+    </section> ```
+
+Con estos cambios, la foto de cierre debería lucir mucho más natural y equilibrada en cualquier celular. ¡Pruébalo y me cuentas!
         
    <section class="card-style fade">
         <h2 class="info-section-title">Código de Vestimenta</h2>
