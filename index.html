@@ -116,17 +116,32 @@
             text-transform: uppercase;
         }
         
+/* --- AJUSTE DE DIVISORES BOTÁNICOS --- */
 .divider-png { 
     display: block; 
     width: 100%; 
-    max-width: 200px; /* Tamaño discreto para que no compita con el monograma */
-    margin: 40px auto; 
-    opacity: 0.8; 
-    filter: sepia(0.3); /* Un toque vintage para que combine con el crema */
+    /* Aumentamos de 200px a 450px para que luzcan más */
+    max-width: 450px; 
+    /* Aumentamos el margen (arriba/abajo) para que respiren */
+    margin: 80px auto; 
+    opacity: 0.9; 
+    /* Un ligero tono sepia para que combine con el fondo crema */
+    filter: sepia(0.2); 
+    text-align: center;
 }
+
 .divider-png img { 
-    width: 100%; 
+    width: 80%; /* Esto permite que en móviles no toquen las orillas */
     height: auto; 
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 600px) {
+    .divider-png {
+        max-width: 300px; /* Un poco más pequeño en móvil para no saturar */
+        margin: 60px auto;
+    }
+} 
 }
         .countdown { display: flex; justify-content: center; gap: 30px; }
         .time-box span { display: block; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--olive-dark); font-weight: 600; }
