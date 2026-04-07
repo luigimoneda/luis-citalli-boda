@@ -195,70 +195,46 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeInScale { from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } }
 
-        /* --- ESTILOS PARA ELEMENTOS FLORALES DE SECCIÓN --- */
-
-/* Clase base para secciones con fondo floral */
-.seccion-floral {
-    position: relative; /* Necesario para posicionar las flores absoluto */
-    overflow: hidden; /* Corta las flores que sobresalgan del contenedor */
-    padding: 100px 20px !important; /* Más aire para que luzcan las flores */
-    background-color: var(--white); /* Fondo blanco limpio para las tarjetas */
-    border-radius: 8px; /* Tarjeta redondeada */
-    box-shadow: 0 10px 30px rgba(58, 90, 64, 0.05); /* Sombra suave */
-    max-width: 800px; /* Límite de ancho para que no se pierdan en PC */
-    margin: 40px auto; /* Centrado con margen */
-}
-
-/* Pseudo-elementos para las flores de esquina */
-.seccion-floral::before,
-.seccion-floral::after {
-    content: '';
-    position: absolute;
-    width: 250px; /* Tamaño de las flores en PC */
-    height: auto;
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.8; /* Ligeramente transparente para no saturar */
-    z-index: 1; /* Detrás del texto */
-    pointer-events: none; /* No interfiere con clics */
-}
-
-/* Flor Superior Izquierda (Estilo referenciado) */
-.floral-izq::before {
-    top: -20px;
-    left: -20px;
-    background-image: url('img/flores-esquina-izq.png');
-    transform: rotate(10deg); /* Un pequeño giro artístico */
-}
-
-/* Flor Inferior Derecha (Estilo referenciado) */
-.floral-der::after {
-    bottom: -20px;
-    right: -20px;
-    background-image: url('img/flores-esquina-der.png');
-    transform: rotate(-10deg);
-}
-
-/* Asegurar que el contenido de texto esté ARRIBA de las flores */
-.seccion-floral > * {
+      /* --- AJUSTE FLORAL TRANSPARENTE --- */
+.event-card {
     position: relative;
-    z-index: 2;
+    overflow: visible; /* Permitimos que las flores sobresalgan un poco */
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    z-index: 1;
 }
 
-/* Ajustes para Móviles (Responsive) */
-@media (max-width: 768px) {
-    .seccion-floral {
-        padding: 80px 15px !important;
-        margin: 20px;
-    }
-    
-    .seccion-floral::before,
-    .seccion-floral::after {
-        width: 150px; /* Flores más pequeñas en móvil */
-        opacity: 0.6; /* Un poco más sutiles en pantalla pequeña */
-    }
+/* Contenedores para las flores */
+.decoracion-floral {
+    position: absolute;
+    width: 180px; /* Tamaño en móvil */
+    height: auto;
+    z-index: -1; /* Van detrás del texto */
+    opacity: 0.8;
+    pointer-events: none;
 }
-        
+
+/* Posiciones específicas */
+.flor-superior-izq {
+    top: -30px;
+    left: -10px;
+    transform: rotate(-15deg);
+}
+
+.flor-inferior-der {
+    bottom: -30px;
+    right: -10px;
+    transform: rotate(15deg);
+}
+
+/* Ajuste para pantallas grandes (PC) */
+@media (min-width: 768px) {
+    .decoracion-floral {
+        width: 300px; /* Más grandes en PC */
+    }
+    .flor-superior-izq { top: -50px; left: -50px; }
+    .flor-inferior-der { bottom: -50px; right: -50px; }
+}
     </style>
 </head>
 <body>
@@ -305,9 +281,11 @@
 
     <div class="divider-png fade"><img src="img/divisor-1.png" alt="adorno"></div>
 
-  <section id="eventos" class="fade" style="padding: 0; max-width: 100%;">
+  <section class="fade">
     
-    <div class="seccion-floral floral-izq event-card">
+    <div class="event-card">
+        <img src="img/flores-izq.png" class="decoracion-floral flor-superior-izq" alt="">
+        
         <span class="event-time">5:00 PM</span>
         <h2 class="event-type">Ceremonia Religiosa</h2>
         <p class="event-place">Parroquia San Mateo</p>
@@ -315,7 +293,9 @@
         <a href="#" class="event-btn">Ver Ubicación</a>
     </div>
 
-    <div class="seccion-floral floral-der event-card">
+    <div class="event-card">
+        <img src="img/flores-der.png" class="decoracion-floral flor-inferior-der" alt="">
+        
         <span class="event-time">8:00 PM</span>
         <h2 class="event-type">Recepción Social</h2>
         <p class="event-place">Hacienda Elegancia</p>
@@ -324,7 +304,6 @@
     </div>
 
 </section>
-
     <section class="card-style fade">
         <h2 class="info-section-title">Código de Vestimenta</h2>
         <p class="info-place">FORMAL</p>
