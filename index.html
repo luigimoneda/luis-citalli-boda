@@ -331,7 +331,50 @@
         grid-column: span 2; /* En PC ocupa 2 de las 3 columnas */
         height: 450px;
     }
-        
+        /* --- ESTILO PARA LA FOTO DE CIERRE CON FUNDIDO --- */
+.final-photo-container {
+    width: 100%;
+    height: 80vh; /* Ocupa gran parte de la pantalla para impacto visual */
+    position: relative; /* Necesario para posicionar el degradado encima */
+    overflow: hidden;
+    margin-top: 100px; /* Espacio después de la última sección de info */
+}
+
+.final-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+    object-position: center 20%; /* Centra la foto, ajustando un poco hacia arriba */
+    display: block;
+}
+
+/* EL DEGRADADO DE FUNDIDO (Gradient Overaly) */
+.final-photo-container::after {
+    content: ''; /* Pseudo-elemento vacío */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cubre toda la foto */
+    /* Creamos el degradado: de crema sólido a transparente */
+    background: linear-gradient(
+        to bottom, /* Dirección: de arriba hacia abajo */
+        var(--bg-cream) 0%, /* Empieza 100% color crema del fondo */
+        var(--bg-cream) 15%, /* Se mantiene crema un poco */
+        transparent 50%, /* Se vuelve transparente a la mitad */
+        transparent 100% /* Termina transparente */
+    );
+    z-index: 2; /* Se posiciona POR ENCIMA de la foto */
+}
+
+/* Ajuste para pantallas pequeñas (móvil) */
+@media (max-width: 768px) {
+    .final-photo-container {
+        height: 60vh; /* Un poco más baja en móvil */
+        margin-top: 60px;
+    }
+}
+    
     </style>
 </head>
 <body>
@@ -442,7 +485,11 @@
         </p>
         <a href="LINK_A_TU_LISTA_AMAZON" target="_blank" class="action-btn amazon-btn">Ver Mesa en Amazon</a>
     </section>
-    
+
+        <div class="final-photo-container fade">
+    <img src="img/hero.jpg" alt="Luis y Citlalli | El final">
+</div>
+
     <footer>♡ L & C ♡</footer>
 
     <script>
