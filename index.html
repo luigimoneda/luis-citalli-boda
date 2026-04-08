@@ -68,12 +68,26 @@
             animation: fadeInUp 1.5s ease;
         }
 
-        .hero-date {
-            letter-spacing: clamp(4px, 1.5vw, 10px);
-            color: var(--olive-medium);
-            font-size: clamp(0.8rem, 2.5vw, 1.3rem);
-            text-transform: uppercase;
-            animation: fadeIn 2s ease;
+       .hero-date {
+    letter-spacing: clamp(4px, 1.5vw, 10px);
+    font-size: clamp(0.8rem, 2.5vw, 1.3rem);
+    text-transform: uppercase;
+    animation: fadeIn 2s ease;
+    
+    /* --- EFECTO DORADO --- */
+    background: linear-gradient(
+        to right, 
+        #BF953F, 
+        #FCF6BA, 
+        #B38728, 
+        #FBF5B7, 
+        #AA771C
+    );
+    -webkit-background-clip: text; /* Corta el fondo para que solo se vea en las letras */
+    -webkit-text-fill-color: transparent; /* Hace el texto transparente para mostrar el degradado */
+    font-weight: 600; /* Un poco más de grosor para que luzca el brillo */
+    display: inline-block;
+           
         }
 
         /* --- EFECTO PARALLAX CORREGIDO --- */
