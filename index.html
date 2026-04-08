@@ -68,30 +68,20 @@
             animation: fadeInUp 1.5s ease;
         }
 
-       .hero-date {
-    letter-spacing: clamp(4px, 1.5vw, 10px);
-    font-size: clamp(0.8rem, 2.5vw, 1.3rem);
-    text-transform: uppercase;
-    animation: fadeIn 2s ease;
-    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
-    
-    /* --- EFECTO DORADO --- */
-    background: linear-gradient(
-        to right, 
-        #BF953F, 
-        #FCF6BA, 
-        #B38728, 
-        #FBF5B7, 
-        #AA771C
-    );
-    -webkit-background-clip: text; /* Corta el fondo para que solo se vea en las letras */
-    -webkit-text-fill-color: transparent; /* Hace el texto transparente para mostrar el degradado */
-    font-weight: 600; /* Un poco más de grosor para que luzca el brillo */
-    display: inline-block;
-           
+        .hero-date {
+            letter-spacing: clamp(4px, 1.5vw, 10px);
+            font-size: clamp(0.8rem, 2.5vw, 1.3rem);
+            text-transform: uppercase;
+            animation: fadeIn 2s ease;
+            filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            display: inline-block;
         }
 
-        /* --- EFECTO PARALLAX CORREGIDO --- */
+        /* --- EFECTO PARALLAX --- */
         .photo-section {
             width: 100%;
             height: 80vh;
@@ -107,10 +97,7 @@
         }
 
         @media (max-width: 768px) {
-            .photo-section {
-                background-attachment: scroll; /* Evita errores en móviles */
-                height: 60vh;
-            }
+            .photo-section { background-attachment: scroll; height: 60vh; }
         }
 
         section { padding: 60px 20px; max-width: 900px; margin: auto; text-align: center; }
@@ -188,7 +175,7 @@
         .event-place { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--olive-dark); margin-top: 5px; }
         .event-address { font-size: 0.95rem; color: var(--olive-medium); line-height: 1.6; margin: 20px auto; max-width: 500px; }
 
-        .action-btn, .event-btn {
+        .action-btn {
             display: inline-block;
             padding: 16px 50px;
             background: var(--olive-dark);
@@ -200,33 +187,31 @@
             border-radius: 8px;
             transition: 0.3s;
             font-size: 0.85rem;
+            margin-top: 10px;
         }
-        
-/* --- ESTILO TEXTO SIN NIÑOS --- */
-.no-ninos {
-    margin-bottom: 30px;
-    padding: 20px;
-    border-top: 1px solid rgba(58, 90, 64, 0.1);
-    border-bottom: 1px solid rgba(58, 90, 64, 0.1);
-}
 
-.no-ninos p {
-    font-size: 0.9rem;
-    color: var(--olive-medium);
-    margin-bottom: 5px;
-}
+        /* --- VESTIMENTA & SIN NIÑOS --- */
+        .no-ninos {
+            margin: 30px auto;
+            padding: 20px;
+            border-top: 1px solid rgba(58, 90, 64, 0.1);
+            border-bottom: 1px solid rgba(58, 90, 64, 0.1);
+            max-width: 500px;
+        }
+        .no-ninos p { font-size: 0.9rem; color: var(--olive-medium); margin-bottom: 5px; }
+        .no-ninos span { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 3px; color: var(--olive-dark); font-weight: 600; }
 
-.no-ninos span {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    letter-spacing: 3px;
-    color: var(--olive-dark);
-    font-weight: 600;
-}
+        .card-style { padding: 60px 20px; margin-bottom: 40px; text-align: center; }
         
-        /* --- VESTIMENTA & PALETA --- */
-        .card-style { padding: 40px 20px; margin-bottom: 40px; text-align: center; }
-        .info-section-title { font-weight: 600; letter-spacing: 4px; text-transform: uppercase; font-size: 1.6rem; }
+        /* Ajuste de espacio solicitado para el título */
+        .info-section-title { 
+            font-weight: 600; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            font-size: 1.6rem; 
+            margin-bottom: 40px; /* Más espacio debajo del título */
+        }
+
         .info-place { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--olive-dark); }
         .info-text { font-size: 0.95rem; color: var(--olive-medium); line-height: 1.6; margin: 20px auto; max-width: 500px; }
 
@@ -239,17 +224,12 @@
             max-width: 400px;
         }
         .color-circle {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 45px; height: 45px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         /* --- CIERRE --- */
         .final-photo-container {
-            width: 100%; height: 500px; position: relative;
-            margin-top: 80px; overflow: hidden; background-color: var(--bg-cream);
+            width: 100%; height: 500px; position: relative; margin-top: 80px; overflow: hidden; background-color: var(--bg-cream);
         }
         .final-photo-container img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
         .gradient-overlay {
@@ -274,7 +254,7 @@
         <img src="img/monograma.png" class="hero-monograma-bg" alt="">
         <div class="hero-content">
             <h1>Luis &<br>Citlalli</h1>
-            <p class="hero-date">11 . JULIO . 2026</p>
+            <div class="hero-date">11 . JULIO . 2026</div>
         </div>
     </div>
 
@@ -317,7 +297,7 @@
             <h2 class="event-type">Ceremonia Religiosa</h2>
             <p class="event-place">Parroquia San Mateo</p>
             <p class="event-address">Av. Juan de la Rosa<br>Rurrenabaque</p>
-            <a href="#" class="event-btn">Ver Ubicación</a>
+            <a href="#" class="action-btn">Ver Ubicación</a>
         </div>
 
         <div class="event-card">
@@ -326,7 +306,7 @@
             <h2 class="event-type">Recepción Social</h2>
             <p class="event-place">Hacienda Elegancia</p>
             <p class="event-address">Calle Principal #123<br>Zona Norte</p>
-            <a href="#" class="event-btn">Ver Ubicación</a>
+            <a href="#" class="action-btn">Ver Ubicación</a>
         </div>
     </section>
 
@@ -351,17 +331,20 @@
             <div class="color-circle" style="background-color: #bfa36a;"></div>
             <div class="color-circle" style="background-color: #ffffff;"></div>
         </div>
-        
         <a href="LINK_PINTEREST" target="_blank" class="action-btn">Inspiración Pinterest</a>
     </section>
 
     <section class="card-style fade">
         <h2 class="info-section-title">Confirmación</h2>
+        <p class="info-place">Asistencia</p>
+        <p class="info-text">Para nosotros es muy importante contar con tu presencia. Por favor, confírmanos antes del 15 de junio.</p>
         <a href="https://wa.me/TUNUMERO" target="_blank" class="action-btn">Confirmar por WhatsApp</a>
     </section>
 
     <section class="card-style fade">
         <h2 class="info-section-title">Mesa de Regalos</h2>
+        <p class="info-place">Amazon Registry</p>
+        <p class="info-text">Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te compartimos nuestra mesa de regalos.</p>
         <a href="LINK_AMAZON" target="_blank" class="action-btn">Ver Mesa en Amazon</a>
     </section>
 
