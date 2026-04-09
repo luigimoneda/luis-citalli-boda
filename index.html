@@ -68,18 +68,23 @@
             animation: fadeInUp 1.5s ease;
         }
 
-        .hero-date {
-            letter-spacing: clamp(4px, 1.5vw, 10px);
-            font-size: clamp(0.8rem, 2.5vw, 1.3rem);
-            text-transform: uppercase;
-            animation: fadeIn 2s ease;
-            filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-            display: inline-block;
-        }
+       .hero-date {
+    letter-spacing: clamp(4px, 1.5vw, 10px);
+    font-size: clamp(0.8rem, 2.5vw, 1.3rem);
+    text-transform: uppercase;
+    animation: fadeIn 2s ease;
+    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
+    
+    /* Cambio a color Guinda / Vino */
+    color: #58181F; /* Un tono vino profundo y elegante */
+    font-weight: 600;
+    display: inline-block;
+    
+    /* Eliminamos las líneas de gradiente anteriores para que el color se vea */
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background: none;
+}
 
         /* --- EFECTO PARALLAX --- */
         .photo-section {
@@ -315,7 +320,13 @@
             z-index: 5;
         }
 
-        footer { padding: 60px 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olive-dark); text-align: center; }
+       footer { 
+    padding: 60px 20px; 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 1.8rem; 
+    color: #58181F; /* Cambiado de olive-dark a Guinda */
+    text-align: center; 
+}
 
         /* ANIMACIONES */
         .fade { opacity: 0; transform: translateY(30px); transition: 1.2s ease-out; }
