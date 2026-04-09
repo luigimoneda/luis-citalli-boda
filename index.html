@@ -272,42 +272,99 @@
 
         }
 
-        /* --- VESTIMENTA & SIN NIÑOS --- */
-        .no-ninos {
-            margin: 30px auto;
-            padding: 20px;
-            border-top: 1px solid rgba(58, 90, 64, 0.1);
-            border-bottom: 1px solid rgba(58, 90, 64, 0.1);
-            max-width: 500px;
-        }
-        .no-ninos p { font-size: 0.9rem; color: var(--olive-medium); margin-bottom: 5px; }
-        .no-ninos span { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 3px; color: var(--olive-dark); font-weight: 600; }
+       /* --- VESTIMENTA & SIN NIÑOS --- */
+.no-ninos {
+    margin: 30px auto;
+    padding: 20px;
+    border-top: 1px solid rgba(58, 90, 64, 0.1);
+    border-bottom: 1px solid rgba(58, 90, 64, 0.1);
+    max-width: 500px;
+}
+.no-ninos p { 
+    font-size: 0.9rem; 
+    color: var(--olive-medium); 
+    margin-bottom: 5px; 
+}
+.no-ninos span { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 1.4rem; 
+    letter-spacing: 3px; 
+    color: var(--olive-dark); 
+    font-weight: 600; 
+}
 
-        .card-style { padding: 60px 20px; margin-bottom: 40px; text-align: center; }
-        
-        /* Ajuste de espacio solicitado para el título */
-        .info-section-title { 
-            font-weight: 600; 
-            letter-spacing: 4px; 
-            text-transform: uppercase; 
-            font-size: 1.6rem; 
-            margin-bottom: 40px; /* Más espacio debajo del título */
-        }
+.card-style { padding: 60px 20px; margin-bottom: 40px; text-align: center; }
 
-        .info-place { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--olive-dark); }
-        .info-text { font-size: 0.95rem; color: var(--olive-medium); line-height: 1.6; margin: 20px auto; max-width: 500px; }
+.info-section-title { 
+    font-weight: 600; 
+    letter-spacing: 4px; 
+    text-transform: uppercase; 
+    font-size: 1.6rem; 
+    margin-bottom: 40px; 
+}
 
-        .color-palette-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px auto;
-            max-width: 400px;
-        }
-        .color-circle {
-            width: 45px; height: 45px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+.info-place { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 2rem; 
+    color: var(--olive-dark); 
+    margin-bottom: 20px;
+}
+
+/* --- NUEVA JERARQUÍA DE TEXTO --- */
+.vestimenta-detalles {
+    margin: 20px auto;
+    max-width: 550px;
+    line-height: 1.8;
+}
+
+.vestimenta-detalles p {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.vestimenta-detalles strong {
+    color: var(--olive-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.evitar-colores {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem !important;
+    color: #58181F !important; /* El tono guinda/vino para resaltar */
+    margin-top: 25px;
+    padding: 0 10px;
+}
+
+.recomendacion {
+    font-size: 0.9rem !important;
+    color: var(--olive-medium) !important;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- PALETA DE COLORES --- */
+.color-palette-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px auto;
+    max-width: 400px;
+}
+
+.color-circle {
+    width: 45px; 
+    height: 45px; 
+    border-radius: 50%; 
+    border: 2px solid white; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
         /* --- CIERRE --- */
         .final-photo-container {
@@ -498,7 +555,7 @@
         <img src="img/foto-intermedia.jpg" alt="Luis y Citlalli">
     </div>
     
-    <section class="card-style fade">
+   <section class="card-style fade">
         <h2 class="info-section-title">Código de Vestimenta</h2>
         
         <div class="no-ninos">
@@ -507,11 +564,13 @@
         </div>
 
         <p class="info-place">FORMAL</p>
-        <p class="info-text">
-    Caballeros: traje formal.
-    Damas: vestido de noche.
-    Favor de evitar blanco, beige o similares, rojo intenso, verde olivo y verde bosque.
-    Recomendamos vestir en tonos similares a estos.</p>
+
+        <div class="vestimenta-detalles">
+            <p><strong>Caballeros:</strong> traje formal.</p>
+            <p><strong>Damas:</strong> vestido de noche.</p>
+            <p class="evitar-colores">Favor de evitar blanco, beige o similares, rojo intenso, verde olivo y verde bosque.</p>
+            <p class="recomendacion">Recomendamos vestir en tonos similares a estos:</p>
+        </div>
         
         <div class="color-palette-container">
             <div class="color-circle" style="background-color: #4A0F0F;"></div>
@@ -521,6 +580,7 @@
             <div class="color-circle" style="background-color: #9C5C5C;"></div>
             <div class="color-circle" style="background-color: #6B4F3A;"></div>
         </div>
+
         <a href="LINK_PINTEREST" target="_blank" class="action-btn">Inspiración Pinterest</a>
     </section>
     
