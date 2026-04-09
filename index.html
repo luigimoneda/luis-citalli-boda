@@ -246,6 +246,54 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeInScale { from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } }
+
+        /* --- ESTILOS SECCIÓN PADRES --- */
+.bendicion-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--olive-medium);
+    margin-bottom: 40px;
+}
+
+.padres-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.padres-col {
+    flex: 1;
+    max-width: 300px;
+}
+
+.parent-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--olive-medium);
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.parent-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--olive-dark);
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+/* Ajuste para móviles: que los nombres se pongan uno debajo de otro */
+@media (max-width: 600px) {
+    .padres-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
     </style>
 </head>
 <body>
@@ -260,11 +308,26 @@
 
     <div class="photo-section fade"></div>
 
-    <section class="fade">
-        <div class="dedicatoria">
+   <section class="fade">
+        <p class="bendicion-texto">Con la bendición de Dios y la de nuestros padres</p>
+        
+        <div class="padres-container">
+            <div class="padres-col">
+                <p class="parent-label">Padres de la Novia</p>
+                <p class="parent-name">Nombre del Padre</p>
+                <p class="parent-name">Nombre de la Madre</p>
+            </div>
+            <div class="padres-col">
+                <p class="parent-label">Padres del Novio</p>
+                <p class="parent-name">Nombre del Padre</p>
+                <p class="parent-name">Nombre de la Madre</p>
+            </div>
+        </div>
+
+        <div class="dedicatoria" style="margin-top: 50px;">
             "Por encima de todo, vístanse de amor, que es el vínculo perfecto."
             <br>
-            <span style="font-size: 1.2rem; font-style: normal; display: block; margin-top: 20px; letter-spacing: 3px; color: var(--olive-dark);">COLOSENSES 3:14</span>
+            <span style="font-size: 1.1rem; font-style: normal; display: block; margin-top: 15px; letter-spacing: 3px; color: var(--olive-dark);">COLOSENSES 3:14</span>
         </div>
     </section>
 
