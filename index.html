@@ -247,7 +247,7 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeInScale { from { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } to { opacity: 0.06; transform: translate(-50%, -50%) scale(1); } }
 
-        /* --- ESTILOS SECCIÓN PADRES --- */
+       /* --- ESTILOS SECCIÓN PADRES --- */
 .bendicion-texto {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
@@ -255,6 +255,7 @@
     text-transform: uppercase;
     color: var(--olive-medium);
     margin-bottom: 40px;
+    padding: 0 10px; /* Evita que toque los bordes en celus muy chicos */
 }
 
 .padres-container {
@@ -262,6 +263,7 @@
     justify-content: center;
     gap: 40px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .padres-col {
@@ -287,11 +289,18 @@
     margin-bottom: 5px;
 }
 
-/* Ajuste para móviles: que los nombres se pongan uno debajo de otro */
+/* --- AJUSTE MÓVIL CORREGIDO --- */
 @media (max-width: 600px) {
     .padres-container {
         flex-direction: column;
-        gap: 30px;
+        gap: 35px;
+        align-items: center; /* Centra las columnas horizontalmente */
+    }
+    
+    .padres-col {
+        max-width: 100%; /* Permite que ocupe el ancho necesario */
+        width: 100%;
+        text-align: center;
     }
 }
     </style>
@@ -384,8 +393,8 @@
 
         <p class="info-place">FORMAL</p>
         <p class="info-text">
-           Caballeros: traje formal. Damas: vestido de noche. Se recomienda vestir en tonos neutros, azules profundos, rosas suaves o colores tierra. Favor de evitar blanco, beige o champange, rojo intenso y verde olivo.
-        
+    Caballeros: traje formal. Damas: vestido de noche. Se recomienda vestir en tonos neutros, azules profundos, rosas suaves o colores tierra. Favor de evitar blanco, beige o champange, rojo intenso y verde olivo.
+</p>
         <div class="color-palette-container">
             <div class="color-circle" style="background-color: #4A0F0F;"></div>
             <div class="color-circle" style="background-color: #2F3E34;"></div>
