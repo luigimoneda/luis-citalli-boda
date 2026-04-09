@@ -380,6 +380,29 @@
         text-align: center;
     }
 }
+        /* --- FOTO INTERMEDIA --- */
+.inter-photo-container {
+    width: 100%;
+    height: 50vh; /* Ocupa la mitad de la pantalla */
+    margin: 40px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.inter-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la foto llene el espacio sin deformarse */
+    object-position: center; /* Centra la imagen */
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .inter-photo-container {
+        height: 35vh; /* Un poco más pequeña en móviles para no alargar tanto el scroll */
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -459,7 +482,11 @@
             <a href="https://maps.app.goo.gl/k61scEX9TEdG9vhaA" class="action-btn">Ver Ubicación</a>
         </div>
     </section>
-
+    
+<div class="inter-photo-container fade">
+        <img src="img/foto-intermedia.jpg" alt="Luis y Citlalli">
+    </div>
+    
     <section class="card-style fade">
         <h2 class="info-section-title">Código de Vestimenta</h2>
         
