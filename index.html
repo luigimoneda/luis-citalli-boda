@@ -234,14 +234,39 @@
 
 
 
-        .event-time { letter-spacing: 3px; color: var(--olive-medium); display: block; margin-bottom: 10px; }
+       /* --- ÉNFASIS EN LA HORA --- */
+.event-time-highlight {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; /* Más grande para dar énfasis */
+    font-weight: 600;
+    color: #58181F; /* El color guinda para que resalte */
+    margin: 15px 0;
+    letter-spacing: 2px;
+}
 
-        .event-type { font-weight: 600; letter-spacing: 4px; text-transform: uppercase; font-size: 1.6rem; }
+.event-type { 
+    font-weight: 600; 
+    letter-spacing: 4px; 
+    text-transform: uppercase; 
+    font-size: 1.6rem; 
+    margin-bottom: 10px; /* Un poco de aire abajo del título */
+}
 
-        .event-place { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--olive-dark); margin-top: 5px; }
+.event-place { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 1.8rem; /* Ajustado para que no compita tanto con el título */
+    color: var(--olive-dark); 
+    margin-bottom: 5px; 
+}
 
-        .event-address { font-size: 0.95rem; color: var(--olive-medium); line-height: 1.6; margin: 20px auto; max-width: 500px; }
-
+.event-address { 
+    font-size: 0.95rem; 
+    color: var(--olive-medium); 
+    line-height: 1.6; 
+    margin: 15px auto; /* Reducimos el margen para que el botón esté más cerca */
+    max-width: 500px; 
+}
 
 
         .action-btn {
@@ -532,25 +557,24 @@
     <div class="divider-png fade"><img src="img/floral-03.png" alt="adorno"></div>
 
     <section class="fade">
-        <div class="event-card">
-            <img src="img/floral-01.png" class="decoracion-floral flor-superior-izq" alt="">
-            <span class="event-time">5:00 PM</span>
-            <h2 class="event-type">Ceremonia Religiosa</h2>
-            <p class="event-place">Parroquia Sagrado Corazón de Jesus</p>
-            <p class="event-address">Artes Gráficas 1375 Ote<br> Primero de Cobián Centro</p>
-            <a href="https://maps.app.goo.gl/qEdTiBf3StawNLxu6" class="action-btn">Ver Ubicación</a>
-            
-        </div>
+    <div class="event-card">
+        <img src="img/floral-01.png" class="decoracion-floral flor-superior-izq" alt="">
+        <h2 class="event-type">Ceremonia Religiosa</h2>
+        <p class="event-place">Parroquia Sagrado Corazón de Jesús</p>
+        <span class="event-time-highlight">5:00 PM</span>
+        <p class="event-address">Artes Gráficas 1375 Ote<br> Primero de Cobián Centro</p>
+        <a href="https://maps.app.goo.gl/qEdTiBf3StawNLxu6" class="action-btn">Ver Ubicación</a>
+    </div>
 
-        <div class="event-card">
-            <img src="img/floral-02.png" class="decoracion-floral flor-inferior-der" alt="">
-            <span class="event-time">8:00 PM</span>
-            <h2 class="event-type">Recepción Social</h2>
-            <p class="event-place">Hacienda Elegancia</p>
-            <p class="event-address">Sierra Madre Occidental 1011<br>M. Mercado de López Sánchez</p>
-            <a href="https://maps.app.goo.gl/k61scEX9TEdG9vhaA" class="action-btn">Ver Ubicación</a>
-        </div>
-    </section>
+    <div class="event-card">
+        <img src="img/floral-02.png" class="decoracion-floral flor-inferior-der" alt="">
+        <h2 class="event-type">Boda Civil & Recepción</h2>
+        <p class="event-place">Hacienda Elegancia</p>
+        <span class="event-time-highlight">8:00 PM</span>
+        <p class="event-address">Sierra Madre Occidental 1011<br>M. Mercado de López Sánchez</p>
+        <a href="https://maps.app.goo.gl/k61scEX9TEdG9vhaA" class="action-btn">Ver Ubicación</a>
+    </div>
+</section>
     
 <div class="inter-photo-container fade">
         <img src="img/foto-intermedia.jpg" alt="Luis y Citlalli">
